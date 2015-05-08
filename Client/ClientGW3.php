@@ -1379,12 +1379,9 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 			case 'live':
 				$prefix = CheckoutApi_Client_Constant::APIGW3_URI_PREFIX_LIVE.CheckoutApi_Client_Constant::VERSION.'/';
 				break;
-			case 'preprod':
-				$prefix = CheckoutApi_Client_Constant::APIGW3_URI_PREFIX_PREPOD.CheckoutApi_Client_Constant::VERSION.'/';
-				break;
-			default:
-				$prefix = CheckoutApi_Client_Constant::APIGW3_URI_PREFIX_DEV.CheckoutApi_Client_Constant::VERSION.'/';
-				break;
+            default :
+                $prefix = CheckoutApi_Client_Constant::APIGW3_URI_PREFIX_SANDBOX.CheckoutApi_Client_Constant::VERSION.'/';
+                break;    
 		}
 		return $prefix;
 	}
