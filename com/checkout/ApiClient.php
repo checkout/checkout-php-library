@@ -22,7 +22,7 @@ class ApiClient
 		return $this->_tokenService;
 	}
 
-	public function __construct($secretKey, $mode = 'sandbox' ,$debugMode = false, $connectTimeout = 60, $readTimeout =
+	public function __construct($secretKey, $env = 'sandbox' ,$debugMode = false, $connectTimeout = 60, $readTimeout =
 	60)
 	{
 		$appSetting = helpers\AppSetting::getSingletonInstance();
@@ -30,7 +30,7 @@ class ApiClient
 		$appSetting->setRequestTimeOut($connectTimeout);
 		$appSetting->setReadTimeout($readTimeout);
 		$appSetting->setDebugMode($debugMode);
-		$appSetting->setMode($mode);
+		$appSetting->setMode($env);
 
 		$this->_tokenService = new ApiServices\Tokens\TokenService($appSetting);
 		$this->_chargeService = new ApiServices\Charges\ChargeService($appSetting);

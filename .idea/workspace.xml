@@ -106,10 +106,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocalPaymentProviderModel.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LocalPaymentProviderModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/LocalPaymentProviderModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7077465" vertical-offset="1844" max-vertical-offset="2412">
+            <state vertical-scroll-proportion="59.153847" vertical-offset="1844" max-vertical-offset="2412">
               <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
               <folding />
             </state>
@@ -131,6 +131,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-4.1538463" vertical-offset="0" max-vertical-offset="576">
               <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiClient.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiClient.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.72887325" vertical-offset="162" max-vertical-offset="846">
+              <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -176,16 +186,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomerService.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerService.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="61.923077" vertical-offset="1988" max-vertical-offset="2556">
-              <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -206,7 +206,6 @@
         <option value="$PROJECT_DIR$/com/checkout/helpers/ApiHttpClient.php" />
         <option value="$PROJECT_DIR$/com/checkout/helpers/ApiUrls.php" />
         <option value="$PROJECT_DIR$/com/checkout/helpers/AppSetting.php" />
-        <option value="$PROJECT_DIR$/com/checkout/ApiClient.php" />
         <option value="$PROJECT_DIR$/com/checkout/ApiServices/BaseServices.php" />
         <option value="$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/BaseCard.php" />
         <option value="$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/CardCreate.php" />
@@ -235,6 +234,7 @@
         <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/ResponseModels/CustomerList.php" />
         <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerMapper.php" />
         <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerService.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiClient.php" />
       </list>
     </option>
   </component>
@@ -651,14 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/checkout/ApiClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.923077" vertical-offset="162" max-vertical-offset="846">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Tokens/RequestModels/CardTokenCreate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.538462" vertical-offset="0" max-vertical-offset="558">
@@ -827,14 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerUpdate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.1538463" vertical-offset="0" max-vertical-offset="576">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerFilter.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="1224">
@@ -847,6 +831,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.538462" vertical-offset="0" max-vertical-offset="558">
           <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/LocalPaymentProviderModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="59.153847" vertical-offset="1844" max-vertical-offset="2412">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -867,10 +859,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/LocalPaymentProviderModel.php">
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerUpdate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7077465" vertical-offset="1844" max-vertical-offset="2412">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state vertical-scroll-proportion="-4.1538463" vertical-offset="0" max-vertical-offset="576">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72887325" vertical-offset="162" max-vertical-offset="846">
+          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
           <folding />
         </state>
       </provider>
