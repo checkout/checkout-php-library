@@ -1,0 +1,4 @@
+[submodule "packages/CheckoutApi"]
+	path = packages/CheckoutApi
+	url = https://github.com/CKOTech/checkout-web-common.git
+	branch = CheckoutApi

@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="07f0104e-bc0f-4ace-b211-ec4213e40867" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\.gitmodules" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiHttpClient.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\AppApiSetting.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\BaseServices.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Cards\CardMapper.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Cards\CardService.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Cards\RequestModels\BaseCard.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Cards\RequestModels\BaseCardCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Cards\RequestModels\CardCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Cards\RequestModels\CardUpdate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Cards\ResponseModels\Card.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Cards\ResponseModels\CardList.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\ChargeService.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\ChargesMapper.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\BaseCharge.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\CardChargeCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\CardIdChargeCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\CardTokenChargeCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\ChargeCapture.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\ChargeIdChargeRetrieve.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\ChargeRefund.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\ChargeRetrieveWithPaymentToken.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\ChargeUpdate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\RequestModels\PaymentTokenChargeCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\ResponseModels\Charge.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\ResponseModels\PaymentToken.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Charges\ResponseModels\Refund.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Customers\CustomerMapper.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Customers\CustomerService.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Customers\RequestModels\BaseCustomer.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Customers\RequestModels\CustomerCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Customers\RequestModels\CustomerFilter.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Customers\RequestModels\CustomerUpdate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Customers\ResponseModels\Customer.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Customers\ResponseModels\CustomerList.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\PaymentProviderService.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\RequestModels\CardProviderModel.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\RequestModels\LocalPaymentProviderModel.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\ResponseModels\CardProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\ResponseModels\CardProviderList.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\ResponseModels\CustomFields.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\ResponseModels\LocalPaymentProvider.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\ResponseModels\LocalPaymentProviderList.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\PaymentProviders\ResponseModels\Region.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\SharedModels\Address.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\SharedModels\DeleteResponse.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\SharedModels\Product.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\SharedModels\ShippingAddress.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Tokens\PaymentTokenMapper.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Tokens\RequestModels\CardTokenCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Tokens\RequestModels\PaymentTokenCreate.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Tokens\ResponseModels\CardToken.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Tokens\ResponseModels\PaymentToken.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiServices\Tokens\TokenService.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\ApiUrls.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\CkoMerchantApiClient.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\autoload.php" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\packages\CheckoutApi" afterPath="" />
+      <change type="DELETED" beforePath="D:\Ckolibrary\checkout-php-library\packages\autoload.php" afterPath="" />
+    </list>
+    <ignored path="checkout-php-library.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="checkout-php-library" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="BaseCustomer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/BaseCustomer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="1818">
+              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CardProviderModel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/CardProviderModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="576">
+              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocalPaymentProviderModel.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/LocalPaymentProviderModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.7077465" vertical-offset="1844" max-vertical-offset="2412">
+              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Customer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/ResponseModels/Customer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.5384617" vertical-offset="756" max-vertical-offset="4680">
+              <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerUpdate.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerUpdate.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.1538463" vertical-offset="0" max-vertical-offset="576">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerFilter.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerFilter.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="1224">
+              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerCreate.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerCreate.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.538462" vertical-offset="0" max-vertical-offset="558">
+              <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/ResponseModels/CustomerList.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-51.923077" vertical-offset="0" max-vertical-offset="1530">
+              <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerMapper.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerMapper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="2016">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomerService.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerService.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="61.923077" vertical-offset="1988" max-vertical-offset="2556">
+              <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/CkoMerchantApiClient.php" />
+        <option value="$PROJECT_DIR$/ApiUrls.php" />
+        <option value="$PROJECT_DIR$/ApiHttpClient.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Cards/CardService.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Charges/RequestModels/CardChargeCreate.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/SharedModels/ShippingAddress.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Tokens/RequestModels/CardTokenCreate.php" />
+        <option value="$PROJECT_DIR$/com/checkout/CkoMerchantApiClient.php" />
+        <option value="$PROJECT_DIR$/com/checkout/helpers/CkoMerchantApiClient.php" />
+        <option value="$PROJECT_DIR$/com/checkout/helpers/ApiHttpClient.php" />
+        <option value="$PROJECT_DIR$/com/checkout/helpers/ApiUrls.php" />
+        <option value="$PROJECT_DIR$/com/checkout/helpers/AppSetting.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiClient.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/BaseServices.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/BaseCard.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/CardCreate.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/CardUpdate.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/BaseCardCreate.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Charges/ResponseModels/Charge.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Tokens/RequestModels/PaymentTokenCreate.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Charges/RequestModels/BaseCharge.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Charges/ChargesMapper.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Tokens/TokenService.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Charges/ChargeService.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/CardProviderModel.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/LocalPaymentProviderModel.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/CardProvider.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/CardProviderList.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/CustomFields.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/LocalPaymentProvider.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/LocalPaymentProviderList.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/Region.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/PaymentProviderService.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/BaseCustomer.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerFilter.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerCreate.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerUpdate.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/ResponseModels/Customer.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/ResponseModels/CustomerList.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerMapper.php" />
+        <option value="$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerService.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApiServices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApiServices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PaymentProviders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApiServices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PaymentProviders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RequestModels" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout-php-library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="checkout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApiServices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Charges" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Ckolibrary\checkout-php-library\com\checkout\ApiServices\Cards" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Ckolibrary\checkout-php-library\com\checkout\helpers" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="92334bd6-9ff1-4564-9d7c-2df05f98031e" server_name="api">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="07f0104e-bc0f-4ace-b211-ec4213e40867" name="Default" comment="" />
+      <created>1428466743152</created>
+      <option name="number" value="Default" />
+      <updated>1428466743152</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25718608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Cards/ResponseModels/CardList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1062">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Charges/ResponseModels/PaymentToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2286">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Charges/ResponseModels/Refund.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1800">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/SharedModels/DeleteResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/SharedModels/ShippingAddress.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.4615386" vertical-offset="0" max-vertical-offset="540">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/SharedModels/Address.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2394">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Tokens/ResponseModels/CardToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="3204">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Tokens/ResponseModels/PaymentToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Tokens/PaymentTokenMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Charges/RequestModels/ChargeRetrieveWithPaymentToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09507042" vertical-offset="0" max-vertical-offset="568">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/helpers/ApiUrls.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.692307" vertical-offset="216" max-vertical-offset="6570">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/helpers/ApiHttpClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.538462" vertical-offset="0" max-vertical-offset="1008">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/BaseServices.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.846154" vertical-offset="0" max-vertical-offset="1080">
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Charges/ResponseModels/Charge.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.1923075" vertical-offset="9423" max-vertical-offset="11160">
+          <caret line="536" column="0" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Cards/ResponseModels/Card.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5387324" vertical-offset="1134" max-vertical-offset="5796">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/CardUpdate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03169014" vertical-offset="0" max-vertical-offset="1116">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/helpers/AppSetting.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="43.46154" vertical-offset="1364" max-vertical-offset="4482">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.923077" vertical-offset="162" max-vertical-offset="846">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Tokens/RequestModels/CardTokenCreate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.538462" vertical-offset="0" max-vertical-offset="558">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/BaseCardCreate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7692308" vertical-offset="0" max-vertical-offset="828">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/CardCreate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6923077" vertical-offset="0" max-vertical-offset="882">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Charges/RequestModels/CardChargeCreate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.6153846" vertical-offset="0" max-vertical-offset="576">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Cards/RequestModels/BaseCard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.454545" vertical-offset="0" max-vertical-offset="1422">
+          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Charges/RequestModels/BaseCharge.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.2181816" vertical-offset="18" max-vertical-offset="3672">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Charges/ChargeService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.470588" vertical-offset="1728" max-vertical-offset="4734">
+          <caret line="251" column="29" selection-start-line="251" selection-start-column="29" selection-end-line="251" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Tokens/TokenService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5880282" vertical-offset="26" max-vertical-offset="594">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Tokens/RequestModels/PaymentTokenCreate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1538463" vertical-offset="0" max-vertical-offset="270">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/CardProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09507042" vertical-offset="0" max-vertical-offset="972">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Charges/ChargesMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60211265" vertical-offset="810" max-vertical-offset="2898">
+          <caret line="69" column="59" selection-start-line="69" selection-start-column="59" selection-end-line="69" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/CardProviderList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09507042" vertical-offset="0" max-vertical-offset="1494">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/CustomFields.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09507042" vertical-offset="0" max-vertical-offset="5040">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/LocalPaymentProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09507042" vertical-offset="0" max-vertical-offset="3276">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/LocalPaymentProviderList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09507042" vertical-offset="0" max-vertical-offset="1512">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/PaymentProviderService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09507042" vertical-offset="0" max-vertical-offset="810">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/ResponseModels/Region.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="666">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="61.923077" vertical-offset="1988" max-vertical-offset="2556">
+          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/CustomerMapper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="2016">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/ResponseModels/CustomerList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-51.923077" vertical-offset="0" max-vertical-offset="1530">
+          <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/ResponseModels/Customer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5384617" vertical-offset="756" max-vertical-offset="4680">
+          <caret line="55" column="36" selection-start-line="55" selection-start-column="36" selection-end-line="55" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerUpdate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.1538463" vertical-offset="0" max-vertical-offset="576">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerFilter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="1224">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/CustomerCreate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.538462" vertical-offset="0" max-vertical-offset="558">
+          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/Customers/RequestModels/BaseCustomer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="1818">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/CardProviderModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0769231" vertical-offset="0" max-vertical-offset="576">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/checkout/ApiServices/PaymentProviders/RequestModels/LocalPaymentProviderModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7077465" vertical-offset="1844" max-vertical-offset="2412">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,4 +1,4 @@
-[submodule "packages/CheckoutApi"]
-	path = packages/CheckoutApi
-	url = https://github.com/CKOTech/checkout-web-common.git
+[submodule "com/checkout/packages/CheckoutApi"]
+	path = com/checkout/packages/CheckoutApi
+	url = https://github.com/CKOTech/checkout-php-library.git
 	branch = CheckoutApi
