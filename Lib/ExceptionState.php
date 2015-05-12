@@ -100,7 +100,7 @@
       */
 	public function setMessage($message)
 	{
-		 $this->_message[] = $message;
+		 $this->_message[implode('-',$message)] = $message;
 	}
 
      /**
