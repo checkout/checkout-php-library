@@ -23,13 +23,14 @@ By default both **$connectTimeout** and **$readTimeouset** to 60 seconds. You go
 **Create payment token**
 ```html
 include 'release/v1.0//autoload.php'
-$apiClient = new com\checkout\ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+use  com\checkout;
+$apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $tokenService = $apiClient->tokenService();
-$tokenPayload = new com\checkout\ApiServices\Tokens\RequestModels\PaymentTokenCreate();
+$tokenPayload = new ApiServices\Tokens\RequestModels\PaymentTokenCreate();
 $metaData = array('key'=>'value');
-$product = new com\checkout\ApiServices\SharedModels\Product();
-$shippingDetails = new \com\checkout\ApiServices\SharedModels\Address();
-$phone = new \com\checkout\ApiServices\SharedModels\Phone();
+$product = new ApiServices\SharedModels\Product();
+$shippingDetails = new ApiServices\SharedModels\Address();
+$phone = new  ApiServices\SharedModels\Phone();
 
 $product->setName('A4 office paper');
 $product->setDescription('a4 white copy paper');
@@ -71,7 +72,8 @@ try {
 
 ```html
 include 'release/v1.0//autoload.php'
-$apiClient = new com\checkout\ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+use  com\checkout;
+$apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
 
 try {
