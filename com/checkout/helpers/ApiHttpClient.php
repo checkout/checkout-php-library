@@ -11,7 +11,14 @@ final class ApiHttpClient
 	public function postRequest( $requestUri,  $authenticationKey, $requestPayload = null)
 	{
 		$requestPayload['method'] = 'POST';
-		return  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
+		$temp = \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
+		if($temp->isValid()) {
+			return $temp;
+		}else {
+
+			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
+
+		}
 	}
 
 	/**
@@ -22,7 +29,12 @@ final class ApiHttpClient
 	public function getRequest( $requestUri,  $authenticationKey, $requestPayload = null)
 	{
 		$requestPayload['method'] = 'GET';
-		return  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
+		$temp = \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
+		if($temp->isValid()) {
+			return $temp;
+		}else {
+			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
+		}
 	}
 
 	/**
@@ -33,7 +45,13 @@ final class ApiHttpClient
 	public function putRequest( $requestUri,  $authenticationKey, $requestPayload = null)
 	{
 		$requestPayload['method'] = 'PUT';
-		return  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
+		$temp =  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
+
+		if($temp->isValid()) {
+			return $temp;
+		}else {
+			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
+		}
 	}
 
 
@@ -45,6 +63,12 @@ final class ApiHttpClient
 	public function deleteRequest( $requestUri,  $authenticationKey, $requestPayload = null)
 	{
 		$requestPayload['method'] = 'DELETE';
-		return  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
+		$temp =  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
+
+		if($temp->isValid()) {
+			return $temp;
+		}else {
+			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
+		}
 	}
 }

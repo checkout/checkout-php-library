@@ -87,19 +87,37 @@ class ChargesMapper
 			}
 
 			if(method_exists($requestModel,'getEmail') && $productsItem =  $requestModel->getProducts()) {
+				$i = 0;
 				foreach ( $productsItem as $item ) {
 
-					$products[ ] = array (
-						'name'         => $item->getName () ,
-						'productId'    => $item->getProductId () ,
-						'sku'          => $item->getSku () ,
-						'price'        => $item->getPrice () ,
-						'quantity'     => $item->getQuantity () ,
-						'description'  => $item->getDescription () ,
-						'image'        => $item->getImage () ,
-						'shippingCost' => $item->getShippingCost () ,
-						'trackingUrl'  => $item->getTrackingUrl () ,
-					);
+					if( $item->getName ()) {
+						$products[ $i ][ 'name' ] = $item->getName ();
+					}
+					if( $item->getProductId ()) {
+						$products[ $i ][ 'productId' ] = $item->getProductId ();
+					}
+					if( $item->getSku ()) {
+						$products[ $i ][ 'sku' ] = $item->getSku ();
+					}
+					if( $item->getPrice ()) {
+						$products[ $i ][ 'price' ] = $item->getPrice ();
+					}
+					if( $item->getQuantity ()) {
+						$products[ $i ][ 'quantity' ] = $item->getQuantity ();
+					}
+					if( $item->getDescription ()) {
+						$products[ $i ][ 'description' ] = $item->getDescription ();
+					}
+					if( $item->getImage ()) {
+						$products[ $i ][ 'image' ] = $item->getImage ();
+					}
+					if( $item->getShippingCost ()) {
+						$products[ $i ][ 'shippingCost' ] = $item->getShippingCost ();
+					}
+					if( $item->getTrackingUrl ()) {
+						$products[ $i ][ 'trackingUrl' ] = $item->getTrackingUrl ();
+					}
+
 				}
 
 				$requestPayload['products'] = $products;

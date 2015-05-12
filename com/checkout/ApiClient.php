@@ -1,6 +1,6 @@
 <?php
 namespace com\checkout;
-include "packages/autoload.php";
+
 class ApiClient
 {
 	private  $_tokenService;

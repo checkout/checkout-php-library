@@ -4,15 +4,15 @@ namespace com\checkout\ApiServices\SharedModels;
 
 class Product
 {
-	protected $_name ;
-	protected $_productId ;
-	protected $_description ;
-	protected $_sku ;
-	protected $_price ;
-	protected $_quantity ;
-	protected $_image ;
-	protected $_shippingCost ;
-	protected $_trackingUrl ;
+	protected $_name = '';
+	protected $_productId = '';
+	protected $_description = '';
+	protected $_sku = '' ;
+	protected $_price = '' ;
+	protected $_quantity = '' ;
+	protected $_image = '';
+	protected $_shippingCost = '' ;
+	protected $_trackingUrl = '' ;
 
 	/**
 	 * @return mixed

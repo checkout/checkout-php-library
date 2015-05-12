@@ -20,10 +20,11 @@ class Api_Autoloader {
       set_include_path($includePath);
       $path = '';
 
-      if(!empty($classNameArray)) {
+      if(!empty($classNameArray) && sizeof($classNameArray)>1 ) {
 
           $path = DIRECTORY_SEPARATOR . implode ( DIRECTORY_SEPARATOR , $classNameArray ) . '.php';
           $path = str_replace ( '\PHPPlugin\\' , '' , $path );
+
           include $path;
       }
 

@@ -1,7 +1,7 @@
 <?php
 namespace com\checkout\ApiServices\Charges\RequestModels;
 
-class BaseCharge extends BaseChargeInform
+class BaseCharge extends BaseChargeInfo
 {
 	protected $_email;
 	protected $_customerId;
@@ -155,7 +155,7 @@ class BaseCharge extends BaseChargeInform
 	/**
 	 * @param mixed $shippingDetails
 	 */
-	public function setShippingDetails ( \com\checkout\ApiServices\SharedModels\ShippingAddress $shippingDetails )
+	public function setShippingDetails ( \com\checkout\ApiServices\SharedModels\Address $shippingDetails )
 	{
 		$this->_shippingDetails = $shippingDetails;
 	}
