@@ -526,13 +526,16 @@ class Charge
 		$cardObg = new \com\checkout\ApiServices\Cards\ResponseModels\Card($card);
 		$billingDetails  = new \com\checkout\ApiServices\SharedModels\Address();
 		$billingAddress = $card->getBillingDetails();
+		$phone  = new \com\checkout\ApiServices\SharedModels\Phone();
 		$billingDetails->setAddressLine1($billingAddress->getAddressLine1());
 		$billingDetails->setAddressLine2($billingAddress->getAddressLine2());
 		$billingDetails->setPostcode($billingAddress->getPostcode());
 		$billingDetails->setCountry($billingAddress->getCountry());
 		$billingDetails->setCity($billingAddress->getCity());
 		$billingDetails->setState($billingAddress->getState());
-		$billingDetails->setPhone($billingAddress->getPhone());
+
+		$phone->setNumber($billingAddress->getPhone()->getNumber());
+		$billingDetails->setPhone($phone);
 
 
 		$this->_card = $cardObg;
@@ -544,13 +547,15 @@ class Charge
 	protected function _setShippingDetails ( $shippingDetails )
 	{
 		$shippingAddress  = new \com\checkout\ApiServices\SharedModels\ShippingAddress();
+		$phone  = new \com\checkout\ApiServices\SharedModels\Phone();
 		$shippingAddress->setAddressLine1($shippingDetails->getAddressLine1());
 		$shippingAddress->setAddressLine2($shippingDetails->getAddressLine2());
 		$shippingAddress->setPostcode($shippingDetails->getPostcode());
 		$shippingAddress->setCountry($shippingDetails->getCountry());
 		$shippingAddress->setCity($shippingDetails->getCity());
 		$shippingAddress->setState($shippingDetails->getState());
-		$shippingAddress->setPhone($shippingDetails->getPhone());
+		$phone->setNumber($shippingDetails->getPhone()->getNumber());
+		$shippingAddress->setPhone($phone);
 		$shippingAddress->setRecipientName($shippingDetails->getRecipientName());
 		$this->_shippingDetails = $shippingAddress;
 	}

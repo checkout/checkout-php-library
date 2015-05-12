@@ -202,6 +202,7 @@ class Card
 	{
 
 		$billingAddress  = new \com\checkout\ApiServices\SharedModels\Address();
+		$phone  = new \com\checkout\ApiServices\SharedModels\Phone();
 
 		$billingAddress->setAddressLine1($billingDetails->getAddressLine1());
 		$billingAddress->setAddressLine2($billingDetails->getAddressLine2());
@@ -209,7 +210,8 @@ class Card
 		$billingAddress->setCountry($billingDetails->getCountry());
 		$billingAddress->setCity($billingDetails->getCity());
 		$billingAddress->setState($billingDetails->getState());
-		$billingAddress->setPhone($billingDetails->getPhone());
+		$phone->setNumber($billingDetails->getPhone()->getNumber());
+		$billingAddress->setPhone($phone);
 
 
 		$this->_billingDetails = $billingAddress;

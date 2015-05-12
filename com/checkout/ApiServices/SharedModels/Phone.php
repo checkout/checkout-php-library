@@ -29,4 +29,20 @@ class Phone
 	{
 		return $this->_number;
 	}
+
+	/**
+	 * @param mixed $countryCode
+	 */
+	public function setCountryCode ( $countryCode )
+	{
+		$this->_countryCode = $countryCode;
+	}
+
+	/**
+	 * @param mixed $number
+	 */
+	public function setNumber ( $number )
+	{
+		$this->_number = $number;
+	}
 }
