@@ -1,7 +1,7 @@
 <?php
 namespace com\checkout\ApiServices\Charges\RequestModels;
 
-class BaseCharge extends BaseChargeInfo
+class BaseCharge extends BaseChargeInform
 {
 	protected $_email;
 	protected $_customerId;
