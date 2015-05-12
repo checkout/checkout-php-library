@@ -125,7 +125,7 @@ class Address
 	/**
 	 * @param mixed $phone
 	 */
-	public function setPhone ( $phone )
+	public function setPhone ( Phone $phone )
 	{
 		$this->_phone = $phone;
 	}

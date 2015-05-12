@@ -1,7 +1,7 @@
 <?php
 namespace com\checkout\ApiServices\Charges\RequestModels;
 
-class BaseCharge
+class BaseCharge extends BaseChargeInfo
 {
 	protected $_email;
 	protected $_customerId;
@@ -10,7 +10,6 @@ class BaseCharge
 	protected $_autoCapTime;
 	protected $_shippingDetails;
 	protected $_products = array();
-	protected $_metadata = array();
 	protected $_value;
 	protected $_currency;
 	protected $_customerIp;
@@ -177,23 +176,6 @@ class BaseCharge
 		$this->_products[] = $products;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function getMetadata ()
-	{
-		return $this->_metadata;
-	}
 
-	/**
-	 * @param mixed $metadata
-	 */
-	public function setMetadata ( $metadata )
-	{
-
-		if(!empty($metadata) && is_array($metadata)) {
-			$this->_metadata = array_merge_recursive ( $this->_metadata , $metadata );
-		}
-	}
 
 }
