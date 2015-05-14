@@ -114,19 +114,20 @@
 		return $this->_message;
 	}
 
-     /**
+   /**
       *  compile all errors in one line
       * @return string
       */
      public function getErrorMessage()
      {
-         $message = $this->getMessage();
+         $messages = $this->getMessage();
          $critical = $this->getCritical();
          $msgError = "";
-         for($i= 0, $count = sizeOf($message); $i<$count;$i++ ) {
+         $i = 0;
+         foreach ($messages as $message ) {
 
-             if ($critical[$i]) {
-                 $msgError .= "{$message[$i]}\n";
+             if ($critical[$i++]) {
+                 $msgError .= "{$message}\n";
              }
          }
 
