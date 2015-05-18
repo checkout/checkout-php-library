@@ -50,7 +50,7 @@ class CardUpdate
 	/**
 	 * @param mixed $baseCardCreate
 	 */
-	public function setBaseCard ( \PHPPlugin\ApiServices\Cards\RequestModels\BaseCard $baseCard )
+	public function setBaseCard ( \com\checkout\ApiServices\Cards\RequestModels\BaseCard $baseCard )
 	{
 		$this->_baseCard = $baseCard;
 	}

@@ -67,7 +67,7 @@ class BaseCard
 	/**
 	 * @param mixed $billingDetails
 	 */
-	public function setBillingDetails ( \PHPPlugin\ApiServices\SharedModels\Address $billingDetails )
+	public function setBillingDetails ( \com\checkout\ApiServices\SharedModels\Address $billingDetails )
 	{
 		$this->_billingDetails = $billingDetails;
 	}
