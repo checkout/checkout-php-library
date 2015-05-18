@@ -251,3 +251,27 @@ try {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 ```
+### Capture a charge
+```html
+
+namespace com\checkout;
+include 'checkout-php-library/autoload.php';
+
+$apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+$charge = $apiClient->chargeService();
+namespace com\checkout\ApiServices;
+$chargeCapturePayload = new Charges\RequestModels\ChargeCapture();
+
+$chargeCapturePayload->setChargeId('charge_F01A9ADDE74J76BD2F19');
+$chargeCapturePayload->setValue('100');
+
+
+
+try {
+	$ChargeResponse = $charge->CaptureCardCharge($chargeCapturePayload);
+	
+
+}catch (Exception $e) {
+     echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+```
