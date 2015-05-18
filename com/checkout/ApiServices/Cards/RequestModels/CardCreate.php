@@ -37,7 +37,7 @@ class CardCreate
 	/**
 	 * @param mixed $baseCardCreate
 	 */
-	public function setBaseCardCreate ( \PHPPlugin\ApiServices\Cards\RequestModels\BaseCardCreate $baseCardCreate )
+	public function setBaseCardCreate ( \com\checkout\ApiServices\Cards\RequestModels\BaseCardCreate $baseCardCreate )
 	{
 		$this->_baseCardCreate = $baseCardCreate;
 	}
