@@ -83,3 +83,47 @@ try {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 ```
+###Creates a charge with full card details.
+namespace com\checkout;
+include 'checkout-php-library/autoload.php';
+
+$apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+$charge = $apiClient->chargeService();
+namespace com\checkout\ApiServices;
+$cardChargePayload = new Charges\RequestModels\CardChargeCreate();
+$baseCardCreateObject = new Cards\RequestModels\BaseCardCreate();
+
+$billingDetails = new SharedModels\Address();
+$phone = new  SharedModels\Phone();
+
+$phone->setNumber("203 583 44 55");
+$phone->setCountryCode("44");
+
+$billingDetails->setAddressLine1('1 Glading Fields"');
+$billingDetails->setPostcode('N16 2BR');
+$billingDetails->setCountry('GB');
+$billingDetails->setCity('London');
+$billingDetails->setPhone($phone);
+
+$baseCardCreateObject->setNumber('4242424242424242');
+$baseCardCreateObject->setName('Test Name');
+$baseCardCreateObject->setExpiryMonth('06');
+$baseCardCreateObject->setExpiryYear('2018');
+$baseCardCreateObject->setCvv('100');
+$baseCardCreateObject->setBillingDetails($billingDetails);
+
+$cardChargePayload->setEmail('demo@checkout.com');
+$cardChargePayload->setAutoCapture('N');
+$cardChargePayload->setAutoCaptime('0');
+$cardChargePayload->setValue('100');
+$cardChargePayload->setCurrency('usd');
+$cardChargePayload->setTrackId('Demo-0001');
+$cardChargePayload->setBaseCardCreate($baseCardCreateObject);
+
+try {
+	$ChargeResponse = $charge->chargeWithCard($cardChargePayload);
+	
+
+}catch (Exception $e) {
+     echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
