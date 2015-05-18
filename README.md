@@ -84,6 +84,7 @@ try {
 }
 ```
 ###Creates a charge with full card details.
+```html
 namespace com\checkout;
 include 'checkout-php-library/autoload.php';
 
@@ -127,3 +128,5 @@ try {
 }catch (Exception $e) {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
+
+```
