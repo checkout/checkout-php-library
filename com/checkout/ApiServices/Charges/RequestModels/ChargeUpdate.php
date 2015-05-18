@@ -13,7 +13,7 @@ class ChargeUpdate
 {
 	private $_chargeId;
 	private $_description;
-	private $_metadata;
+	private $_metadata = array();
 
 	/**
 	 * @return mixed

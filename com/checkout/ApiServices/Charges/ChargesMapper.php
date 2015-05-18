@@ -59,7 +59,7 @@ class ChargesMapper
 			}
 
 			if(method_exists($requestModel,'getChargeId') && $requestModel->getChargeId()) {
-				$requestPayload['chargeId'] = $requestModel->getDescription();
+				$requestPayload['chargeId'] = $requestModel->getChargeId();
 			}
 
 			if(method_exists($requestModel,'getMetadata') && $metadata = $requestModel->getMetadata()) {
@@ -104,7 +104,7 @@ class ChargesMapper
 					'city' => $shippingAddress->getCity () ,
 					'state' => $shippingAddress->getState () ,
 					'phone' => $shippingAddress->getPhone () ,
-					'recipientName' => $shippingAddress->getRecipientName ()
+
 
 				);
 

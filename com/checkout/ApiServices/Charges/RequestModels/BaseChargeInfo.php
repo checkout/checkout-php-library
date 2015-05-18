@@ -147,7 +147,7 @@ class BaseChargeInfo
 	{
 
 		if(!empty($metadata) && is_array($metadata)) {
-			$this->_metadata = array_merge_recursive ( $this->_metadata , $metadata );
+			$this->_metadata =  $metadata ;
 		}
 	}
 

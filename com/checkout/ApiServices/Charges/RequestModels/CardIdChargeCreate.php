@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\Charges\RequestModels;
 
 
-class CardIdChargeCreate extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
+class CardIdChargeCreate extends BaseCharge
 {
 	private $_cardId;
 
