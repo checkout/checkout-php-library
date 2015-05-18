@@ -20,7 +20,7 @@ class CardChargeCreate extends BaseCharge
 	/**
 	 * @param mixed $baseCardCreate
 	 */
-	public function setBaseCardCreate ( BaseCardCreate $baseCardCreate )
+	public function setBaseCardCreate ( \com\checkout\ApiServices\Cards\RequestModels\BaseCardCreate $baseCardCreate )
 	{
 		$this->_baseCardCreate = $baseCardCreate;
 	}

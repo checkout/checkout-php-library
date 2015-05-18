@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\Charges\ResponseModels;
 
 
-class Charge
+class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 {
 	protected $_object;
 	protected $_id;
@@ -70,6 +70,14 @@ class Charge
 		$this->_setExpired ( $response->getExpired());
 		$this->_setCaptured ( $response->getCaptured());
 		$this->_setIsCascaded ( $response->getIsCascaded());
+		$this->setDescription ( $response->getDescription());
+		$this->setTrackId ( $response->getTrackId());
+		$this->setUdf1 ( $response->setUdf1());
+		$this->setUdf2 ( $response->setUdf2());
+		$this->setUdf3 ( $response->setUdf3());
+		$this->setUdf4 ( $response->setUdf4());
+		$this->setUdf5 ( $response->setUdf5());
+		$this->setMetadata ( $response->getMetadata()->toArray());
 
 		if($response->getCard()) {
 			$this->_setCard ( $response->getCard () );
