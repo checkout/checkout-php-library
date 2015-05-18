@@ -170,3 +170,43 @@ try {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 ```
+### Creates a charge with cardToken.
+```html
+namespace com\checkout;
+include 'checkout-php-library/autoload.php';
+
+$apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+$charge = $apiClient->chargeService();
+namespace com\checkout\ApiServices;
+$CardTokenChargePayload = new Charges\RequestModels\CardTokenChargeCreate();
+
+
+$billingDetails = new SharedModels\Address();
+$phone = new  SharedModels\Phone();
+//
+$phone->setNumber("203 583 44 55");
+$phone->setCountryCode("44");
+
+$billingDetails->setAddressLine1('1 Glading Fields"');
+$billingDetails->setPostcode('N16 2BR');
+$billingDetails->setCountry('GB');
+$billingDetails->setCity('London');
+$billingDetails->setPhone($phone);
+
+
+$CardTokenChargePayload->setEmail('demo@checkout.com');
+$CardTokenChargePayload->setAutoCapture('N');
+$CardTokenChargePayload->setAutoCaptime('0');
+$CardTokenChargePayload->setValue('100');
+$CardTokenChargePayload->setCurrency('usd');
+$CardTokenChargePayload->setTrackId('Demo-0001');
+$CardTokenChargePayload->setCardToken('card_EE8E105F-E24A-4FB6-A5FE-F0355BA1E490');
+
+try {
+	$ChargeResponse = $charge->chargeWithCardToken($CardTokenChargePayload);
+	
+
+}catch (Exception $e) {
+     echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+```
