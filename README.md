@@ -275,3 +275,26 @@ try {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
 ```
+###Refund a charge
+```html
+namespace com\checkout;
+include 'checkout-php-library/autoload.php';
+
+$apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+$charge = $apiClient->chargeService();
+namespace com\checkout\ApiServices;
+$chargeCapturePayload = new Charges\RequestModels\ChargeRefund();
+
+$chargeCapturePayload->setChargeId('charge_221AEADDE74J76BD2F18');
+$chargeCapturePayload->setValue('100');
+
+
+
+try {
+	$ChargeResponse = $charge->refundCardChargeRequest($chargeCapturePayload);
+	
+
+}catch (Exception $e) {
+     echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+```
