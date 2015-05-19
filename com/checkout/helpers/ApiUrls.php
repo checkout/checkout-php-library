@@ -323,7 +323,7 @@ class ApiUrls
 	public function getUpdateChargesApiUri ()
 	{
 		if(!$this->_updateChargesApiUri) {
-			$this->setCaptureChargesApiUri($this->getBaseApiUri()."/charges/%s");
+			$this->setUpdateChargesApiUri($this->getBaseApiUri()."/charges/%s");
 		}
 		return $this->_updateChargesApiUri;
 	}

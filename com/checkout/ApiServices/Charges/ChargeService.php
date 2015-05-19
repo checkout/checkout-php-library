@@ -214,9 +214,9 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 			'postedParam'   => $chargeMapper->requestPayloadConverter(),
 
 		);
-		$refundUri = sprintf ($this->_apiUrl->getUpdateChargesApiUri(),$requestModel->getChargeId());
+		$updateUri = sprintf ($this->_apiUrl->getUpdateChargesApiUri(),$requestModel->getChargeId());
 
-		$processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($refundUri,
+		$processCharge = \com\checkout\helpers\ApiHttpClient::putRequest($updateUri,
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 
 		$responseModel = new ResponseModels\Charge($processCharge);

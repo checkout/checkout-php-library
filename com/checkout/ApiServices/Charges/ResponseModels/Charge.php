@@ -77,7 +77,9 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->setUdf3 ( $response->setUdf3());
 		$this->setUdf4 ( $response->setUdf4());
 		$this->setUdf5 ( $response->setUdf5());
-		$this->setMetadata ( $response->getMetadata()->toArray());
+		if($response->getMetadata()) {
+			$this->setMetadata ( $response->getMetadata ()->toArray () );
+		}
 
 		if($response->getCard()) {
 			$this->_setCard ( $response->getCard () );
