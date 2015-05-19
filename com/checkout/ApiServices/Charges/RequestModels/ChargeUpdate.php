@@ -30,4 +30,37 @@ class ChargeUpdate
 	{
 		$this->_chargeId = $chargeId;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDescription ()
+	{
+		return $this->_description;
+	}
+
+	/**
+	 * @param mixed $description
+	 */
+	public function setDescription ( $description )
+	{
+		$this->_description = $description;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getMetadata ()
+	{
+		return $this->_metadata;
+	}
+
+	/**
+	 * @param array $metadata
+	 */
+	public function setMetadata ( $metadata )
+	{
+		$this->_metadata = $metadata;
+	}
+
 }
