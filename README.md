@@ -19,8 +19,18 @@ The constructor available for configuration:
 ```
 By default both **$connectTimeout** and **$readTimeouset** to 60 seconds. You got option to change them as needed.
 **$env** accept either **sandbox **or **live ** as value.  This parameter allow you to shift between the sandbox environment or live environment. By Default the sandbox environment will be used. 
+###Example code
+  [Create payment token]()
+  [Verify charge by payment token](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#verify-charge-by-payment-token)
+   [Creates a charge with full card details](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#creates-a-charge-with-full-card-details)
+[Creates a charge with full card id](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#creates-a-charge-with-full-card-id)
+[Creates a charge with cardToken](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#creates-a-charge-with-cardtoken)
+[Creates a charge with Default Customer Card](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#creates-a-charge-with-default-customer-card)
+[Capture a charge](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#capture-a-charge)
+[Refund a charge](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#refund-a-charge)
+[Update a charge](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#update-a-charge)
 
-**Create payment token**
+###Create payment token
 ```html
 include 'release/v1.0//autoload.php'
 use  com\checkout;
