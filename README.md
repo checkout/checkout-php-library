@@ -43,11 +43,15 @@ By default both **$connectTimeout** and **$readTimeouset** to 60 seconds. You go
 include 'release/v1.0//autoload.php'
 use  com\checkout;
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+//create an instance of a token service
 $tokenService = $apiClient->tokenService();
+//initializing the request models
 $tokenPayload = new ApiServices\Tokens\RequestModels\PaymentTokenCreate();
 $metaData = array('key'=>'value');
 $product = new ApiServices\SharedModels\Product();
+//initializing the Address model to be use by the PaymentTokenCreate model
 $shippingDetails = new ApiServices\SharedModels\Address();
+//initializing the Phone model to be use by the Address model
 $phone = new  ApiServices\SharedModels\Phone();
 
 $product->setName('A4 office paper');
@@ -76,10 +80,11 @@ $tokenPayload->setEmail("test@test.com");
 $tokenPayload->setMetadata($metaData);
 $tokenPayload->setProducts($product);
 
-
+ 
 try {
+/** @var ResponseModels\PaymentToken $paymentToken  **/
 	$paymentToken = $tokenService->createPaymentToken($tokenPayload);
-	echo $paymentToken->getId();
+
 }catch (Exception $e) {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
