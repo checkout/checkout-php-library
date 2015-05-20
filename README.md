@@ -19,7 +19,7 @@ The constructor available for configuration:
 ```
 By default both **$connectTimeout** and **$readTimeouset** to 60 seconds. You got option to change them as needed.
 **$env** accept either **sandbox **or **live ** as value.  This parameter allow you to shift between the sandbox environment or live environment. By Default the sandbox environment will be used. 
-###Example code
+###Sample code
   [Create payment token](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#create-payment-token)
   
   [Verify charge by payment token](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#verify-charge-by-payment-token)
