@@ -97,9 +97,11 @@ try {
 include 'release/v1.0//autoload.php'
 use  com\checkout;
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+// create a charge serive
 $charge = $apiClient->chargeService();
 
 try {
+	/**  @var ResponseModels\Charge  $ChargeRespons **/
 	$ChargeResponse = $charge->verifyCharge('pay_tok_B15F0DF8-5DAE-4902-BDB1-5C176B1815B1');
 
 }catch (Exception $e) {
