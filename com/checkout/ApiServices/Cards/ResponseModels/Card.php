@@ -40,7 +40,6 @@ class Card
 		$this->_setDefaultCard ( $response->getDefaultCard() );
 		$this->_setExpiryMonth ( $response->getExpiryMonth() );
 		$this->_setExpiryYear ( $response->getExpiryYear() );
-		$this->_setFingerPrint ( $response->getFingerPrint() );
 		$this->_setId ( $response->getId() );
 		$this->_setLast4 ( $response->getLast4() );
 		$this->_setLiveMode ( $response->getLiveMode() );
