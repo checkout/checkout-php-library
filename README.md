@@ -19,17 +19,39 @@ The constructor available for configuration:
 ```
 By default both **$connectTimeout** and **$readTimeouset** to 60 seconds. You got option to change them as needed.
 **$env** accept either **sandbox **or **live ** as value.  This parameter allow you to shift between the sandbox environment or live environment. By Default the sandbox environment will be used. 
+###Sample code
+  [Create payment token](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#create-payment-token)
+  
+  [Verify charge by payment token](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#verify-charge-by-payment-token)
+  
+   [Creates a charge with full card details](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#creates-a-charge-with-full-card-details)
+   
+[Creates a charge with full card id](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#creates-a-charge-with-full-card-id)
 
-**Create payment token**
+[Creates a charge with cardToken](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#creates-a-charge-with-cardtoken)
+
+[Creates a charge with Default Customer Card](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#creates-a-charge-with-default-customer-card)
+
+[Capture a charge](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#capture-a-charge)
+
+[Refund a charge](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#refund-a-charge)
+
+[Update a charge](https://github.com/CKOTech/checkout-php-library/tree/release/v1.0#update-a-charge)
+
+###Create payment token
 ```html
 include 'release/v1.0//autoload.php'
 use  com\checkout;
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+//create an instance of a token service
 $tokenService = $apiClient->tokenService();
+//initializing the request models
 $tokenPayload = new ApiServices\Tokens\RequestModels\PaymentTokenCreate();
 $metaData = array('key'=>'value');
 $product = new ApiServices\SharedModels\Product();
+//initializing the Address model to be use by the PaymentTokenCreate model
 $shippingDetails = new ApiServices\SharedModels\Address();
+//initializing the Phone model to be use by the Address model
 $phone = new  ApiServices\SharedModels\Phone();
 
 $product->setName('A4 office paper');
@@ -58,10 +80,11 @@ $tokenPayload->setEmail("test@test.com");
 $tokenPayload->setMetadata($metaData);
 $tokenPayload->setProducts($product);
 
-
+ 
 try {
+/** @var ResponseModels\PaymentToken $paymentToken  **/
 	$paymentToken = $tokenService->createPaymentToken($tokenPayload);
-	echo $paymentToken->getId();
+
 }catch (Exception $e) {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
@@ -74,9 +97,11 @@ try {
 include 'release/v1.0//autoload.php'
 use  com\checkout;
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+// create a charge serive
 $charge = $apiClient->chargeService();
 
 try {
+	/**  @var ResponseModels\Charge  $ChargeRespons **/
 	$ChargeResponse = $charge->verifyCharge('pay_tok_B15F0DF8-5DAE-4902-BDB1-5C176B1815B1');
 
 }catch (Exception $e) {
