@@ -200,7 +200,7 @@ try {
 ### Creates a charge with cardToken.
 ```html
 namespace com\checkout;
-include 'checkout-php-library/autoload.php';
+include 'release/v1.0/autoload.php';
 
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
@@ -240,7 +240,7 @@ try {
 ### Creates a charge with Default Customer Card
 ```html
 namespace com\checkout;
-include 'checkout-php-library/autoload.php';
+include 'release/v1.0/autoload.php';
 
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
@@ -284,7 +284,7 @@ try {
 ```html
 
 namespace com\checkout;
-include 'checkout-php-library/autoload.php';
+include 'release/v1.0/autoload.php';
 
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
@@ -307,7 +307,7 @@ try {
 ###Refund a charge
 ```html
 namespace com\checkout;
-include 'checkout-php-library/autoload.php';
+include 'release/v1.0/autoload.php';
 
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
@@ -330,7 +330,7 @@ try {
 ###Update a charge
 ```html
 namespace com\checkout;
-include 'checkout-php-library/autoload.php';
+include 'release/v1.0/autoload.php';
 
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
@@ -345,6 +345,91 @@ $chargeUpdatePayload->setMetadata(array('test'=>'value'));
 
 try {
 	$ChargeResponse = $charge->UpdateCardCharge($chargeUpdatePayload);
+
+}catch (Exception $e) {
+     echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+```
+###Cards
+
+###Create Card
+```html
+namespace com\checkout;
+include 'release/v1.0/autoload.php';
+
+$apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+$cardService = $apiClient->cardService();
+$cardsRequestModel = new ApiServices\Cards\RequestModels\CardCreate();
+
+$baseCardCreateObject = new ApiServices\Cards\RequestModels\BaseCardCreate();
+
+$billingDetails = new ApiServices\SharedModels\Address();
+$phone = new  ApiServices\SharedModels\Phone();
+
+$phone->setNumber("203 583 44 55");
+$phone->setCountryCode("44");
+
+$billingDetails->setAddressLine1('1 Glading Fields"');
+$billingDetails->setPostcode('N16 2BR');
+$billingDetails->setCountry('GB');
+$billingDetails->setCity('London');
+$billingDetails->setPhone($phone);
+
+$baseCardCreateObject->setNumber('4242424242424242');
+$baseCardCreateObject->setName('Test Name');
+$baseCardCreateObject->setExpiryMonth('06');
+$baseCardCreateObject->setExpiryYear('2018');
+$baseCardCreateObject->setCvv('100');
+$baseCardCreateObject->setBillingDetails($billingDetails);
+$cardsRequestModel->setBaseCardCreate($baseCardCreateObject);
+$cardsRequestModel->setCustomerId('cust_35F90E14-8DF9-47DE-AAC7-A8A909247DD6');
+
+
+try {
+	/** @var RequestModels\CardCreate $cardResponse **/
+	$cardResponse = $cardService->createCard($cardsRequestModel);
+
+}catch (Exception $e) {
+     echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+```
+
+###Update Card
+```html
+
+namespace com\checkout;
+include 'checkout-php-library/autoload.php';
+
+$apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+$cardService = $apiClient->cardService();
+$cardsRequestModel = new ApiServices\Cards\RequestModels\CardUpdate();
+
+$baseCardCreateObject = new ApiServices\Cards\RequestModels\BaseCard();
+
+$billingDetails = new ApiServices\SharedModels\Address();
+$phone = new  ApiServices\SharedModels\Phone();
+
+$phone->setNumber("203 583 44 55");
+$phone->setCountryCode("44");
+
+$billingDetails->setAddressLine1('1 Glading Fields"');
+$billingDetails->setPostcode('N16 2BR');
+$billingDetails->setCountry('GB');
+$billingDetails->setCity('London');
+$billingDetails->setPhone($phone);
+
+$baseCardCreateObject->setName('Test Name');
+$baseCardCreateObject->setExpiryMonth('06');
+$baseCardCreateObject->setExpiryYear('2018');
+$baseCardCreateObject->setBillingDetails($billingDetails);
+$cardsRequestModel->setBaseCard($baseCardCreateObject);
+$cardsRequestModel->setCustomerId('cust_35F90E14-8DF9-47DE-AAC7-A8A909247DD6');
+$cardsRequestModel->setCardId('card_A2501121-3032-4219-896F-567FF66B474F');
+
+
+try {
+	/** @var SharedModels\OkResponse $cardResponse **/
+	$cardResponse = $cardService->updateCard($cardsRequestModel);
 
 }catch (Exception $e) {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
