@@ -40,7 +40,7 @@ By default both **$connectTimeout** and **$readTimeouset** to 60 seconds. You go
 
 ###Create payment token
 ```html
-include 'release/v1.0//autoload.php'
+include 'release/v1.0/autoload.php'
 use  com\checkout;
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 //create an instance of a token service
@@ -49,9 +49,8 @@ $tokenService = $apiClient->tokenService();
 $tokenPayload = new ApiServices\Tokens\RequestModels\PaymentTokenCreate();
 $metaData = array('key'=>'value');
 $product = new ApiServices\SharedModels\Product();
-//initializing the Address model to be use by the PaymentTokenCreate model
+//initializing models to generate payload
 $shippingDetails = new ApiServices\SharedModels\Address();
-//initializing the Phone model to be use by the Address model
 $phone = new  ApiServices\SharedModels\Phone();
 
 $product->setName('A4 office paper');
@@ -94,7 +93,7 @@ try {
 
 
 ```html
-include 'release/v1.0//autoload.php'
+include 'release/v1.0/autoload.php'
 use  com\checkout;
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 // create a charge serive
@@ -111,12 +110,14 @@ try {
 ###Creates a charge with full card details
 ```html
 namespace com\checkout;
-include 'checkout-php-library/autoload.php';
+include 'release/v1.0/autoload.php';
 
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
 namespace com\checkout\ApiServices;
+//create an instance of a CardChargeCreate model
 $cardChargePayload = new Charges\RequestModels\CardChargeCreate();
+//initializing model to generate payload
 $baseCardCreateObject = new Cards\RequestModels\BaseCardCreate();
 
 $billingDetails = new SharedModels\Address();
@@ -147,8 +148,8 @@ $cardChargePayload->setTrackId('Demo-0001');
 $cardChargePayload->setBaseCardCreate($baseCardCreateObject);
 
 try {
-	$ChargeResponse = $charge->chargeWithCard($cardChargePayload);
-	
+    /** @var ResponseModels\CardChargeCreate $ChargeResponse **/
+    $ChargeResponse = $charge->chargeWithCard($cardChargePayload);
 
 }catch (Exception $e) {
      echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -158,17 +159,17 @@ try {
 ### Creates a charge with full card id
 ```html
 namespace com\checkout;
-include 'checkout-php-library/autoload.php';
+include 'release/v1.0/autoload.php';
 
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
 namespace com\checkout\ApiServices;
+// create an instance of CardIdChargeCreate Model
 $cardChargeIdPayload = new Charges\RequestModels\CardIdChargeCreate();
 
-
+//initializing model to generate payload
 $billingDetails = new SharedModels\Address();
 $phone = new  SharedModels\Phone();
-//
 $phone->setNumber("203 583 44 55");
 $phone->setCountryCode("44");
 
@@ -188,6 +189,7 @@ $cardChargeIdPayload->setTrackId('Demo-0001');
 $cardChargeIdPayload->setCardId('card_EE8E105F-E24A-4FB6-A5FE-F0355BA1E490');
 
 try {
+/**  @var ResponseModels\Charge $ChargeResponse  **/
 	$ChargeResponse = $charge->chargeWithCardId($cardChargeIdPayload);
 	
 
@@ -203,12 +205,11 @@ include 'checkout-php-library/autoload.php';
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
 namespace com\checkout\ApiServices;
+// create an instance of CardTokenChargeCreate Model
 $CardTokenChargePayload = new Charges\RequestModels\CardTokenChargeCreate();
-
-
+//initializing model to generate payload
 $billingDetails = new SharedModels\Address();
 $phone = new  SharedModels\Phone();
-//
 $phone->setNumber("203 583 44 55");
 $phone->setCountryCode("44");
 
@@ -228,6 +229,7 @@ $CardTokenChargePayload->setTrackId('Demo-0001');
 $CardTokenChargePayload->setCardToken('card_EE8E105F-E24A-4FB6-A5FE-F0355BA1E490');
 
 try {
+/** @var RequestModels\CardTokenChargeCreate $CardTokenChargePayload **/
 	$ChargeResponse = $charge->chargeWithCardToken($CardTokenChargePayload);
 	
 
@@ -243,6 +245,8 @@ include 'checkout-php-library/autoload.php';
 $apiClient = new ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
 $charge = $apiClient->chargeService();
 namespace com\checkout\ApiServices;
+// create an instance of BaseCharge Model
+
 $baseChargePayload = new Charges\RequestModels\BaseCharge();
 
 
@@ -269,7 +273,7 @@ $baseChargePayload->setShippingDetails($_shippingDetails);
 
 
 try {
-	$ChargeResponse = $charge->chargeWithDefaultCustomerCard($baseChargePayload);
+	$ChargeResponse = $chargeWithDefaultCustomerCard->chargeWithDefaultCustomerCard($baseChargePayload);
 	
 
 }catch (Exception $e) {
