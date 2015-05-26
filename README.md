@@ -21,6 +21,10 @@ By default both **$connectTimeout** and **$readTimeouset** to 60 seconds. You go
 **$env** accept either **sandbox **or **live ** as value.  This parameter allow you to shift between the sandbox environment or live environment. By Default the sandbox environment will be used. 
 ###Sample code for:
   [Tokens](https://github.com/CKOTech/checkout-php-library/wiki/Tokens)
+  
   [Charges](https://github.com/CKOTech/checkout-php-library/wiki/Charges)
+  
   [Cards](https://github.com/CKOTech/checkout-php-library/wiki/Cards)
+  
   [Customers](https://github.com/CKOTech/checkout-php-library/wiki/Customers)
+  
