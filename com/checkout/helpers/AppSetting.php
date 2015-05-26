@@ -12,31 +12,9 @@ namespace com\checkout\helpers
 		private $_defaultContentType = 'JSON';
 		private $_readTimeout = '60';
 		private $_mode = 'sandbox';
-		private  $_baseApiUrl = "https://sandbox.checkout.com/v2/";
+		private  $_baseApiUri = "https://sandbox.checkout.com/v2/";
 
-		/**
-		 * @return string
-		 */
-		public function getBaseApiUrl ()
-		{
-			if($this->_mode == 'sandbox') {
 
-				$this->_baseApiUri = "http://sandbox.checkout.com/api2/v2";
-			}else {
-
-				$this->_baseApiUri =  'https://api2.checkout.com/v2';
-			}
-
-			return $this->_baseApiUri;
-		}
-
-		/**
-		 * @param string $baseApiUrl
-		 */
-		public function setBaseApiUrl ( $baseApiUrl )
-		{
-			$this->_baseApiUrl = $baseApiUrl;
-		}
 
 		/**
 		 * @return string
@@ -60,7 +38,7 @@ namespace com\checkout\helpers
 			$this->setClientUserAgentName($_SERVER['HTTP_USER_AGENT']);
 		}
 		/**
-		 * Create/return orignal instance
+		 * Create/return original instance
 		 * @return self
 		 */
 		public static function getSingletonInstance()
@@ -71,15 +49,14 @@ namespace com\checkout\helpers
 			return static::$_instance;
 		}
 
-		/**
-		 * Create a new instance of AppApiSetting
-		 * @param bolean $overide overide previous instance
-		 * @return self
-		 */
-		public static function getInstance($overide = false)
+        /**
+         * @param bool $override
+         * @return AppSetting
+         */
+		public static function getInstance($override = false)
 		{
 			$instance = new  AppSetting();
-			if ($overide) {
+			if ($override) {
 				static::$_instance = $instance;
 			}
 			return $instance;
@@ -175,13 +152,13 @@ namespace com\checkout\helpers
 
 			if($this->_mode == 'sandbox') {
 
-				$this->_baseApiUrl = "http://sandbox.checkout.com/api2/v2";
+				$this->_baseApiUri = "http://sandbox.checkout.com/api2/v2";
 			}else {
 
-				$this->_baseApiUrl =  'https://api2.checkout.com/v2';
+				$this->_baseApiUri =  'https://api2.checkout.com/v2';
 			}
 
-			return $this->_baseApiUrl;
+			return $this->_baseApiUri;
 		}
 
 		/**

@@ -15,7 +15,6 @@ class Card
 	protected $_id;
 	protected $_last4;
 	protected $_paymentMethod;
-	protected $_fingerPrint;
 	protected $_customerId;
 	protected $_name;
 	protected $_expiryMonth;

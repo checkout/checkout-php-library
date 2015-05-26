@@ -5,6 +5,17 @@ class ApiClient
 {
 	private  $_tokenService;
 	private  $_chargeService;
+	private  $_cardService;
+	private  $_customerService;
+
+    /**
+     * @return mixed
+     */
+    public function customerService()
+    {
+        return $this->_customerService;
+    }
+
 
 	/**
 	 * @return mixed
@@ -22,6 +33,16 @@ class ApiClient
 		return $this->_tokenService;
 	}
 
+	/**
+	 * @return ApiServices\Cards\CardService
+	 */
+	public function cardService ()
+	{
+		return $this->_cardService;
+	}
+
+
+
 	public function __construct($secretKey, $env = 'sandbox' ,$debugMode = false, $connectTimeout = 60, $readTimeout =
 	60)
 	{
@@ -34,6 +55,8 @@ class ApiClient
 
 		$this->_tokenService = new ApiServices\Tokens\TokenService($appSetting);
 		$this->_chargeService = new ApiServices\Charges\ChargeService($appSetting);
+		$this->_cardService = new ApiServices\Cards\CardService($appSetting);
+		$this->_customerService = new ApiServices\Customers\CustomerService($appSetting);
 
 	}
 
