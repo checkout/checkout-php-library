@@ -232,8 +232,7 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 	 * @return ResponseModels\Charge
 	 */
 
-	public function retrieveChargeWithChargeId(RequestModels\ChargeIdChargeRetrieve
-	                                           $requestModel)
+	public function getCharge($chargeId)
 	{
 
 
@@ -243,7 +242,7 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 			'method'         => 'GET',
 		);
 
-		$retrieveChargeWithChargeUri = sprintf ($this->_apiUrl->getRetrieveChargesApiUri(),$requestModel->getChargeId
+		$retrieveChargeWithChargeUri = sprintf ($this->_apiUrl->getRetrieveChargesApiUri(),$chargeId
 		());
 
 		$processCharge = \com\checkout\helpers\ApiHttpClient::getRequest($retrieveChargeWithChargeUri,

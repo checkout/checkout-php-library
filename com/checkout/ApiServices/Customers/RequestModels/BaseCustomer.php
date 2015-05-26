@@ -93,7 +93,7 @@ class BaseCustomer
 	/**
 	 * @param mixed $phoneNumber
 	 */
-	public function setPhoneNumber ( $phoneNumber )
+	public function setPhoneNumber ( \com\checkout\ApiServices\SharedModels\Phone $phoneNumber )
 	{
 		$this->_phoneNumber = $phoneNumber;
 	}
