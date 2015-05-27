@@ -8,7 +8,7 @@ final class ApiHttpClient
 	 * @param String $authenticationKey
 	 * @param string|null $requestPayload
 	 */
-	public function postRequest( $requestUri,  $authenticationKey, $requestPayload = null)
+	public static function postRequest( $requestUri,  $authenticationKey, $requestPayload = null)
 	{
 		$requestPayload['method'] = 'POST';
 		$temp = \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
@@ -27,7 +27,7 @@ final class ApiHttpClient
 	 * @param String $authenticationKey
 	 * @param string|null $requestPayload
 	 */
-	public function getRequest( $requestUri,  $authenticationKey, $requestPayload = null)
+	public static function getRequest( $requestUri,  $authenticationKey, $requestPayload = null)
 	{
 		$requestPayload['method'] = 'GET';
 		$temp = \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
@@ -43,7 +43,7 @@ final class ApiHttpClient
 	 * @param String $authenticationKey
 	 * @param string|null $requestPayload
 	 */
-	public function putRequest( $requestUri,  $authenticationKey, $requestPayload = null)
+	public static function putRequest( $requestUri,  $authenticationKey, $requestPayload = null)
 	{
 		$requestPayload['method'] = 'PUT';
 		$temp =  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
@@ -61,7 +61,7 @@ final class ApiHttpClient
 	 * @param String $authenticationKey
 	 * @param string|null $requestPayload
 	 */
-	public function deleteRequest( $requestUri,  $authenticationKey, $requestPayload = null)
+	public static function deleteRequest( $requestUri,  $authenticationKey, $requestPayload = null)
 	{
 		$requestPayload['method'] = 'DELETE';
 		$temp =  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
