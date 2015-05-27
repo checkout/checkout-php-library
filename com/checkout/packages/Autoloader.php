@@ -1,6 +1,6 @@
 <?php
-
-class Api_Autoloader {
+namespace com\checkout\packages;
+class Autoloader {
   
   private static $_instance;
   
@@ -39,5 +39,5 @@ class Api_Autoloader {
 }
 
 
-$autoload = new Api_Autoloader();
-Api_Autoloader::register();
+$autoload = new Autoloader();
+Autoloader::register();
