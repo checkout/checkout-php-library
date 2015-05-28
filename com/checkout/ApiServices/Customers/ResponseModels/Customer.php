@@ -166,8 +166,11 @@ class Customer
 	 */
 	private function _setCards ( $cards )
 	{
-		$cardsArray = $cards->toArray();
-		$this->_cards = $this->getCard($cards);
+
+        if($cards) {
+            $cardsArray = $cards->toArray();
+            $this->_cards = $this->getCard($cards);
+        }
 
 	}
 	/**
@@ -229,7 +232,9 @@ class Customer
     */
 	private function _setMetadata ( $metadata )
 	{
-		$this->_metadata = $metadata->toArray();
+        if($metadata) {
+            $this->_metadata = $metadata->toArray();
+        }
 	}
 
 	/**

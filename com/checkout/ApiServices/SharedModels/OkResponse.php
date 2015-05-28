@@ -4,6 +4,10 @@ namespace com\checkout\ApiServices\SharedModels;
 
 class OkResponse
 {
+    public function __construct($response)
+    {
+        $this->setMessage($response->getMessage());
+    }
 	protected $_message;
 
 	/**

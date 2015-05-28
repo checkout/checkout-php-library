@@ -47,7 +47,7 @@ class CustomerService extends \com\checkout\ApiServices\BaseServices
 		$processCharge = \com\checkout\helpers\ApiHttpClient::putRequest($updateCustomerUri,
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 
-		$responseModel = new ResponseModels\Customer($processCharge);
+		$responseModel = new  \com\checkout\ApiServices\SharedModels\OkResponse($processCharge);
 
 		return $responseModel;
 
