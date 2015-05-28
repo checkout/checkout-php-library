@@ -72,11 +72,12 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->_setIsCascaded ( $response->getIsCascaded());
 		$this->setDescription ( $response->getDescription());
 		$this->setTrackId ( $response->getTrackId());
-		$this->setUdf1 ( $response->setUdf1());
-		$this->setUdf2 ( $response->setUdf2());
-		$this->setUdf3 ( $response->setUdf3());
-		$this->setUdf4 ( $response->setUdf4());
-		$this->setUdf5 ( $response->setUdf5());
+
+		$this->setUdf1 ( $response->getUdf1());
+		$this->setUdf2 ( $response->getUdf2());
+		$this->setUdf3 ( $response->getUdf3());
+		$this->setUdf4 ( $response->getUdf4());
+		$this->setUdf5 ( $response->getUdf5());
 		if($response->getMetadata()) {
 			$this->setMetadata ( $response->getMetadata ()->toArray () );
 		}
