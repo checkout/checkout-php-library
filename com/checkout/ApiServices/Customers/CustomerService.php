@@ -24,7 +24,7 @@ class CustomerService extends \com\checkout\ApiServices\BaseServices
 
 		);
 
-		$processCharge = \com\checkout\ApiHttpClient::postRequest($this->_apiUrl->getCustomersApiUri(),
+		$processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCustomersApiUri(),
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 
 		$responseModel = new ResponseModels\Customer($processCharge);
@@ -44,7 +44,7 @@ class CustomerService extends \com\checkout\ApiServices\BaseServices
 
 		);
 		$updateCustomerUri = $this->_apiUrl->getCustomersApiUri().'/'.$requestModel->getCustomerId();
-		$processCharge = \com\checkout\ApiHttpClient::putRequest($updateCustomerUri,
+		$processCharge = \com\checkout\helpers\ApiHttpClient::putRequest($updateCustomerUri,
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 
 		$responseModel = new ResponseModels\Customer($processCharge);
@@ -62,7 +62,7 @@ class CustomerService extends \com\checkout\ApiServices\BaseServices
 
 		);
 		$deleteCustomerUri = $this->_apiUrl->getCustomersApiUri().'/'.$customerId;
-		$processCharge = \com\checkout\ApiHttpClient::deleteRequest($deleteCustomerUri,
+		$processCharge = \com\checkout\helpers\ApiHttpClient::deleteRequest($deleteCustomerUri,
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 
 		$responseModel = new \com\checkout\ApiServices\SharedModels\OkResponse($processCharge);
@@ -79,7 +79,7 @@ class CustomerService extends \com\checkout\ApiServices\BaseServices
 
 		);
 		$getCustomerUri = $this->_apiUrl->getCustomersApiUri().'/'.$customerId;
-		$processCharge = \com\checkout\ApiHttpClient::getRequest($getCustomerUri,
+		$processCharge = \com\checkout\helpers\ApiHttpClient::getRequest($getCustomerUri,
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 
 		$responseModel = new ResponseModels\Customer($processCharge);
@@ -130,7 +130,7 @@ class CustomerService extends \com\checkout\ApiServices\BaseServices
 
 		);
 
-		$processCharge = \com\checkout\ApiHttpClient::getRequest($customerUri,
+		$processCharge = \com\checkout\helpers\ApiHttpClient::getRequest($customerUri,
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 
 		$responseModel = new ResponseModels\CustomerList($processCharge);
