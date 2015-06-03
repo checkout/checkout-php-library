@@ -45,4 +45,12 @@ class Phone
 	{
 		$this->_number = $number;
 	}
+
+    public function getPhoneDetails()
+    {
+        return array(
+            'number'      => $this->_number,
+            'countryCode' => $this->_countryCode
+        );
+    }
 }

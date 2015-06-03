@@ -94,6 +94,17 @@ class ChargesMapper
 				$requestPayload['udf5'] = $udf5;
 			}
 
+            if(method_exists($requestModel,'getUdf5') &&$udf5 = $requestModel->getUdf5()) {
+                $requestPayload['udf5'] = $udf5;
+            }
+
+            if(method_exists($requestModel,'getAutoCapTime') && $autoCapTime = $requestModel->getAutoCapTime()) {
+                $requestPayload['autoCapTime'] = $autoCapTime;
+            }
+
+            if(method_exists($requestModel,'getAutoCapture') && $autoCapture = $requestModel->getAutoCapture()) {
+                $requestPayload['autoCapture'] = $autoCapture;
+            }
 
 			if( method_exists($requestModel,'getShippingDetails') && $shippingAddress = $requestModel->getShippingDetails()) {
 				$shippingAddressConfig = array (
@@ -103,7 +114,7 @@ class ChargesMapper
 					'country' => $shippingAddress->getCountry () ,
 					'city' => $shippingAddress->getCity () ,
 					'state' => $shippingAddress->getState () ,
-					'phone' => $shippingAddress->getPhone () ,
+					'phone' => $shippingAddress->getPhone ()->getPhoneDetails() ,
 
 
 				);
