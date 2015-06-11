@@ -12,6 +12,7 @@ namespace com\checkout\ApiServices\Charges\RequestModels;
 class CardIdChargeCreate extends BaseCharge
 {
 	private $_cardId;
+    protected $_transactionIndicator;
 
 	/**
 	 * @return mixed
@@ -28,4 +29,20 @@ class CardIdChargeCreate extends BaseCharge
 	{
 		$this->_cardId = $cardId;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getTransactionIndicator()
+    {
+        return $this->_transactionIndicator;
+    }
+
+    /**
+     * @param mixed $transactionIndicator
+     */
+    public function setTransactionIndicator($transactionIndicator)
+    {
+        $this->_transactionIndicator = $transactionIndicator;
+    }
 }

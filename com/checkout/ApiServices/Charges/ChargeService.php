@@ -101,6 +101,7 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 			'postedParam'   => $chargeMapper->requestPayloadConverter(),
 
 		);
+
 		$processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardTokensApiUri(),
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 

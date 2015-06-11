@@ -13,7 +13,7 @@ function autoload($className)
     }
     $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $realClassName) . '.php';
     if(!preg_match('/PHPUnit/',$className) &&  !preg_match('/Composer/',$className)) {
-        if (!preg_match('/CheckoutApi/', $className)) {
+        if (!preg_match('/CheckoutApi/', $className) && !preg_match('/^test/', $className) ) {
 
             $fileName = preg_replace('/^\\\/', '', $fileName);
 
@@ -21,6 +21,13 @@ function autoload($className)
             $fileName = 'com' . DIRECTORY_SEPARATOR . 'checkout' . $fileName;
 
             include $fileName;
+
+        } elseif(preg_match('/^\\\?test/', $className)) {
+            $fileName = preg_replace('/^\\\?test\\\/', '', $fileName);
+            $fileName = 'test' . DIRECTORY_SEPARATOR  . $fileName;
+
+            include $fileName;
+
         } else {
             $classNameArray = explode('_', $className);
             $includePath = get_include_path();

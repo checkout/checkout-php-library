@@ -13,7 +13,7 @@ final class ApiHttpClient
 	{
 		$requestPayload['method'] = 'POST';
 		$temp = \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
-
+      
 		if( $temp && $temp->isValid()) {
 			return $temp;
 		}else {

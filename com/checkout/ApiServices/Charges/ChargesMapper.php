@@ -106,6 +106,10 @@ class ChargesMapper
                 $requestPayload['autoCapture'] = $autoCapture;
             }
 
+            if(method_exists($requestModel,'getTransactionIndicator') && $transactionIndicator = $requestModel->getTransactionIndicator()) {
+                $requestPayload['transactionIndicator'] = $transactionIndicator;
+            }
+
 			if( method_exists($requestModel,'getShippingDetails') && $shippingAddress = $requestModel->getShippingDetails()) {
 				$shippingAddressConfig = array (
 					'addressLine1' => $shippingAddress->getAddressLine1 () ,
