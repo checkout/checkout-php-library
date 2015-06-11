@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\Charges\ResponseModels;
 
 
-class PaymentToken
+class PaymentToken extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_id;
 	private $_liveMode;
@@ -20,6 +20,7 @@ class PaymentToken
 
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->_setChargeMode($response->getChargeMode());
 		$this->_setId($response->getId());
 		$this->_setLiveMode($response->getLiveMode());

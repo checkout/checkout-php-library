@@ -9,13 +9,14 @@
 namespace com\checkout\ApiServices\PaymentProviders\ResponseModels;
 
 
-class Region
+class Region extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_regionId;
 	private $_name;
 
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->_setName($response->getName());
 		$this->_setRegionId($response->getRegionId());
 	}

@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\Customers\ResponseModels;
 
 
-class Customer
+class Customer extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_object;
 	private $_id;
@@ -27,6 +27,7 @@ class Customer
 
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->_setObject ( $response->getObject() );
 		$this->_setCards ( $response->getCards() );
 		$this->_setCreated ( $response->getCreated() );

@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\PaymentProviders\ResponseModels;
 
 
-class CardProviderList
+class CardProviderList extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_object;
 	private $_count;
@@ -17,6 +17,7 @@ class CardProviderList
 
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->_setCount($response->getCount());
 		$this->_setData($response->getData());
 		$this->_setObject($response->getObject());

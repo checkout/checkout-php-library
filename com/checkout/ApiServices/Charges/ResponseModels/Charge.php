@@ -46,6 +46,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->setResponse($response);
 		$this->_setObject ( $response->getObject());
 		$this->_setId ( $response->getId());

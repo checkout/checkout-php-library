@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\Cards\ResponseModels;
 
 
-class CardList
+class CardList extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_object;
 	private $_count;
@@ -17,6 +17,7 @@ class CardList
 
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->_setCount ( $response->getCount() );
 		$this->_setData ( $response->getData() );
 		$this->_setObject ( $response->getObject() );

@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\PaymentProviders\ResponseModels;
 
 
-class CustomFields
+class CustomFields extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	protected $_key;
 	protected $_dataType;
@@ -24,6 +24,7 @@ class CustomFields
 
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->_setDataType($response->getDataType());
 		$this->_setErrorCodes($response->getErrorCodes());
 		$this->_sethisActive($response->gethisActive());

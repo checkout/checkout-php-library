@@ -3,6 +3,7 @@ namespace com\checkout\helpers;
 
 final class ApiHttpClient
 {
+    private $httpStatus = '';
 	/**
 	 * @param String $requestUri
 	 * @param String $authenticationKey
@@ -13,7 +14,7 @@ final class ApiHttpClient
 		$requestPayload['method'] = 'POST';
 		$temp = \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
 
-		if($temp->isValid()) {
+		if( $temp && $temp->isValid()) {
 			return $temp;
 		}else {
 
@@ -31,7 +32,8 @@ final class ApiHttpClient
 	{
 		$requestPayload['method'] = 'GET';
 		$temp = \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
-		if($temp->isValid()) {
+
+		if($temp  && $temp->isValid()) {
 			return $temp;
 		}else {
 			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
@@ -48,7 +50,7 @@ final class ApiHttpClient
 		$requestPayload['method'] = 'PUT';
 		$temp =  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
 
-		if($temp->isValid()) {
+		if($temp && $temp->isValid()) {
 			return $temp;
 		}else {
 			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
@@ -66,7 +68,7 @@ final class ApiHttpClient
 		$requestPayload['method'] = 'DELETE';
 		$temp =  \CheckoutApi_Api::getApi()->request($requestUri,$requestPayload, true);
 
-		if($temp->isValid()) {
+		if($temp && $temp->isValid()) {
 			return $temp;
 		}else {
 			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());

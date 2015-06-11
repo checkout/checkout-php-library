@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\Cards\ResponseModels;
 
 
-class Card
+class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	protected $_object;
 	protected $_id;
@@ -30,7 +30,7 @@ class Card
 
 	public function __construct($response)
 	{
-
+        parent::__construct($response);
 		$this->_setAuthCode ( $response->getAuthCode() );
 		$this->_setAvsCheck ( $response->getAvsCheck() );
 		$this->_setBillingDetails ( $response->getBillingDetails() );
