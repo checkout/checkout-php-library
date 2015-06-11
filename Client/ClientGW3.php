@@ -1199,7 +1199,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
                 $this->getParser()->setResourceInfo($statusResponse);
                 $respond = $this->getParser()->parseToObj($respondString);
 
-                if($respond && property_exists($respond,'hasErrorCode') && $respond->hasErrors()  ) {
+                if($respond && isset($respond['errors'])  && $respond->hasErrors()  ) {
 
                     /** @var CheckoutApi_Lib_ExceptionState  $exceptionStateObj */
                     $exceptionStateObj = $respond->getExceptionState();
@@ -1209,7 +1209,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
                     foreach( $errors as $error) {
                         $this->throwException($error, $respond->getErrors()->toArray());
                     }
-                }elseif( $respond && property_exists($respond,'hasErrorCode') && $respond->hasErrorCode()) {
+                }elseif( $respond && isset($respond['errorCode']) && $respond->hasErrorCode()) {
                     /** @var CheckoutApi_Lib_ExceptionState  $exceptionStateObj */
                     $exceptionStateObj = $respond->getExceptionState();
 

@@ -61,7 +61,8 @@ class CheckoutApi_Lib_RespondObj implements ArrayAccess
      * @throws Exception
      */
    private function getConfig($key = null) 
-    {	
+    {
+  
     	if($key!=null) {
 
             $value = null;
