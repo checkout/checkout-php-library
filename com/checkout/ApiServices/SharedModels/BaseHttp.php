@@ -11,11 +11,13 @@ namespace com\checkout\ApiServices\SharedModels;
 
 class BaseHttp
 {
-    protected  $_httpCode;
+    protected  $_httpStatus;
 
-    public function __construct($response)
+    public function __construct($response = null)
     {
-        $this->_setHttpStatus($response->getHttpStatus());
+        if($response) {
+            $this->_setHttpStatus($response->getHttpStatus());
+        }
     }
     /**
      * @return mixed
