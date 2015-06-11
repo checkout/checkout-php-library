@@ -1195,10 +1195,11 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
             if($adapter){
                 $adapter->connect();
                 $respondString = $adapter->request()->getRespond();
+                $statusResponse = $adapter->getResourceInfo();
+                $this->getParser()->setResourceInfo($statusResponse);
                 $respond = $this->getParser()->parseToObj($respondString);
 
-
-                if($respond->hasErrorCode() && $respond->hasErrors() && $respond) {
+                if($respond && property_exists($respond,'hasErrorCode') && $respond->hasErrors()  ) {
 
                     /** @var CheckoutApi_Lib_ExceptionState  $exceptionStateObj */
                     $exceptionStateObj = $respond->getExceptionState();
@@ -1208,13 +1209,13 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
                     foreach( $errors as $error) {
                         $this->throwException($error, $respond->getErrors()->toArray());
                     }
-                }elseif($respond->hasErrorCode() && $respond) {
+                }elseif( $respond && property_exists($respond,'hasErrorCode') && $respond->hasErrorCode()) {
                     /** @var CheckoutApi_Lib_ExceptionState  $exceptionStateObj */
                     $exceptionStateObj = $respond->getExceptionState();
 
                     $this->throwException($respond->getMessage(),$respond->toArray() );
 
-                }elseif(!$respond) {
+                }elseif($respond && $respond->getHttpStatus()!='200') {
                     $this->throwException('Gateway is temporary down',$param );
                 }
 

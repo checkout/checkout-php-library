@@ -164,6 +164,10 @@ abstract class CheckoutApi_Client_Adapter_Abstract extends CheckoutApi_Lib_Objec
         $this->setRespond(null);
     }
 
+    public function getResourceInfo() {
+
+        return array('httpStatus'=>'');
+    }
 
     /**
      * Return request made by the adapter

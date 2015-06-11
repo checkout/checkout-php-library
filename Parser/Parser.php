@@ -17,6 +17,7 @@ abstract class CheckoutApi_Parser_Parser extends CheckoutApi_Lib_Object
 
     /** @var $_respondObj null|CheckoutApi_Lib_RespondObj  * CheckoutApi_ hold an  value for */
 	protected $_respondObj = null;
+	protected $_info = array( 'httpStatus'=>0);
 
     /**
      * This method need to be implimented by all children. It take a string, parse it  and then map it to an object
@@ -58,4 +59,9 @@ abstract class CheckoutApi_Parser_Parser extends CheckoutApi_Lib_Object
      * @return mixed
      */
 	abstract public function preparePosted($postedParam);
-} 
+	abstract public function setResourceInfo($info);
+	public function getResourceInfo()
+    {
+        return $this->_info;
+    }
+}

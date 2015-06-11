@@ -20,7 +20,8 @@ class CheckoutApi_Parser_JSON extends CheckoutApi_Parser_Parser
      */
 	public function parseToObj($parser)
 	{
-		$to_return = null;
+        /** @var CheckoutApi_Lib_RespondObj $respondObj */
+        $respondObj = CheckoutApi_Lib_Factory::getInstance('CheckoutApi_Lib_RespondObj');
 
 		if($parser && is_string ($parser)) {
 			$encoding = mb_detect_encoding($parser);
@@ -33,13 +34,13 @@ class CheckoutApi_Parser_JSON extends CheckoutApi_Parser_Parser
 			
 			$jsonObj = json_decode($parser,true);
 			$jsonObj['rawOutput'] = $parser;
-			/** @var CheckoutApi_Lib_RespondObj $respondObj */
-			$respondObj = CheckoutApi_Lib_Factory::getInstance('CheckoutApi_Lib_RespondObj');
-			$respondObj->setConfig($jsonObj);
-			$to_return = $respondObj;
-		}
 
-		return $to_return;
+			$respondObj->setConfig($jsonObj);
+
+
+		}
+        $respondObj->setConfig($this->getResourceInfo());
+		return $respondObj;
 	}
 
     /**
@@ -47,8 +48,12 @@ class CheckoutApi_Parser_JSON extends CheckoutApi_Parser_Parser
      * @param mixed $postedparam
      * @return JSON
      */
-	public function preparePosted($postedparam)
+	public function preparePosted($postedParam)
 	{
-		return json_encode($postedparam);
+		return json_encode($postedParam);
 	}
+    public function setResourceInfo($info)
+    {
+       $this->_info = $info;
+    }
 }
