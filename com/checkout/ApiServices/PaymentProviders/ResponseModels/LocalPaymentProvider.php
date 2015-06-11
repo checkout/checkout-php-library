@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\PaymentProviders\ResponseModels;
 
 
-class LocalPaymentProvider
+class LocalPaymentProvider extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	protected $_id;
 	protected $_type;
@@ -22,7 +22,7 @@ class LocalPaymentProvider
 
 	public function __construct($response)
 	{
-
+        parent::__construct($response);
 		$this->_setCountryCodes($response->getCountryCodes());
 		$this->_setCustomerFields($response->getCustomerFields());
 		$this->_setDimensions($response->getDimensions());

@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\Charges\ResponseModels;
 
 
-class Refund
+class Refund extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_object;
 	private $_amount;

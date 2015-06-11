@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\PaymentProviders\ResponseModels;
 
 
-class LocalPaymentProviderList
+class LocalPaymentProviderList extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	protected $_object;
 	protected $_count;
@@ -17,6 +17,7 @@ class LocalPaymentProviderList
 
 	public function __construct ( $response )
 	{
+
 		$this->_setCount ( $response->getCount () );
 		$this->_setData ( $response->getData () );
 		$this->_setObject ( $response->getObject () );

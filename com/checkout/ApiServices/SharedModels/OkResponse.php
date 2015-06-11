@@ -2,10 +2,11 @@
 namespace com\checkout\ApiServices\SharedModels;
 
 
-class OkResponse
+class OkResponse extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
     public function __construct($response)
     {
+        parent::__construct($response);
         $this->setMessage($response->getMessage());
     }
 	protected $_message;

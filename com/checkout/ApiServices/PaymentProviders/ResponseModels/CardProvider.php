@@ -9,12 +9,13 @@
 namespace com\checkout\ApiServices\PaymentProviders\ResponseModels;
 
 
-class CardProvider
+class CardProvider extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_id;
 	private $_name;
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->_setId($response->getId());
 		$this->_setName($response->getName());
 	}

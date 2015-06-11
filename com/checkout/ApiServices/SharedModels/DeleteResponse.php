@@ -9,12 +9,13 @@
 namespace com\checkout\ApiServices\SharedModels;
 
 
-class DeleteResponse
+class DeleteResponse extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_delete;
 	private $_id;
 	public function __construct($response)
 	{
+        parent::__construct($response);
 		$this->_setDelete($response->getDeleted());
 		$this->_setId($response->getId());
 	}

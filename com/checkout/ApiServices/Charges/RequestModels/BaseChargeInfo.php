@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\Charges\RequestModels;
 
 
-class BaseChargeInfo
+class BaseChargeInfo extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	protected $_description;
 	protected $_trackId;
