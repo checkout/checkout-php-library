@@ -28,9 +28,20 @@ final class TestHelper
         return $cardTokenChargePayload;
     }
 
-    public static function  getBaseChargeModel()
+    public static function  getBaseChargeModel($cardChargePayload)
     {
+        $cardChargePayload->setEmail(TestHelper::getRandName().'@checkout.com');
+        $cardChargePayload->setAutoCapture('N');
+        $cardChargePayload->setAutoCaptime('0');
+        $cardChargePayload->setValue('100');
+        $cardChargePayload->setCurrency('usd');
+        $cardChargePayload->setTrackId('TrackId-'.rand(0,100));
 
+        $cardChargePayload->setTransactionIndicator(1);
+        $cardChargePayload->setProducts(TestHelper::getMockUpProduct());
+        $cardChargePayload->setProducts(TestHelper::getMockUpProduct());
+        $cardChargePayload->setShippingDetails(TestHelper::getMockUpAddress());
+        return $cardChargePayload;
     }
 
     public static function  getMockUpAddress()
@@ -83,6 +94,18 @@ final class TestHelper
         return $baseChargePayload;
     }
 
+    public  static function getMockUpBaseCard()
+    {
+        $baseCardCreateObject = new \com\checkout\ApiServices\Cards\RequestModels\BaseCardCreate();
+        $baseCardCreateObject->setNumber('4242424242424242');
+        $baseCardCreateObject->setName('Test Name');
+        $baseCardCreateObject->setExpiryMonth('06');
+        $baseCardCreateObject->setExpiryYear('2018');
+        $baseCardCreateObject->setCvv('100');
+        $baseCardCreateObject->setBillingDetails(TestHelper::getMockUpAddress());
+        return $baseCardCreateObject;
+
+    }
     public static function getRandName()
     {
         $charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

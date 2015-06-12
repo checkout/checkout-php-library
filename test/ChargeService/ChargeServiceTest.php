@@ -14,6 +14,8 @@ include '../../autoload.php';
 class ChargeServiceTest extends \PHPUnit_Framework_TestCase
 {
     private $_apiClient ;
+    private $_customerId;
+    private $_cardId;
     /**
      * @before
      */
@@ -21,6 +23,8 @@ class ChargeServiceTest extends \PHPUnit_Framework_TestCase
     {
 
         $this->_apiClient = new \com\checkout\ApiClient('sk_CC937715-4F68-4306-BCBE-640B249A4D50');
+        $this->_customerId = null;
+        $this->_cardId = null;
     }
 
     public function testVerifyChargeByPaymentToken()
@@ -33,7 +37,7 @@ class ChargeServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($chargeResponse->getId());
     }
 
-    public function _testChargeWithCardToken()
+    public function testChargeWithCardToken()
     {
         $paymentToken = "pay_tok_5cfe03ee-20fc-45fc-9169-b039f8835b6d";// payment token for the JS charge
         $chargeService = $this->_apiClient->chargeService();
@@ -43,28 +47,43 @@ class ChargeServiceTest extends \PHPUnit_Framework_TestCase
         $chargeResponse = $chargeService->chargeWithCardToken($cardTokenModel);
         $this->assertFalse( $chargeResponse->hasError());
         $this->assertEquals(200, $chargeResponse->getHttpStatus());
-        $this->setTransactionIndicator(1, $chargeResponse->getHttpStatus());
+        $this->assertEquals(1, $chargeResponse->getTransactionIndicator());
         $this->assertNotNull($chargeResponse->getId());
 
 
+
     }
+
 
     public function testCreateChargeWithCard()
     {
-        $paymentToken = "pay_tok_5cfe03ee-20fc-45fc-9169-b039f8835b6d";// payment token for the JS charge
         $chargeService = $this->_apiClient->chargeService();
-        $cardToken = "card_tok_220E97F3-4DA3-4F09-B7AE-C633D8D5E3E2";
-        $cardTokenModel = \test\TestHelper::getCardTokenChargeModel();
-        $cardTokenModel->setCardToken($cardToken);
-        $chargeResponse = $chargeService->chargeWithCardToken($cardTokenModel);
+        $baseCardModel = \test\TestHelper::getMockUpBaseCard();
+        $cardChargeModel = new \com\checkout\ApiServices\Charges\RequestModels\CardChargeCreate();
+        $chargePayload = \test\TestHelper::getBaseChargeModel($cardChargeModel);
+        $chargePayload->setBaseCardCreate($baseCardModel);
+        $chargeResponse = $chargeService->chargeWithCard($chargePayload);
         $this->assertFalse( $chargeResponse->hasError());
         $this->assertEquals(200, $chargeResponse->getHttpStatus());
-        $this->setTransactionIndicator(1, $chargeResponse->getHttpStatus());
+        $this->assertEquals(1, $chargeResponse->getTransactionIndicator());
         $this->assertNotNull($chargeResponse->getId());
-
 
     }
 
+    public function testChargeWithCardId()
+    {
+        $chargeService = $this->_apiClient->chargeService();
+        $cardChargeModel = new \com\checkout\ApiServices\Charges\RequestModels\CardIdChargeCreate();
+        $chargePayload = \test\TestHelper::getBaseChargeModel($cardChargeModel);
+        $chargePayload->setCardId('card_2e54e808-dd51-4247-82f5-fd7ba7550953');
+        $chargePayload->setCustomerId('cust_88AFA5F2-8F33-4887-BF60-CBDC6869D44D');
+        $chargePayload->setEmail('Z3H5U@checkout.com');
+        $chargeResponse = $chargeService->chargeWithCardId($chargePayload);
 
+        $this->assertFalse( $chargeResponse->hasError());
+        $this->assertEquals(200, $chargeResponse->getHttpStatus());
+        $this->assertEquals(1, $chargeResponse->getTransactionIndicator());
+        $this->assertNotNull($chargeResponse->getId());
+    }
 }
  
