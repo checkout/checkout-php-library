@@ -113,17 +113,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         $isEmailValid = CheckoutApi_Client_Validation_GW3::isEmailValid($postedParam);
         $isCardValid = CheckoutApi_Client_Validation_GW3::isCardValid($postedParam);
        
-        $uri = $this->getUriToken();
-
-        if(!$isEmailValid) {
-            $hasError =  true;
-            $this->throwException('Please provide a valid Email address', array('pram'=>$param));
-        }
-
-        if(!$isCardValid) {
-            $hasError =  true;
-            $this->throwException('Please provide a valid card object', array('pram'=>$param));
-        }
+        $uri = $this->getUriToken().'/card';
 
         return $this->request( $uri ,$param,!$hasError);
     }
