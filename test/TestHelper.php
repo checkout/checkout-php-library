@@ -121,4 +121,28 @@ final class TestHelper
         }
         return substr($result, -5);
     }
+    public function getCardToken()
+    {
+
+        $cardTokenConfig['authorization'] = "pk_test_88a9f52e-17e3-4a3f-a11e-669757454288" ;
+
+        $Api = \CheckoutApi_Api::getApi();
+        $cardTokenConfig['postedParam'] = array (
+
+
+                'number' => '4543474002249996',
+                'expiryMonth' => 06,
+                'expiryYear' => 2017,
+                'cvv' => 956,
+
+        );
+        $respondCardToken = $Api->getCardToken( $cardTokenConfig );
+
+        if($respondCardToken->isValid()) {
+            return  $respondCardToken->getId();
+        }
+
+        return null;
+
+    }
 } 

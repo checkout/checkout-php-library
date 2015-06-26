@@ -18,7 +18,7 @@ class BaseHttp
     {
         if($response) {
             $this->_setHttpStatus($response->getHttpStatus());
-            $this->_setHasError($response->hasError());
+            $this->_setHasError($response->hasError()?true:false);
         }
     }
     /**

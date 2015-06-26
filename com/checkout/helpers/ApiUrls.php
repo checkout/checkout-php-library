@@ -74,7 +74,7 @@ class ApiUrls
 	public function getCardTokensApiUri ()
 	{
 		if(!$this->_cardTokensApiUri) {
-			$this->setCardTokensApiUri($this->getBaseApiUri()."/tokens/card");
+			$this->setCardTokensApiUri($this->getBaseApiUri()."/charges/token");
 		}
 		return $this->_cardTokensApiUri;
 	}
