@@ -40,6 +40,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_refunds;
 	protected $_localPayment;
 	protected $_metadata;
+    protected $_transactionIndicator;
 
 	protected $_response = null;
 
@@ -102,6 +103,11 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		if($response->getMetadata()) {
 			$this->_setMetadata ( $response->getMetadata () );
 		}
+
+        if($response->getTransactionIndicator()) {
+            $this->_setTransactionIndicator ( $response->getTransactionIndicator () );
+        }
+
 		$this->_setResponse ( $response->getResponse());
 	}
 
@@ -337,6 +343,14 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_localPayment;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getTransactionIndicator()
+    {
+        return $this->_transactionIndicator;
+    }
 
 	/**
 	 * @return mixed
@@ -634,4 +648,12 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		$this->_response = $response;
 	}
+
+    /**
+     * @param mixed $transactionIndicator
+     */
+    protected function _setTransactionIndicator($transactionIndicator)
+    {
+        $this->_transactionIndicator = $transactionIndicator;
+    }
 }

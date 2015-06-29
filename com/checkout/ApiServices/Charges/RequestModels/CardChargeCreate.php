@@ -8,6 +8,7 @@ namespace com\checkout\ApiServices\Charges\RequestModels;
 class CardChargeCreate extends BaseCharge
 {
 	protected $_baseCardCreate;
+	protected $_transactionIndicator;
 
 	/**
 	 * @return mixed
@@ -24,4 +25,20 @@ class CardChargeCreate extends BaseCharge
 	{
 		$this->_baseCardCreate = $baseCardCreate;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getTransactionIndicator()
+    {
+        return $this->_transactionIndicator;
+    }
+
+    /**
+     * @param mixed $transactionIndicator
+     */
+    public function setTransactionIndicator($transactionIndicator)
+    {
+        $this->_transactionIndicator = $transactionIndicator;
+    }
 }

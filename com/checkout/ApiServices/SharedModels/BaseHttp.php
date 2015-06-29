@@ -11,11 +11,15 @@ namespace com\checkout\ApiServices\SharedModels;
 
 class BaseHttp
 {
-    protected  $_httpCode;
+    protected  $_httpStatus;
+    protected  $_hasError;
 
-    public function __construct($response)
+    public function __construct($response = null)
     {
-        $this->_setHttpStatus($response->getHttpStatus());
+        if($response) {
+            $this->_setHttpStatus($response->getHttpStatus());
+            $this->_setHasError($response->hasError()?true:false);
+        }
     }
     /**
      * @return mixed
@@ -26,10 +30,22 @@ class BaseHttp
     }
 
     /**
+     * @return mixed
+     */
+    public function hasError()
+    {
+        return $this->_hasError;
+    }
+    /**
      * @param mixed $httpStatus
      */
     private function _setHttpStatus($httpStatus)
     {
         $this->_httpStatus = $httpStatus;
     }
-} 
+
+    private function _setHasError($hasError)
+    {
+        $this->_hasError = $hasError;
+    }
+}
