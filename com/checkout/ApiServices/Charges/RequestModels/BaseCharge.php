@@ -173,6 +173,7 @@ class BaseCharge extends BaseChargeInfo
 	 */
 	public function setProducts ( \com\checkout\ApiServices\SharedModels\Product $products )
 	{
+
 		$this->_products[] = $products;
 	}
 

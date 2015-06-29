@@ -127,8 +127,8 @@ class ChargesMapper
 			}
 
 			if(method_exists($requestModel,'getEmail') && $productsItem =  $requestModel->getProducts()) {
-				$i = 0;
-				foreach ( $productsItem as $item ) {
+				
+				foreach ( $productsItem as $i => $item ) {
 
 					if( $item->getName ()) {
 						$products[ $i ][ 'name' ] = $item->getName ();
@@ -158,6 +158,7 @@ class ChargesMapper
 						$products[ $i ][ 'trackingUrl' ] = $item->getTrackingUrl ();
 					}
 
+				
 				}
 
 				$requestPayload['products'] = $products;
