@@ -15,7 +15,7 @@ final class TestHelper
     public static function getCardTokenChargeModel()
     {
         $cardTokenChargePayload = new \com\checkout\ApiServices\Charges\RequestModels\CardTokenChargeCreate();
-        $cardTokenChargePayload->setEmail(TestHelper::getRandName().'@checkout.com');
+        $cardTokenChargePayload->setEmail(TestHelper::getRandName().'@'.TestHelper::getRandName().'.com');
         $cardTokenChargePayload->setAutoCapture('N');
         $cardTokenChargePayload->setAutoCaptime('0');
         $cardTokenChargePayload->setValue('100');
@@ -30,7 +30,7 @@ final class TestHelper
 
     public static function  getBaseChargeModel($cardChargePayload)
     {
-        $cardChargePayload->setEmail(TestHelper::getRandName().'@checkout.com');
+        $cardChargePayload->setEmail(TestHelper::getRandName().'@'.TestHelper::getRandName().'.com');
         $cardChargePayload->setAutoCapture('N');
         $cardChargePayload->setAutoCaptime('0');
         $cardChargePayload->setValue('100');
@@ -48,8 +48,8 @@ final class TestHelper
     {
         $billingDetails = new \com\checkout\ApiServices\SharedModels\Address();
 
-        $billingDetails->setAddressLine1('1 Glading Fields"');
-        $billingDetails->setAddressLine2('Second line"');
+        $billingDetails->setAddressLine1('1 Glading Fields');
+        $billingDetails->setAddressLine2('Second line');
         $billingDetails->setPostcode('N16 2BR');
         $billingDetails->setCountry('GB');
         $billingDetails->setCity('London');
