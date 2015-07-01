@@ -37,7 +37,7 @@ final class ApiHttpClient
 			return $temp;
 		}else {
 			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
-		}
+ 		}
 	}
 
 	/**

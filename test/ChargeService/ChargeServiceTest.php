@@ -64,6 +64,7 @@ class ChargeServiceTest extends \PHPUnit_Framework_TestCase
         $chargePayload = \test\TestHelper::getBaseChargeModel($cardChargeModel);
         $chargePayload->setBaseCardCreate($baseCardModel);
         $chargeResponse = $chargeService->chargeWithCard($chargePayload);
+
         $this->assertFalse( $chargeResponse->hasError());
         $this->assertEquals(200, $chargeResponse->getHttpStatus());
         $this->assertEquals(1, $chargeResponse->getTransactionIndicator());
@@ -71,13 +72,14 @@ class ChargeServiceTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function _testChargeWithCardId()
+    public function testChargeWithCardId()
     {
         $chargeService = $this->_apiClient->chargeService();
         $cardChargeModel = new \com\checkout\ApiServices\Charges\RequestModels\CardIdChargeCreate();
         $chargePayload = \test\TestHelper::getBaseChargeModel($cardChargeModel);
-        $chargePayload->setCardId('card_b1e4ce59-eb30-4e77-a85e-fc23d9730d8a');
-        $chargePayload->setCustomerId('cust_1DF71432-367C-4EB6-BEA4-D29A624F5ED5');
+        $chargePayload->setCardId('card_0b5f6a81-2cc0-47cb-859b-601f7f97eebd');
+        $chargePayload->setCustomerId('cust_E282D596-A5F9-4A9D-AE37-B92C0B0C2C55');
+        $chargePayload->setEmail('ravish.ramrakha@checkout.com');
 
         $chargeResponse = $chargeService->chargeWithCardId($chargePayload);
 
@@ -92,11 +94,23 @@ class ChargeServiceTest extends \PHPUnit_Framework_TestCase
         $chargeService = $this->_apiClient->chargeService();
         $cardChargeModel = new \com\checkout\ApiServices\Charges\RequestModels\CardIdChargeCreate();
         $chargePayload = \test\TestHelper::getBaseChargeModel($cardChargeModel);
-        $chargePayload->setCardId('card_b1e4ce59-eb30-4e77-a85e-fc23d9730d8a');
-        $chargePayload->setCustomerId('cust_1DF71432-367C-4EB6-BEA4-D29A624F5ED5');
+        $chargePayload->setCardId('card_0b5f6a81-2cc0-47cb-859b-601f7f97eebd');
+        $chargePayload->setCustomerId('cust_E282D596-A5F9-4A9D-AE37-B92C0B0C2C55');
+        $chargePayload->setEmail('ravish.ramrakha@checkout.com');
 
         $chargeResponse = $chargeService->chargeWithCardId($chargePayload);
 
+        $this->assertFalse( $chargeResponse->hasError());
+        $this->assertEquals(200, $chargeResponse->getHttpStatus());
+        $this->assertEquals(1, $chargeResponse->getTransactionIndicator());
+        $this->assertNotNull($chargeResponse->getId());
+    }
+
+    public function testGetCharge()
+    {
+        $chargeService = $this->_apiClient->chargeService();
+
+        $chargeResponse = $chargeService->getCharge('pay_tok_5cfe03ee-20fc-45fc-9169-b039f8835b6d');
         $this->assertFalse( $chargeResponse->hasError());
         $this->assertEquals(200, $chargeResponse->getHttpStatus());
         $this->assertEquals(1, $chargeResponse->getTransactionIndicator());
