@@ -1445,10 +1445,14 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
     public function chargeToObj($charge)
     {
-        if($charge) {
-           return  $this->_responseUpdateStatus($this->getParser()->parseToObj($charge))->getMessage();
+         if($charge) {
+            $response = $this->_responseUpdateStatus($this->getParser()->parseToObj($charge));
+            if($response->getMessage()) {
+                return $response->getMessage();
+            }else {
+                return $response;
+            }
         }
-
         return null;
     }
 
