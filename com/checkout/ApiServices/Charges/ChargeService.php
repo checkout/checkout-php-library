@@ -51,7 +51,7 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 		);
 		$processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
 			$this->_apiSetting->getSecretKey(),$requestPayload);
-        file_put_contents('error.log',$processCharge->printError(false),FILE_APPEND);
+      
 		$responseModel = new ResponseModels\Charge($processCharge);
 
 		return $responseModel;
@@ -168,6 +168,35 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 		return $responseModel;
 	}
 
+    /**
+     * void a charge
+     * @param RequestModels\ChargeVoid $requestModel
+     * @return ResponseModels\Charge
+     */
+
+    public function voidCharge($chargeId , RequestModels\ChargeVoid
+                                            $requestModel)
+    {
+
+        $chargeMapper = new ChargesMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $refundUri = sprintf ($this->_apiUrl->getVoidChargesApiUri(),$chargeId);
+
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($refundUri,
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+
+        $responseModel = new ResponseModels\Charge($processCharge);
+
+
+        return $responseModel;
+    }
+
 	/**
 	 * Capture a charge
 	 * @param RequestModels\ChargeCapture $requestModel
@@ -220,7 +249,7 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 		$processCharge = \com\checkout\helpers\ApiHttpClient::putRequest($updateUri,
 			$this->_apiSetting->getSecretKey(),$requestPayload);
 
-		$responseModel = new ResponseModels\Charge($processCharge);
+		$responseModel = new \com\checkout\ApiServices\SharedModels\OkResponse($processCharge);
 
 
 		return $responseModel;

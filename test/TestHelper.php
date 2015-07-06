@@ -97,15 +97,29 @@ final class TestHelper
     public  static function getMockUpBaseCard()
     {
         $baseCardCreateObject = new \com\checkout\ApiServices\Cards\RequestModels\BaseCardCreate();
-        $baseCardCreateObject->setNumber('4242424242424242');
+        $baseCardCreateObject->setNumber('4543474002249996');
         $baseCardCreateObject->setName('Test Name');
         $baseCardCreateObject->setExpiryMonth('06');
-        $baseCardCreateObject->setExpiryYear('2018');
-        $baseCardCreateObject->setCvv('100');
+        $baseCardCreateObject->setExpiryYear('2017');
+        $baseCardCreateObject->setCvv('956');
         $baseCardCreateObject->setBillingDetails(TestHelper::getMockUpAddress());
         return $baseCardCreateObject;
 
     }
+
+    public static function  getMockUpVoidCharge($chargeService)
+    {
+
+        $cardChargeModel = new \com\checkout\ApiServices\Charges\RequestModels\CardIdChargeCreate();
+        $chargePayload = \test\TestHelper::getBaseChargeModel($cardChargeModel);
+        $chargePayload->setCardId('card_0b5f6a81-2cc0-47cb-859b-601f7f97eebd');
+        $chargePayload->setCustomerId('cust_E282D596-A5F9-4A9D-AE37-B92C0B0C2C55');
+        $chargePayload->setEmail(TestHelper::getRandName().'@checkout.com');
+
+        $chargeResponse = $chargeService->chargeWithCardId($chargePayload);
+        return $chargeResponse;
+    }
+
     public static function getRandName()
     {
         $charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -143,6 +157,37 @@ final class TestHelper
         }
 
         return null;
+
+    }
+
+    public function getMockUpCharge()
+    {
+        $chargeService =  new \com\checkout\ApiClient('sk_test_a2dba067-bfe8-425c-88e9-6685820aa16e');
+        $baseCardModel = \test\TestHelper::getMockUpBaseCard();
+        $cardChargeModel = new \com\checkout\ApiServices\Charges\RequestModels\CardChargeCreate();
+        $chargePayload = \test\TestHelper::getBaseChargeModel($cardChargeModel);
+        $chargePayload->setBaseCardCreate($baseCardModel);
+        $chargeResponse = $chargeService->chargeService()->chargeWithCard($chargePayload);
+
+        return $chargeResponse;
+
+    }
+
+    public function getMockUpCaptureCharge()
+    {
+        $chargeService =  new \com\checkout\ApiClient('sk_test_a2dba067-bfe8-425c-88e9-6685820aa16e');
+        $baseCardModel = \test\TestHelper::getMockUpBaseCard();
+        $cardChargeModel = new \com\checkout\ApiServices\Charges\RequestModels\CardChargeCreate();
+        $chargePayload = \test\TestHelper::getBaseChargeModel($cardChargeModel);
+        $chargePayload->setBaseCardCreate($baseCardModel);
+        $chargeResponse = $chargeService->chargeService()->chargeWithCard($chargePayload);
+
+        $chargeCapturePayload = new \com\checkout\ApiServices\Charges\RequestModels\ChargeCapture();
+
+        $chargeCapturePayload->setChargeId($chargeResponse->getId());
+        $chargeCapturePayload->setValue($chargeResponse->getValue());
+
+        return $chargeService->chargeService()->CaptureCardCharge($chargeCapturePayload);
 
     }
 } 
