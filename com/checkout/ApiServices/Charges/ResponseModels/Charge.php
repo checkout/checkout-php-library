@@ -41,7 +41,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_localPayment;
 	protected $_metadata;
     protected $_transactionIndicator;
-
+    protected  $_originalId;
 	protected $_response = null;
 
 
@@ -108,6 +108,10 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
             $this->_setTransactionIndicator ( $response->getTransactionIndicator () );
         }
 
+        if($response->getOriginalId()) {
+            $this->_originalId = $response->getOriginalId ();
+        }
+
 		$this->_setResponse ( $response->getResponse());
 	}
 
@@ -120,6 +124,22 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_response;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getOriginalId()
+    {
+        return $this->_originalId;
+    }
+
+    /**
+     * @param mixed $setOriginalId
+     */
+    public function setOriginalId($setOriginalId)
+    {
+        $this->_setOriginalId = $setOriginalId;
+    }
 	/**
 	 * @return mixed
 	 */

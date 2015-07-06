@@ -21,6 +21,8 @@ class ApiUrls
 	private $_retrieveChargesApiUri     = null;
 	private $_verifyChargesApiUri       = null;
 	private $_chargeWithPaymentTokenUri = null;
+    private $_voidChargesApiUri = null;
+
 
 
 	public function __construct()
@@ -327,6 +329,26 @@ class ApiUrls
 		}
 		return $this->_updateChargesApiUri;
 	}
+
+    /**
+     * @return null
+     */
+    public function getVoidChargesApiUri()
+    {
+        if(!$this->_voidChargesApiUri) {
+            $this->setVoidChargesApiUri($this->getBaseApiUri()."/charges/%s/void");
+        }
+        return $this->_voidChargesApiUri;
+
+    }
+
+    /**
+     * @param null $voidChargesApiUri
+     */
+    public function setVoidChargesApiUri($voidChargesApiUri)
+    {
+        $this->_voidChargesApiUri = $voidChargesApiUri;
+    }
 
 	/**
 	 * @return string
