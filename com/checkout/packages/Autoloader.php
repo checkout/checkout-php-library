@@ -15,17 +15,25 @@ class Autoloader {
 
   function autoload($class)
   {
-      $classNameArray = explode('_',$class);
+      $realClassName = ltrim($class, '\\');
+      $classNameArray = explode('_',$realClassName);
       $includePath = get_include_path();
       set_include_path($includePath);
       $path = '';
-      if(!preg_match('/PHPUnit/',$class) &&  !preg_match('/Composer/',$class)) {
+      $baseDir = __DIR__;
+      if(!preg_match('/PHPUnit/',$realClassName) &&  !preg_match('/Composer/',$realClassName)) {
           if (!empty($classNameArray) && sizeof($classNameArray) > 1) {
 
-              $path = DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $classNameArray) . '.php';
+              $path = $baseDir.DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $classNameArray) . '.php';
               $path = str_replace('\PHPPlugin\\', '', $path);
+              $path = str_replace('\\',DIRECTORY_SEPARATOR,$path );
 
-              include $path;
+              if ( $file = stream_resolve_include_path($path) ) {
+                  if (file_exists($file)) {
+                      require $file;
+                  }
+              }
+
           }
       }
 

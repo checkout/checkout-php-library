@@ -1,49 +1,34 @@
 <?php
-
 function autoload($className)
 {
-    $classGroup = '';
+
+    $baseDir = __DIR__;
     $realClassName = ltrim($className, '\\');
+    $realClassName = str_replace('\\',DIRECTORY_SEPARATOR,$realClassName );
     $fileName  = '';
-    $namespace = 'com\checkout';
-    if ($lastNsPos = strrpos($realClassName, '\\')) {
-        $namespace = substr($realClassName, 0, $lastNsPos);
-        $realClassName = substr($realClassName, $lastNsPos + 1);
-        $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
-    }
-    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $realClassName) . '.php';
-    if(!preg_match('/PHPUnit/',$className) &&  !preg_match('/Composer/',$className)) {
-        if (!preg_match('/CheckoutApi/', $className) && !preg_match('/^test/', $className) ) {
+    $includePaths = $baseDir.DIRECTORY_SEPARATOR.$realClassName. '.php';
 
-            $fileName = preg_replace('/^\\\/', '', $fileName);
-
-            $fileName = preg_replace('/^\\\?com\\\checkout/', '', $fileName);
-            $fileName = 'com' . DIRECTORY_SEPARATOR . 'checkout' . $fileName;
-
-            include $fileName;
-
-        } elseif(preg_match('/^\\\?test/', $className)) {
-            $fileName = preg_replace('/^\\\?test\\\/', '', $fileName);
-            $fileName = 'test' . DIRECTORY_SEPARATOR  . $fileName;
-
-            include $fileName;
-
-        } else {
-            $classNameArray = explode('_', $className);
-            $includePath = get_include_path();
-            set_include_path($includePath);
-            $path = '';
-
-            if (!empty($classNameArray) && sizeof($classNameArray) > 1) {
-
-
-                if (!class_exists('com\checkout\packages\Autoloader')) {
-                    include 'com/checkout/packages/Autoloader.php';
-                }
-
-
-            }
+    if ( $file = stream_resolve_include_path($includePaths) ) {
+        if (file_exists($file)) {
+            require $file;
         }
+
+    }elseif(preg_match('/^\\\?test/', $className)) {
+        $fileName = preg_replace('/^\\\?test\\\/', '', $fileName);
+        $fileName = 'test' . DIRECTORY_SEPARATOR  . $fileName;
+        include $fileName;
+
+    } else {
+        $classNameArray = explode('_', $className);
+        $includePath = get_include_path();
+        set_include_path($includePath);
+
+        if (!empty($classNameArray) && sizeof($classNameArray) > 1) {
+
+            if (!class_exists('com\checkout\packages\Autoloader')) {
+                include 'com'.DIRECTORY_SEPARATOR.'checkout'.DIRECTORY_SEPARATOR.'packages'.DIRECTORY_SEPARATOR.'Autoloader.php';
+            }
+         }
     }
 
 }
