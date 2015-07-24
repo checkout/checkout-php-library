@@ -1447,11 +1447,9 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
     {
          if($charge) {
             $response = $this->_responseUpdateStatus($this->getParser()->parseToObj($charge));
-            if($response->getMessage()) {
-                return $response->getMessage();
-            }else {
-                return $response;
-            }
+
+           return $response;
+
         }
         return null;
     }
@@ -1466,6 +1464,15 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
             $response->setVoided ( $response->getStatus () == 'Voided' );
             $response->setExpired ( $response->getStatus () == 'Expired' );
             $response->setDecline ( $response->getStatus () == 'Decline' );
+        }else {
+           $responseMessage =   $response->getMessage();
+           $responseMessage->setCaptured ($responseMessage->getStatus () == 'Captured' );
+           $responseMessage->setAuthorised ($responseMessage->getStatus () == 'Authorised' );
+           $responseMessage->setRefunded ($responseMessage->getStatus () == 'Refunded' );
+           $responseMessage->setVoided ($responseMessage->getStatus () == 'Voided' );
+           $responseMessage->setExpired ($responseMessage->getStatus () == 'Expired' );
+           $responseMessage->setDecline ($responseMessage->getStatus () == 'Decline' );
+            return $responseMessage;
         }
 
         return $response;
