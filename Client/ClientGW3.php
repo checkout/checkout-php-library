@@ -1457,22 +1457,24 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
     private function _responseUpdateStatus($response)
     {
        // Zend_Debug::dump($response->getAutoCapture());
-        if($response->getStatus()) {
-            $response->setCaptured ( $response->getStatus () == 'Captured' );
-            $response->setAuthorised ( $response->getStatus () == 'Authorised' );
-            $response->setRefunded ( $response->getStatus () == 'Refunded' );
-            $response->setVoided ( $response->getStatus () == 'Voided' );
-            $response->setExpired ( $response->getStatus () == 'Expired' );
-            $response->setDecline ( $response->getStatus () == 'Decline' );
-        }else {
-           $responseMessage =   $response->getMessage();
-           $responseMessage->setCaptured ($responseMessage->getStatus () == 'Captured' );
-           $responseMessage->setAuthorised ($responseMessage->getStatus () == 'Authorised' );
-           $responseMessage->setRefunded ($responseMessage->getStatus () == 'Refunded' );
-           $responseMessage->setVoided ($responseMessage->getStatus () == 'Voided' );
-           $responseMessage->setExpired ($responseMessage->getStatus () == 'Expired' );
-           $responseMessage->setDecline ($responseMessage->getStatus () == 'Decline' );
-            return $responseMessage;
+        if($response->getHttpStatus() ==200) {
+            if($response->getStatus()) {
+                $response->setCaptured ( $response->getStatus () == 'Captured' );
+                $response->setAuthorised ( $response->getStatus () == 'Authorised' );
+                $response->setRefunded ( $response->getStatus () == 'Refunded' );
+                $response->setVoided ( $response->getStatus () == 'Voided' );
+                $response->setExpired ( $response->getStatus () == 'Expired' );
+                $response->setDecline ( $response->getStatus () == 'Decline' );
+            }else {
+               $responseMessage =   $response->getMessage();
+               $responseMessage->setCaptured ($responseMessage->getStatus () == 'Captured' );
+               $responseMessage->setAuthorised ($responseMessage->getStatus () == 'Authorised' );
+               $responseMessage->setRefunded ($responseMessage->getStatus () == 'Refunded' );
+               $responseMessage->setVoided ($responseMessage->getStatus () == 'Voided' );
+               $responseMessage->setExpired ($responseMessage->getStatus () == 'Expired' );
+               $responseMessage->setDecline ($responseMessage->getStatus () == 'Decline' );
+                return $responseMessage;
+            }
         }
 
         return $response;
