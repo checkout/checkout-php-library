@@ -1454,10 +1454,35 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         return null;
     }
 
+    public static function validateRequest($chargeObject,$validationFields)
+    {
+
+        $result = array('status'=>true,'message'=>array());
+        if(strtolower($validationFields['currency']) != strtolower($chargeObject->getCurrency()) ) {
+            $result['status'] = false;
+            $result['message'][] = 'Currency mismatch'. ' Charge currenty:'.$chargeObject->getCurrency(). ' and order currency: '.$validationFields['currency'];
+        }
+
+        if($validationFields['value'] != $chargeObject->getValue() ) {
+            $result['status'] = false;
+            $result['message'][] = 'Amount mismatch '. ' Charge Amount:'.$chargeObject->getValue(). ' and order amount: '.$validationFields['value'];
+        
+        }
+
+        if($validationFields['trackId'] != $chargeObject->getTrackId() ) {
+            $result['status'] = false;
+            $result['message'][] = 'Track id mismatch'. ' Charge Track id:'.$chargeObject->getTrackId(). ' and order Track id: '.$validationFields['trackId'];
+        
+        }
+
+        return $result;
+
+    }
+
     private function _responseUpdateStatus($response)
     {
        // Zend_Debug::dump($response->getAutoCapture());
-        if($response->getHttpStatus() ==200) {
+    
             if($response->getStatus()) {
                 $response->setCaptured ( $response->getStatus () == 'Captured' );
                 $response->setAuthorised ( $response->getStatus () == 'Authorised' );
@@ -1475,7 +1500,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
                $responseMessage->setDecline ($responseMessage->getStatus () == 'Decline' );
                 return $responseMessage;
             }
-        }
+     
 
         return $response;
     }
