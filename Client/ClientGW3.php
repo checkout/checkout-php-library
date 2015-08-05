@@ -1504,4 +1504,29 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
         return $response;
     }
+    
+    public static function validateRequest($validationFields,$chargeObject)
+    {
+
+        $result = array('status'=>true,'message'=>array());
+        if(isset($validationFields['currency']) && strtolower($validationFields['currency']) != strtolower($chargeObject->getCurrency()) ) {
+            $result['status'] = false;
+            $result['message'][] = 'Currency mismatch'. ' Charge currency: '.$chargeObject->getCurrency(). ' and order currency: '.$validationFields['currency'];
+        }
+
+        if(isset($validationFields['value']) && $validationFields['value'] != $chargeObject->getValue() ) {
+            $result['status'] = false;
+            $result['message'][] = 'Amount mismatch '. ' Charge Amount:'.$chargeObject->getValue(). ' and order amount: '.$validationFields['value'];
+
+        }
+
+        if(isset($validationFields['trackId']) && $validationFields['trackId'] != $chargeObject->getTrackId() ) {
+            $result['status'] = false;
+            $result['message'][] = 'Track id mismatch'. ' Charge Track id:'.$chargeObject->getTrackId(). ' and order Track id: '.$validationFields['trackId'];
+
+        }
+
+        return $result;
+
+    }
 }
