@@ -322,9 +322,31 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
     public function  refundCharge($param)
     {
+        $chargeHistory = $this->getChargeHistory($param);
+        $charges = $chargeHistory->getCharges();
+        $chargesArray = $charges->toArray();
+        $toRefund = false;
+        $toRefundData = false;
+
+        foreach ($chargesArray as $key=> $charge) {
+
+            if(strtolower($charge['status'])==strtolower(CheckoutApi_Client_Constant::STATUS_CAPTURE)) {
+                $toRefund = true;
+                $toRefundData = $charge;
+                break;
+            }
+        }
+
+        if($toRefund) {
+            $refundChargeId = $toRefundData['id'];
+        }
+
         $hasError = false;
         $param['postedParam']['type'] = CheckoutApi_Client_Constant::CHARGE_TYPE;
+
+        $param['method'] = CheckoutApi_Client_Adapter_Constant::API_POST;
         $postedParam = $param['postedParam'];
+        $param['chargeId'] = $refundChargeId;
         $this->flushState();
         $isAmountValid = CheckoutApi_Client_Validation_GW3::isValueValid($postedParam);
         $isChargeIdValid = CheckoutApi_Client_Validation_GW3::isChargeIdValid($param);
@@ -337,6 +359,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         } else {
 
             $uri = "$uri/{$param['chargeId']}/refund";
+
         }
          if(!$isAmountValid) {
              $this->throwException('Please provide a amount (in cents)',array('param'=>$param),false);
@@ -552,6 +575,30 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
         return  $this->_responseUpdateStatus($this->request($uri ,$param,!$hasError));
     }
+
+    public  function getChargeHistory($param) {
+
+        $hasError = false;
+        $param['postedParam']['type'] = CheckoutApi_Client_Constant::CHARGE_TYPE;
+        $param['method'] = CheckoutApi_Client_Adapter_Constant::API_GET;
+
+        $this->flushState();
+
+        $isChargeIdValid = CheckoutApi_Client_Validation_GW3::isChargeIdValid($param);
+        $uri = $this->getUriCharge();
+
+        if(!$isChargeIdValid) {
+            $hasError = true;
+            $this->throwException('Please provide a valid charge id',array('param'=>$param));
+
+        } else {
+
+            $uri = "$uri/{$param['chargeId']}/history";
+        }
+
+        return  $this->request($uri ,$param,!$hasError);
+    }
+
     /**
      * Create LocalPayment Charge.
      * Creates a LocalPayment Charge using a Session Token and
@@ -1458,16 +1505,15 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
     private function _responseUpdateStatus($response)
     {
-       // Zend_Debug::dump($response->getAutoCapture());
-    
-            if($response->getStatus()) {
+
+            if($response->hasStatus() && $response->hasHttpStatus() && $response->hasHttpStatus() ==200) {
                 $response->setCaptured ( $response->getStatus () == 'Captured' );
                 $response->setAuthorised ( $response->getStatus () == 'Authorised' );
                 $response->setRefunded ( $response->getStatus () == 'Refunded' );
                 $response->setVoided ( $response->getStatus () == 'Voided' );
                 $response->setExpired ( $response->getStatus () == 'Expired' );
                 $response->setDecline ( $response->getStatus () == 'Decline' );
-            }else {
+            }elseif( $response->hasMessage() &&  !$response->hasErrorCode()) {
                $responseMessage =   $response->getMessage();
                $responseMessage->setCaptured ($responseMessage->getStatus () == 'Captured' );
                $responseMessage->setAuthorised ($responseMessage->getStatus () == 'Authorised' );
