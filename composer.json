@@ -5,10 +5,12 @@
     "version": "1.0.0",
     "type": "library",
     "license": "MIT",
+    "keywords": ["checkout.com","payment","gateway","online payment"],
     "authors": [
         {
             "name": "Dhiraj Gangoosirdar",
-            "email": "integration@checkout.com"
+            "email": "integration@checkout.com",
+            "role": "Developer"
         }
     ],
     "require": {
