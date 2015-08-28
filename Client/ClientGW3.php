@@ -1553,17 +1553,17 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
     }
     
-    public function amountToDecimal($amount, $currency)
+    public function valueToDecimal($amount, $currencySymbol)
     {
-      
+      $currency = strtoupper($currencySymbol);
       $threeDecimalCurrencyList = array('BHD', 'LYD', 'JOD', 'IQD', 'KWD', 'OMR', 'TND');
-      $zeroDecimalCurencyList = array('BYR', ' XOF', 'BIF', 'XAF', 'KMF', 'XOF', 'DJF', 'XPF', 'GNF', ' JPY', ' KRW', ' PYG', 'RWF', ' VUV', ' VND');
+      $zeroDecimalCurencyList = array('BYR', 'XOF', 'BIF', 'XAF', 'KMF', 'XOF', 'DJF', 'XPF', 'GNF', 'JPY', 'KRW', 'PYG', 'RWF', 'VUV', 'VND');
 
-      if (in_array(strtolower($currency),  array_map('strtolower', $threeDecimalCurrencyList))) { 
+      if (in_array($currency, $threeDecimalCurrencyList)) { 
         $value = (int) ($amount * 1000);
         
-      } elseif (in_array(strtolower($currency), array_map('strtolower', $zeroDecimalCurencyList))){
-         $value = $amount;   
+      } elseif (in_array($currency, $zeroDecimalCurencyList)){
+         $value = floor ($amount);   
          
       } else {
         $value = (int) ($amount * 100);
@@ -1574,16 +1574,16 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
       
     }
     
-    public function decimalToAmount($amount, $currency)
+    public function decimalToValue($amount, $currencySymbol)
     {
-      
+      $currency = strtoupper($currencySymbol);
       $threeDecimalCurrencyList = array('BHD', 'LYD', 'JOD', 'IQD', 'KWD', 'OMR', 'TND');
-      $zeroDecimalCurencyList = array('BYR', ' XOF', 'BIF', 'XAF', 'KMF', 'XOF', 'DJF', 'XPF', 'GNF', ' JPY', ' KRW', ' PYG', 'RWF', ' VUV', ' VND');
+      $zeroDecimalCurencyList = array('BYR', 'XOF', 'BIF', 'XAF', 'KMF', 'XOF', 'DJF', 'XPF', 'GNF', 'JPY', 'KRW', 'PYG', 'RWF', 'VUV', 'VND');
 
-      if (in_array(strtolower($currency), array_map('strtolower', $threeDecimalCurrencyList))) { 
+      if (in_array($currency, $threeDecimalCurrencyList)) { 
         $value =  $amount / 1000;
         
-      } elseif (in_array(strtolower($currency), array_map('strtolower', $zeroDecimalCurencyList))){
+      } elseif (in_array($currency, $zeroDecimalCurencyList)){
          $value = $amount;   
          
       } else {
