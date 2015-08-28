@@ -1552,4 +1552,46 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         return $result;
 
     }
+    
+    public function amountToDecimal($amount, $currency)
+    {
+      
+      $threeDecimalCurrencyList = array('BHD', 'LYD', 'JOD', 'IQD', 'KWD', 'OMR', 'TND');
+      $zeroDecimalCurencyList = array('BYR', ' XOF', 'BIF', 'XAF', 'KMF', 'XOF', 'DJF', 'XPF', 'GNF', ' JPY', ' KRW', ' PYG', 'RWF', ' VUV', ' VND');
+
+      if (in_array(strtolower($currency),  array_map('strtolower', $threeDecimalCurrencyList))) { 
+        $value = (int) ($amount * 1000);
+        
+      } elseif (in_array(strtolower($currency), array_map('strtolower', $zeroDecimalCurencyList))){
+         $value = $amount;   
+         
+      } else {
+        $value = (int) ($amount * 100);
+        
+      }
+      
+      return $value;
+      
+    }
+    
+    public function decimalToAmount($amount, $currency)
+    {
+      
+      $threeDecimalCurrencyList = array('BHD', 'LYD', 'JOD', 'IQD', 'KWD', 'OMR', 'TND');
+      $zeroDecimalCurencyList = array('BYR', ' XOF', 'BIF', 'XAF', 'KMF', 'XOF', 'DJF', 'XPF', 'GNF', ' JPY', ' KRW', ' PYG', 'RWF', ' VUV', ' VND');
+
+      if (in_array(strtolower($currency), array_map('strtolower', $threeDecimalCurrencyList))) { 
+        $value =  $amount / 1000;
+        
+      } elseif (in_array(strtolower($currency), array_map('strtolower', $zeroDecimalCurencyList))){
+         $value = $amount;   
+         
+      } else {
+        $value = $amount / 100;
+        
+      }
+      
+      return $value;
+      
+    }
 }
