@@ -542,7 +542,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         return $this->request( $uri ,$param,!$hasError);
     }
     
-     /**
+        /**
      * Update PaymentToken Charge.
      * Updates the specified Card Charge by setting the values of the parameters passed.
      * @param array $param payload param
@@ -560,10 +560,9 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         $param['method'] = CheckoutApi_Client_Adapter_Constant::API_PUT;
 
         $this->flushState();
+            
+        $uri = $this->getUriToken()."/payment/{$param['paymentToken']}";
         
-        $uri = $this->getUriToken().'/payment';
-        $uri = "$uri/{$param['paymentToken']}";
-       
         return $this->request($uri ,$param,!$hasError);
     }
 
