@@ -441,7 +441,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
             $this->throwException('Please provide a amount (in cents)',array('param'=>$param),false);
         }
 
-        return $this->request( $uri ,$param,!$hasError);return $this->__responseUpdateStatus($this->request( $this->getUriCharge() ,$param,!$hasError));
+        return $this->_responseUpdateStatus($this->request( $uri ,$param,!$hasError));
     }
 
     /**
