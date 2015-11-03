@@ -162,7 +162,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
      * This methods can be call to create charge for checkout.com gateway 3.0 by passing
      * full card details :
      *  $param['postedParam'] = array ( 'email'=>'dhiraj@checkout.com',
-     *                                   'amount'=>100,
+     *                                   'value'=>100,
      *                                    'currency'=>'usd',
      *                                   'description'=>'desc',
      *                                   'caputure'=>false,
@@ -180,7 +180,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
                                      );
      * or by passing a card token:
      *  $param['postedParam'] = array ( 'email'=>'dhiraj@checkout.com',
-     *                                   'amount'=>100,
+     *                                   'value'=>100,
      *                                    'currency'=>'usd',
      *                                   'description'=>'desc',
      *                                   'caputure'=>false,
@@ -189,7 +189,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
      *
      * or by passing a card id:
      * $param['postedParam'] = array ( 'email'=>'dhiraj@checkout.com',
-     *                                   'amount'=>100,
+     *                                   'value'=>100,
      *                                   'currency'=>'usd',
      *                                   'description'=>'desc',
      *                                   'caputure'=>false,
@@ -314,7 +314,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
      * @throws Exception
      * Simple usage:
      *      $param['postedParam'] = array (
-                                        'amount'=>150
+                                        'value'=>150
                                     );
      *      $refundCharge = $Api->refundCharge($param);
      *
@@ -339,6 +339,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
         if($toRefund) {
             $refundChargeId = $toRefundData['id'];
+            $param['chargeId'] = $refundChargeId;
         }
 
         $hasError = false;
@@ -346,7 +347,6 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
         $param['method'] = CheckoutApi_Client_Adapter_Constant::API_POST;
         $postedParam = $param['postedParam'];
-        $param['chargeId'] = $refundChargeId;
         $this->flushState();
         $isAmountValid = CheckoutApi_Client_Validation_GW3::isValueValid($postedParam);
         $isChargeIdValid = CheckoutApi_Client_Validation_GW3::isChargeIdValid($param);
@@ -378,7 +378,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
      * @return CheckoutApi_Lib_RespondObj
      * @throws Exception
      * Simple usage:
-     *      $param['postedParam'] = array ('amount'=>150);
+     *      $param['postedParam'] = array ('value'=>150);
      *      $refundCharge = $Api->refundCharge($param);
      *
      */
@@ -414,7 +414,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
      * @return CheckoutApi_Lib_RespondObj
      * @throws Exception
      * Simple usage:
-     *      $param['postedParam'] = array ( 'amount'=>150 );
+     *      $param['postedParam'] = array ( 'value'=>150 );
      *      captureCharge = $Api->captureCharge($param);
      */
 

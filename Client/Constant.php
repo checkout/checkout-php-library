@@ -23,6 +23,7 @@ final class CheckoutApi_Client_Constant
 	const AUTOCAPUTURE_CAPTURE = 'y';
 	const AUTOCAPUTURE_AUTH = 'n';
 	const VERSION = 'v2';
+    const STATUS_CAPTURE = 'Captured';
 
 
 }
