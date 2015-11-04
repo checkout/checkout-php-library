@@ -324,22 +324,43 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
     {
         $chargeHistory = $this->getChargeHistory($param);
         $charges = $chargeHistory->getCharges();
-        $chargesArray = $charges->toArray();
-        $toRefund = false;
-        $toRefundData = false;
+        $uri = $this->getUriCharge();
 
-        foreach ($chargesArray as $key=> $charge) {
-
-            if(strtolower($charge['status'])==strtolower(CheckoutApi_Client_Constant::STATUS_CAPTURE)) {
-                $toRefund = true;
-                $toRefundData = $charge;
-                break;
+        if(!empty($charges)) {
+          $chargesArray = $charges->toArray();
+          $toRefund = false;
+          $toVoid = false;
+          $toRefundData = false;
+          $toVoidData = false;
+          
+          foreach ($chargesArray as $key=> $charge) {
+            if (in_array(CheckoutApi_Client_Constant::STATUS_CAPTURE, $charge)){
+                if(strtolower($charge['status']) == strtolower(CheckoutApi_Client_Constant::STATUS_CAPTURE)) {
+                  $toRefund = true;
+                  $toRefundData = $charge;
+                  break;
+              }
             }
-        }
+            else {
+                $toVoid = true;
+                $toVoidData = $charge;
+              }
+          }
 
-        if($toRefund) {
-            $refundChargeId = $toRefundData['id'];
-            $param['chargeId'] = $refundChargeId;
+          if($toRefund) {
+              $refundChargeId = $toRefundData['id'];
+              $param['chargeId'] = $refundChargeId;
+              $uri = "$uri/{$param['chargeId']}/refund";
+          }
+
+          if($toVoid) {
+              $voidChargeId = $toVoidData['id'];
+              $param['chargeId'] = $voidChargeId;
+              $uri = "$uri/{$param['chargeId']}/void";
+          }
+        }
+        else {
+          $this->throwException('Please provide a valid charge id',array('param'=>$param));
         }
 
         $hasError = false;
@@ -347,25 +368,20 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
         $param['method'] = CheckoutApi_Client_Adapter_Constant::API_POST;
         $postedParam = $param['postedParam'];
+        
         $this->flushState();
         $isAmountValid = CheckoutApi_Client_Validation_GW3::isValueValid($postedParam);
         $isChargeIdValid = CheckoutApi_Client_Validation_GW3::isChargeIdValid($param);
-        $uri = $this->getUriCharge();
 
         if(!$isChargeIdValid) {
             $hasError = true;
             $this->throwException('Please provide a valid charge id',array('param'=>$param));
 
-        } else {
-
-            $uri = "$uri/{$param['chargeId']}/refund";
-
         }
-         if(!$isAmountValid) {
+        
+        if(!$isAmountValid) {
              $this->throwException('Please provide a amount (in cents)',array('param'=>$param),false);
-         }
-
-   
+        }
          return $this->_responseUpdateStatus($this->request($uri ,$param,!$hasError));
     }
 
