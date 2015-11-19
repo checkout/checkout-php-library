@@ -4,6 +4,7 @@ namespace com\checkout\ApiServices\Charges\RequestModels;
 class BaseCharge extends BaseChargeInfo
 {
 	protected $_email;
+    protected $_customerName;
 	protected $_customerId;
 	protected $_description;
 	protected $_autoCapture;
@@ -28,6 +29,22 @@ class BaseCharge extends BaseChargeInfo
 	public function setCustomerIp ( $customerIp )
 	{
 		$this->_customerIp = $customerIp;
+	}
+    
+    /**
+	 * @return mixed
+	 */
+	public function getCustomerName()
+	{
+		return $this->_customerName;
+	}
+
+	/**
+	 * @param mixed $customerIp
+	 */
+	public function setCustomerName ( $customerName )
+	{
+		$this->_customerName = $customerName;
 	}
 
 	/**

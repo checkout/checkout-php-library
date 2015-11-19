@@ -18,6 +18,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_value;
 	protected $_currency;
 	protected $_email;
+    protected $_customerName;
 	protected $_description;
 	protected $_responseMessage;
 	protected $_responseAdvancedInfo;
@@ -56,6 +57,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->_setValue ( $response->getValue());
 		$this->_setCurrency ( $response->getCurrency());
 		$this->_setEmail ( $response->getEmail());
+        $this->_setCustomerName ( $response->getCustomerName());
 		$this->_setDescription ( $response->getDescription());
 		$this->_setResponseMessage ( $response->getResponseMessage());
 		$this->_setResponseAdvancedInfo ( $response->getResponseAdvancedInfo());
@@ -194,6 +196,14 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	public function getEmail ()
 	{
 		return $this->_email;
+	}
+    
+    /**
+	 * @return mixed
+	 */
+	public function getCustomerName ()
+	{
+		return $this->_customerName;
 	}
 
 	/**
@@ -434,6 +444,14 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected function _setEmail ( $email )
 	{
 		$this->_email = $email;
+	}
+    
+    /**
+	 * @param mixed $email
+	 */
+	protected function _setCustomerName ( $customerName )
+	{
+		$this->_customerName = $customerName;
 	}
 
 	/**
