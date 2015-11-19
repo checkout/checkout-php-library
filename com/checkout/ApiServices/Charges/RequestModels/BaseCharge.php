@@ -40,7 +40,7 @@ class BaseCharge extends BaseChargeInfo
 	}
 
 	/**
-	 * @param mixed $customerIp
+	 * @param mixed $customerName
 	 */
 	public function setCustomerName ( $customerName )
 	{

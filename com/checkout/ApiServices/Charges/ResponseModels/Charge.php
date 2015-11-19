@@ -447,7 +447,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	}
     
     /**
-	 * @param mixed $email
+	 * @param mixed $customerName
 	 */
 	protected function _setCustomerName ( $customerName )
 	{

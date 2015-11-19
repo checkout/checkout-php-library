@@ -92,7 +92,7 @@ class BaseCustomer
 	}
 
 	/**
-	 * @param mixed $name
+	 * @param mixed $customerName
 	 */
 	public function setCustomerName ( $customerName )
 	{

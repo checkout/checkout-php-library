@@ -217,7 +217,7 @@ class Customer extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	}
     
     /**
-    * @param mixed $email
+    * @param mixed $customerName
     */
 	private function _setCustomerName ( $customerName )
 	{
