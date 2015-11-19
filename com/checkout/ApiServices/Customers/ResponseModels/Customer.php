@@ -14,6 +14,7 @@ class Customer extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	private $_object;
 	private $_id;
 	private $_name;
+    private $_customerName;
 	private $_created;
 	private $_email;
 	private $_phoneNumber;
@@ -41,6 +42,7 @@ class Customer extends \com\checkout\ApiServices\SharedModels\BaseHttp
 		$this->_setName ( $response->getName() );
 		$this->_setPhoneNumber ( $response->getPhoneNumber() );
 		$this->_setResponseCode ( $response->getResponseCode() );
+        $this->_setCustomerName( $response->getCustomerName() );
 	}
 
 	/**
@@ -87,6 +89,14 @@ class Customer extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	public function getEmail ()
 	{
 		return $this->_email;
+	}
+    
+    /**
+	 * @return mixed
+	 */
+	public function getCustomerName ()
+	{
+		return $this->_customerName;
 	}
 
 	/**
@@ -204,6 +214,14 @@ class Customer extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	private function _setEmail ( $email )
 	{
 		$this->_email = $email;
+	}
+    
+    /**
+    * @param mixed $customerName
+    */
+	private function _setCustomerName ( $customerName )
+	{
+		$this->_customerName = $customerName;
 	}
 
 	/**

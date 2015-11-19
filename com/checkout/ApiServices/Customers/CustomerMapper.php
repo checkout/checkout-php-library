@@ -49,7 +49,11 @@ class CustomerMapper
 			if(method_exists($requestModel,'getEmail') && ($email = $requestModel->getEmail())) {
 				$requestPayload['email'] = $email;
 			}
-
+            
+            if(method_exists($requestModel,'getCustomerName') && ($customerName = $requestModel->getCustomerName())) {
+				$requestPayload['customerName'] = $customerName;
+			}
+            
 			if(method_exists($requestModel,'getMetadata') && ($metadata = $requestModel->getMetadata())) {
 				$requestPayload['metadata'] = $metadata;
 			}

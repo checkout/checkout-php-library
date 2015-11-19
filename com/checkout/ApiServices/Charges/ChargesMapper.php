@@ -45,6 +45,10 @@ class ChargesMapper
 			if(method_exists($requestModel,'getEmail') && $requestModel->getEmail()) {
 				$requestPayload['email'] = $requestModel->getEmail();
 			}
+            
+            if(method_exists($requestModel,'getCustomerName') && $requestModel->getCustomerName()) {
+				$requestPayload['customerName'] = $requestModel->getCustomerName();
+			}
 
 			if(method_exists($requestModel,'getValue') && $requestModel->getValue()) {
 				$requestPayload['value'] = $requestModel->getValue();

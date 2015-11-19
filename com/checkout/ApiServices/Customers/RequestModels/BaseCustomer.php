@@ -12,6 +12,7 @@ namespace com\checkout\ApiServices\Customers\RequestModels;
 class BaseCustomer
 {
 	protected $_name;
+    protected $_customerName;
 	protected $_email;
 	protected $_phoneNumber;
 	protected $_description;
@@ -80,6 +81,22 @@ class BaseCustomer
 	public function setName ( $name )
 	{
 		$this->_name = $name;
+	}
+    
+    /**
+	 * @return mixed
+	 */
+	public function getCustomerName ()
+	{
+		return $this->_customerName;
+	}
+
+	/**
+	 * @param mixed $customerName
+	 */
+	public function setCustomerName ( $customerName )
+	{
+		$this->_customerName = $customerName;
 	}
 
 	/**
