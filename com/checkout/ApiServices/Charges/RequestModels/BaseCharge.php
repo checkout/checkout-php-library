@@ -14,6 +14,7 @@ class BaseCharge extends BaseChargeInfo
 	protected $_value;
 	protected $_currency;
 	protected $_customerIp;
+    protected $_chargeMode;
 
 	/**
 	 * @return mixed
@@ -194,6 +195,17 @@ class BaseCharge extends BaseChargeInfo
 		$this->_products[] = $products;
 	}
 
+    public function getChargeMode ()
+    {
+        return $this->_chargeMode;
+    }
 
+    /**
+     * @param mixed $autoCapTime
+     */
+    public function setChargeMode ( $chargeMode )
+    {
+        $this->_chargeMode = $chargeMode;
+    }
 
 }

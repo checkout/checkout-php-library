@@ -18,6 +18,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_value;
 	protected $_currency;
 	protected $_email;
+    protected $_chargeMode;
     protected $_customerName;
 	protected $_description;
 	protected $_responseMessage;
@@ -42,7 +43,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_localPayment;
 	protected $_metadata;
     protected $_transactionIndicator;
-    protected  $_originalId;
+    protected $_originalId;
 	protected $_response = null;
 
 
@@ -56,6 +57,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->_setCreated ( $response->getCreated());
 		$this->_setValue ( $response->getValue());
 		$this->_setCurrency ( $response->getCurrency());
+        $this->_setChargeMode ( $response->getChargeMode());
 		$this->_setEmail ( $response->getEmail());
         $this->_setCustomerName ( $response->getCustomerName());
 		$this->_setDescription ( $response->getDescription());
@@ -204,6 +206,13 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	public function getCustomerName ()
 	{
 		return $this->_customerName;
+	}
+    /**
+	 * @return mixed
+	 */
+	public function getChargeMode ()
+	{
+		return $this->_chargeMode;
 	}
 
 	/**
@@ -453,7 +462,14 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		$this->_customerName = $customerName;
 	}
-
+    
+    /**
+	 * @param mixed $chargeMode
+	 */
+	protected function _setChargeMode ( $chargeMode )
+	{
+		$this->_chargeMode = $chargeMode;
+	}
 	/**
 	 * @param mixed $description
 	 */
