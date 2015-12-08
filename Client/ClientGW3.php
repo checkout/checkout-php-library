@@ -519,7 +519,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
             $metaArray = $chargeObj->getMetadata()->toArray();
         }
      
-        $newMetadata = array_merge($metaData,$metaArray);
+        $newMetadata = array_merge($metaArray,$metaData);
 
         $param['postedParam']['metadata']    =    $newMetadata;
         $uri = $this->getUriCharge();
