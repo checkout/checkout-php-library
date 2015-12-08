@@ -61,6 +61,10 @@ class ChargesMapper
 			if(method_exists($requestModel,'getDescription') && $requestModel->getDescription()) {
 				$requestPayload['description'] = $requestModel->getDescription();
 			}
+            
+            if(method_exists($requestModel,'getChargeMode') && $requestModel->getChargeMode()) {
+                $requestPayload['chargeMode'] = $requestModel->getChargeMode();
+            }
 
 			if(method_exists($requestModel,'getChargeId') && $requestModel->getChargeId()) {
 				$requestPayload['chargeId'] = $requestModel->getChargeId();
