@@ -60,7 +60,7 @@ class CardMapper
 						'state'        => $billingAddress->getState () ,
 						'phone'        => $billingAddress->getPhone ()
 					);
-					$requestPayload[ 'billingDetails' ] = $billingAddressConfig;
+					$requestPayload[ 'card' ][ 'billingDetails' ] = $billingAddressConfig;
 				}
 
 
