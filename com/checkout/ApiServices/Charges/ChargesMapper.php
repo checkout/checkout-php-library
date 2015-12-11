@@ -49,6 +49,10 @@ class ChargesMapper
             if(method_exists($requestModel,'getCustomerName') && $requestModel->getCustomerName()) {
 				$requestPayload['customerName'] = $requestModel->getCustomerName();
 			}
+            
+            if(method_exists($requestModel,'getCustomerId') && $requestModel->getCustomerId()) {
+				$requestPayload['customerId'] = $requestModel->getCustomerId();
+			}
 
 			if(method_exists($requestModel,'getValue') && $requestModel->getValue()) {
 				$requestPayload['value'] = $requestModel->getValue();
