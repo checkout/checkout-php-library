@@ -58,7 +58,7 @@ class CardMapper
 						'country'      => $billingAddress->getCountry () ,
 						'city'         => $billingAddress->getCity () ,
 						'state'        => $billingAddress->getState () ,
-						'phone'        => $billingAddress->getPhone ()
+						'phone'        => $billingAddress->getPhone ()->getPhoneDetails()
 					);
 					$requestPayload[ 'card' ][ 'billingDetails' ] = $billingAddressConfig;
 				}
@@ -112,7 +112,7 @@ class CardMapper
 						'country'      => $billingAddress->getCountry () ,
 						'city'         => $billingAddress->getCity () ,
 						'state'        => $billingAddress->getState () ,
-						'phone'        => $billingAddress->getPhone ()
+						'phone'        => $billingAddress->getPhone ()->getPhoneDetails()
 					);
 					$requestPayload[ 'billingDetails' ] = $billingAddressConfig;
 				}

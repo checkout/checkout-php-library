@@ -79,7 +79,7 @@ class CustomerMapper
 						'country'      => $billingAddress->getCountry () ,
 						'city'         => $billingAddress->getCity () ,
 						'state'        => $billingAddress->getState () ,
-						'phone'        => $billingAddress->getPhone ()
+						'phone'        => $billingAddress->getPhone ()->getPhoneDetails()
 					);
 					$requestPayload[ 'card' ][ 'billingDetails' ] = $billingAddressConfig;
 				}
