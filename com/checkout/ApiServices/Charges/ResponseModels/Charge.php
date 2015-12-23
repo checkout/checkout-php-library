@@ -19,7 +19,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_currency;
 	protected $_email;
     protected $_chargeMode;
-    protected $_customerName;
+    protected $_customerIp;
 	protected $_description;
 	protected $_responseMessage;
 	protected $_responseAdvancedInfo;
@@ -59,7 +59,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->_setCurrency ( $response->getCurrency());
         $this->_setChargeMode ( $response->getChargeMode());
 		$this->_setEmail ( $response->getEmail());
-        $this->_setCustomerName ( $response->getCustomerName());
+        $this->_setCustomerIp ( $response->getCustomerIp());
 		$this->_setDescription ( $response->getDescription());
 		$this->_setResponseMessage ( $response->getResponseMessage());
 		$this->_setResponseAdvancedInfo ( $response->getResponseAdvancedInfo());
@@ -78,7 +78,6 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->_setIsCascaded ( $response->getIsCascaded());
 		$this->setDescription ( $response->getDescription());
 		$this->setTrackId ( $response->getTrackId());
-
 		$this->setUdf1 ( $response->getUdf1());
 		$this->setUdf2 ( $response->getUdf2());
 		$this->setUdf3 ( $response->getUdf3());
@@ -199,14 +198,15 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_email;
 	}
-    
+  
     /**
 	 * @return mixed
 	 */
-	public function getCustomerName ()
+	public function getCustomerIp()
 	{
-		return $this->_customerName;
+		return $this->_customerIp;
 	}
+    
     /**
 	 * @return mixed
 	 */
@@ -456,11 +456,11 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	}
     
     /**
-	 * @param mixed $customerName
+	 * @param mixed $customerIp
 	 */
-	protected function _setCustomerName ( $customerName )
+	protected function _setCustomerIp ( $customerIp )
 	{
-		$this->_customerName = $customerName;
+		$this->_customerIp = $customerIp;
 	}
     
     /**

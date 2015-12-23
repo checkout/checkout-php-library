@@ -130,12 +130,17 @@ class ChargesMapper
 					'country' => $shippingAddress->getCountry () ,
 					'city' => $shippingAddress->getCity () ,
 					'state' => $shippingAddress->getState () ,
-					'phone' => $shippingAddress->getPhone ()->getPhoneDetails() ,
-
 
 				);
+                
+            if ($shippingAddress->getPhone() != null) {
+                $shippingAddressConfig = array_merge_recursive($shippingAddressConfig, array(
+                   'phone' => $shippingAddressConfig->getPhone()->getPhoneDetails()
+                )
+              );
+            }
 
-				$requestPayload['shippingDetails'] = $shippingAddressConfig;
+        $requestPayload['shippingDetails'] = $shippingAddressConfig;
 			}
 
 			if(method_exists($requestModel,'getEmail') && $productsItem =  $requestModel->getProducts()) {
@@ -186,11 +191,16 @@ class ChargesMapper
 						'country'      => $billingAddress->getCountry () ,
 						'city'         => $billingAddress->getCity () ,
 						'state'        => $billingAddress->getState () ,
-						'phone'        => $billingAddress->getPhone ()->getPhoneDetails()
 					);
+                    if($billingAddress->getPhone () != null){
+                      $billingAddressConfig = array_merge_recursive ( $billingAddressConfig , 
+                          array (
+                            'phone' => $billingAddress->getPhone()->getPhoneDetails() 
+                          )
+                      );
+                    }
 					$requestPayload[ 'card' ][ 'billingDetails' ] = $billingAddressConfig;
 				}
-
 
 				if ( $name = $cardBase->getName () ) {
 					$requestPayload[ 'card' ][ 'name' ] = $name;
