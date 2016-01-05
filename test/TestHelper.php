@@ -190,4 +190,37 @@ final class TestHelper
         return $chargeService->chargeService()->CaptureCardCharge($chargeCapturePayload);
 
     }
+
+    /**
+     * @return \com\checkout\ApiServices\Reporting\RequestModels\TransactionFilter
+     *
+     * Date: 23.12.2015
+     */
+    public static function getTransactionFilterRequestModel() {
+        $requestModel = new \com\checkout\ApiServices\Reporting\RequestModels\TransactionFilter();
+
+        $requestModel->setFromDate('2015-07-06T13:57:34.450Z');
+        $requestModel->setToDate('2015-07-10T13:57:34.450Z');
+        $requestModel->setPageSize(10);
+        $requestModel->setPageNumber(5);
+        $requestModel->setSortColumn('ID');
+        $requestModel->setSortOrder('ASC');
+        $requestModel->setSearch('Authorised');
+        $requestModel->setFilters(array(
+            array(
+                'action'    => 'include',
+                'field'     => 'status',
+                'operator'  => 'CONTAINS',
+                'value'     => 'Authorised'
+            ),
+            array(
+                'action'    => 'include',
+                'field'     => 'email',
+                'operator'  => 'CONTAINS',
+                'value'     => '@'
+            ),
+        ));
+
+        return $requestModel;
+    }
 } 

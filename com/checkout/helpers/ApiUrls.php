@@ -21,7 +21,8 @@ class ApiUrls
 	private $_retrieveChargesApiUri     = null;
 	private $_verifyChargesApiUri       = null;
 	private $_chargeWithPaymentTokenUri = null;
-    private $_voidChargesApiUri = null;
+    private $_voidChargesApiUri 		= null;
+	private $_queryTransactionApiUri 	= null;
 
 
 
@@ -341,6 +342,25 @@ class ApiUrls
         return $this->_voidChargesApiUri;
 
     }
+
+	/**
+	 * @return null
+	 */
+	public function getQueryTransactionApiUri ()
+	{
+		if (!$this->_queryTransactionApiUri) {
+			$this->setQueryTransactionApiUri($this->getBaseApiUri() . "/reporting/transactions");
+		}
+
+		return $this->_queryTransactionApiUri;
+	}
+
+	/**
+	 * @param $queryTransactionApiUri
+	 */
+	public function setQueryTransactionApiUri ($queryTransactionApiUri) {
+		$this->_queryTransactionApiUri = $queryTransactionApiUri;
+	}
 
     /**
      * @param null $voidChargesApiUri
