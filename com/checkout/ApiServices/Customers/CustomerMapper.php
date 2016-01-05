@@ -79,8 +79,15 @@ class CustomerMapper
 						'country'      => $billingAddress->getCountry () ,
 						'city'         => $billingAddress->getCity () ,
 						'state'        => $billingAddress->getState () ,
-						'phone'        => $billingAddress->getPhone ()
 					);
+                                        
+                    if($billingAddress->getPhone () != null){
+                      $billingAddressConfig = array_merge_recursive ( $billingAddressConfig , 
+                          array (
+                            'phone' => $billingAddress->getPhone()->getPhoneDetails() 
+                          )
+                      );
+                    }  
 					$requestPayload[ 'card' ][ 'billingDetails' ] = $billingAddressConfig;
 				}
 

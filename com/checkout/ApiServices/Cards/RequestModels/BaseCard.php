@@ -7,7 +7,8 @@ class BaseCard
 	protected $_expiryMonth;
 	protected $_expiryYear;
 	protected $_billingDetails;
-
+    protected $_defaultCard;
+    
 	/**
 	 * @return mixed
 	 */
@@ -70,5 +71,21 @@ class BaseCard
 	public function setBillingDetails ( \com\checkout\ApiServices\SharedModels\Address $billingDetails )
 	{
 		$this->_billingDetails = $billingDetails;
+	}
+           
+    /**
+	 * @return mixed
+	 */
+	public function getDefaultCard ()
+	{
+		return $this->_defaultCard;
+	}
+    
+    /**
+	 * @param mixed $defaultCard
+	 */
+	public function setDefaultCard ( $defaultCard )
+	{
+		$this->_defaultCard = $defaultCard;
 	}
 }

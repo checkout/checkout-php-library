@@ -11,8 +11,8 @@ namespace com\checkout\ApiServices\SharedModels;
 
 class Phone
 {
-	private $_number;
-	private $_countryCode;
+	protected $_number;
+	protected $_countryCode;
 
 	/**
 	 * @return mixed

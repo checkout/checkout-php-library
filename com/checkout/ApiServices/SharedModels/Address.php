@@ -17,6 +17,7 @@ class Address
 	protected $_country;
 	protected $_city;
 	protected $_state;
+    protected $_phone;
 
 	/**
 	 * @return mixed
@@ -129,5 +130,4 @@ class Address
 	{
 		$this->_phone = $phone;
 	}
-	protected $_phone;
 }
