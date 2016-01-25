@@ -226,6 +226,10 @@ class ChargesMapper
 			if(method_exists($requestModel,'getCardId') && $cardId = $requestModel->getCardId()) {
 				$requestPayload[ 'cardId' ] = $cardId;
 			}
+            
+            if(method_exists($requestModel,'getCvv') && $cvv = $requestModel->getCvv()) {
+				$requestPayload[ 'cvv' ] = $cvv;
+			}
 
 			if(method_exists($requestModel,'getCardToken') && $cardToken = $requestModel->getCardToken()) {
 				$requestPayload[ 'cardToken' ] = $cardToken;
