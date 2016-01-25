@@ -12,6 +12,7 @@ namespace com\checkout\ApiServices\Charges\RequestModels;
 class CardIdChargeCreate extends BaseCharge
 {
 	private $_cardId;
+    private $_cvv;
     protected $_transactionIndicator;
 
 	/**
@@ -28,6 +29,22 @@ class CardIdChargeCreate extends BaseCharge
 	public function setCardId ( $cardId )
 	{
 		$this->_cardId = $cardId;
+	}
+    
+    /**
+	 * @return mixed
+	 */
+	public function getCvv ()
+	{
+		return $this->_cvv;
+	}
+
+	/**
+	 * @param mixed $cvv
+	 */
+	public function setCvv( $cvv )
+	{
+		$this->_cvv = $cvv;
 	}
 
     /**
