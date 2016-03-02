@@ -1,5 +1,5 @@
 {
-    "name": "checkout/checkout-php-api",
+    "name": "checkout/checkout-php-api-custom-fork",
     "repositories": [{
         "type": "package",
         "package": {
