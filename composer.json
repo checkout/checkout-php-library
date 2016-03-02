@@ -1,5 +1,20 @@
 {
     "name": "checkout/checkout-php-api",
+    "repositories": [{
+        "type": "package",
+        "package": {
+            "name": "checkout/checkout-php-api",
+            "version": "dev-master",
+            "source": {
+                "url": "https://github.com/nicolas-maalouf-cko/checkout-php-library.git",
+                "type": "git",
+                "reference": "master"
+            },
+            "autoload": {
+                "classmap": [""]
+            }
+        }
+    }],
     "description": "Checkout PHP API Library",
     "homepage": "https://github.com/CKOTech/checkout-php-library",
     "version": "1.0.0",
