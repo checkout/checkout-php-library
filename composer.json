@@ -1,20 +1,5 @@
 {
-    "name": "checkout/checkout-php-api-custom-fork",
-    "repositories": [{
-        "type": "package",
-        "package": {
-            "name": "checkout/checkout-php-api",
-            "version": "dev-release/v1.2",
-            "source": {
-                "url": "https://github.com/CKOTech/checkout-php-library.git",
-                "type": "git",
-                "reference": "release/v1.2"
-            },
-            "autoload": {
-                "classmap": [""]
-            }
-        }
-    }],
+    "name": "checkout/checkout-php-api",
     "description": "Checkout PHP API Library",
     "homepage": "https://github.com/CKOTech/checkout-php-library",
     "version": "1.0.0",
