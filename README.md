@@ -1,6 +1,6 @@
 ### Requirements
 
-PHP 5 >=5.3.0
+PHP 5 > 5.3.0
 
 ### How to use the library
 
