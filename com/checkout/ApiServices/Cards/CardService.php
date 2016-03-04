@@ -13,7 +13,7 @@ class CardService extends  \com\checkout\ApiServices\BaseServices
 {
 	public function createCard(RequestModels\CardCreate $requestModel)
 	{
-		$cardMapper = new cardMapper($requestModel);
+		$cardMapper = new CardMapper($requestModel);
 
 		$requestPayload = array (
 			'authorization' => $this->_apiSetting->getSecretKey(),
