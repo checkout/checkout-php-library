@@ -399,4 +399,17 @@ class ApiUrls
 		$this->_updateChargesApiUri = $updateChargesApiUri;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getCreateSinglePlanApiUri ()
+	{
+
+		if(!$this->_retrieveChargesApiUri) {
+			$this->setRetrieveChargesApiUri($this->getBaseApiUri()."/recurringPayments/plans");
+		}
+
+		return $this->_retrieveChargesApiUri;
+	}
+
 }
