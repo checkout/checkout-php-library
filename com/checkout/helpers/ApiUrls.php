@@ -23,6 +23,7 @@ class ApiUrls
 	private $_chargeWithPaymentTokenUri = null;
     private $_voidChargesApiUri 		= null;
 	private $_queryTransactionApiUri 	= null;
+	private $_createSinglePlanApiUri	= null;
 
 
 
@@ -405,11 +406,19 @@ class ApiUrls
 	public function getCreateSinglePlanApiUri ()
 	{
 
-		if(!$this->_retrieveChargesApiUri) {
-			$this->setRetrieveChargesApiUri($this->getBaseApiUri()."/recurringPayments/plans");
+		if(!$this->_createSinglePlanApiUri) {
+			$this->setCreateSinglePlanApiUri($this->getBaseApiUri()."/recurringPayments/plans");
 		}
 
-		return $this->_retrieveChargesApiUri;
+		return $this->_createSinglePlanApiUri;
+	}
+
+	/**
+	 * @param string $retrieveChargesApiUri
+	 */
+	public function setCreateSinglePlanApiUri ( $createSinglePlanApiUri )
+	{
+		$this->_createSinglePlanApiUri = $createSinglePlanApiUri;
 	}
 
 }
