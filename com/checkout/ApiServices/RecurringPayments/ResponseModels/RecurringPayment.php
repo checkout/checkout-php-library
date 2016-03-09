@@ -9,7 +9,7 @@
 namespace com\checkout\ApiServices\RecurringPayments\ResponseModels;
 
 
-class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
+class RecurringPayment extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	protected $_object;
 	protected $_id;

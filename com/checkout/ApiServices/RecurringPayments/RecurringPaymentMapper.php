@@ -37,40 +37,46 @@ class RecurringPaymentMapper
     public function requestPayloadConverter($requestModel = null )
     {
         $requestPayload = null;
+        $requestSinglePaymentPlan = null;
+
         if(!$requestModel) {
             $requestModel = $this->getRequestModel();
         }
         if($requestModel) {
             $requestPayload = array ();
+            $requestSinglePaymentPlan = array ();
 
             if(method_exists($requestModel,'getName') && ($name = $requestModel->getName())) {
-                $requestPayload['name'] = $name;
+                $requestSinglePaymentPlan['name'] = $name;
             }
 
             if(method_exists($requestModel,'getPlanTrackId') && ($planTrackId = $requestModel->getPlanTrackId())) {
-                $requestPayload['planTrackId'] = $planTrackId;
+                $requestSinglePaymentPlan['planTrackId'] = $planTrackId;
             }
             
             if(method_exists($requestModel,'getAutoCapTime') && ($autoCapTime = $requestModel->getAutoCapTime())) {
-                $requestPayload['autoCapTime'] = $autoCapTime;
+                $requestSinglePaymentPlan['autoCapTime'] = $autoCapTime;
             }
             
             if(method_exists($requestModel,'getCurrency') && ($currency = $requestModel->getCurrency())) {
-                $requestPayload['currency'] = $currency;
+                $requestSinglePaymentPlan['currency'] = $currency;
             }
 
             if(method_exists($requestModel,'getValue') && ($value = $requestModel->getValue())) {
-                $requestPayload['value'] = $value;
+                $requestSinglePaymentPlan['value'] = $value;
             }
             if(method_exists($requestModel,'getCycle') && ($cycle = $requestModel->getCycle())) {
-                $requestPayload['cycle'] = $cycle;
+                $requestSinglePaymentPlan['cycle'] = $cycle;
             }
 
             if(method_exists($requestModel,'getRecurringCount') && ($recurringCount = $requestModel->getRecurringCount())) {
-                $requestPayload['recurringCount'] = $recurringCount;
+                $requestSinglePaymentPlan['recurringCount'] = $recurringCount;
             }
 
         }
+
+
+        $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
 
         return $requestPayload;
     }

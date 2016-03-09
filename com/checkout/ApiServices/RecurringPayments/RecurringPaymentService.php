@@ -13,14 +13,42 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     public function createSinglePlan(RequestModels\BaseRecurringPayment $requestModel)
     {
 
-        $chargeMapper = new RecurringPaymentMapper($requestModel);
+        $recurringPaymentMapper = new RecurringPaymentMapper($requestModel);
 
         $requestPayload = array (
             'authorization' => $this->_apiSetting->getSecretKey(),
             'mode'          => $this->_apiSetting->getMode(),
-            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+            'postedParam'   => $recurringPaymentMapper->requestPayloadConverter(),
 
         );
+
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCreateSinglePlanApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new ResponseModels\RecurringPayment($processCharge);
+
+        return $responseModel;
+    }
+
+    public function createMultiplePlans($plansArray)
+    {
+        $temporaryArray;
+
+        foreach($plansArray as $singlePlan)
+        {
+            $recurringPaymentMapper = new RecurringPaymentMapper($singlePlan);
+            $temporaryArray[] = $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0];
+        }
+        
+        $arrayToSubmit['paymentPlans'] = $temporaryArray;
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $arrayToSubmit,
+
+        );
+
         $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCreateSinglePlanApiUri(),
             $this->_apiSetting->getSecretKey(),$requestPayload);
       
