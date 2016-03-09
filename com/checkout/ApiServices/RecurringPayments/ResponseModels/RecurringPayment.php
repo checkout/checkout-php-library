@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dhiraj.gangoosirdar
- * Date: 3/17/2015
- * Time: 10:15 AM
- */
 
 namespace com\checkout\ApiServices\RecurringPayments\ResponseModels;
 

@@ -2,18 +2,36 @@
 
 namespace com\checkout\ApiServices\SharedModels;
 
-class PaymentPlan
+class PaymentPlan extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
-	protected $_object = '';
-	protected $_planId = '';
-	protected $_name = '';
-	protected $_planTrackId = '';
-	protected $_autoCapTime = '';
-	protected $_currency = '';
-	protected $_value = '';
-	protected $_cycle = '';
-	protected $_recurringCount = '';
-	protected $_status = '';
+
+	protected $_object;
+	protected $_planId;
+	protected $_name;
+	protected $_planTrackId;
+	protected $_autoCapTime;
+	protected $_currency;
+	protected $_value;
+	protected $_cycle;
+	protected $_recurringCount;
+	protected $_status;
+
+	public function __construct($response)
+	{
+        parent::__construct($response);
+
+        $this->setObject ( $response->getObject() );
+        $this->setPlanId ( $response->getPlanId() );
+        $this->setName ( $response->getName() );
+        $this->setPlanTrackId ( $response->getPlanTrackId() );
+        $this->setAutoCapTime ( $response->getAutoCapTime() );
+        $this->setCurrency ( $response->getCurrency() );
+        $this->setValue ( $response->getValue() );
+        $this->setCycle ( $response->getCycle() );
+        $this->setRecurringCount ( $response->getRecurringCount() );
+        $this->setStatus ( $response->getStatus() );
+
+	}
 
 
 	/**

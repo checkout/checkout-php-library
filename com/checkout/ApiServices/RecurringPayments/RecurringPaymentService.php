@@ -78,7 +78,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
-    public function deletePlan($customerId)
+    public function deletePlan($planId)
     {
 
         $requestPayload = array (
@@ -95,7 +95,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
-    public function getPlan($customerId)
+    public function getPlan($planId)
     {
 
         $requestPayload = array (
@@ -103,11 +103,11 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
             'mode'          => $this->_apiSetting->getMode(),
 
         );
-        $getCustomerUri = $this->_apiUrl->getRecurringPaymentsApiUri().'/'.$customerId;
-        $processCharge = \com\checkout\helpers\ApiHttpClient::getRequest($getCustomerUri,
+        $getPlanUri = $this->_apiUrl->getRecurringPaymentsApiUri().'/'.$planId;
+        $processCharge = \com\checkout\helpers\ApiHttpClient::getRequest($getPlanUri,
             $this->_apiSetting->getSecretKey(),$requestPayload);
 
-        $responseModel = new ResponseModels\Customer($processCharge);
+        $responseModel = new \com\checkout\ApiServices\SharedModels\PaymentPlan($processCharge);
 
         return $responseModel;
     }
