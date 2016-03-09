@@ -23,8 +23,7 @@ class ApiUrls
 	private $_chargeWithPaymentTokenUri = null;
     private $_voidChargesApiUri 		= null;
 	private $_queryTransactionApiUri 	= null;
-	private $_createSinglePlanApiUri	= null;
-	private $_updatePlanApiUri			= null;
+	private $_recurringPaymentsApiUri	= null;
 
 
 	public function __construct()
@@ -403,43 +402,22 @@ class ApiUrls
 	/**
 	 * @return string
 	 */
-	public function getCreateSinglePlanApiUri ()
+	public function getRecurringPaymentsApiUri ()
 	{
 
-		if(!$this->_createSinglePlanApiUri) {
-			$this->setCreateSinglePlanApiUri($this->getBaseApiUri()."/recurringPayments/plans");
+		if(!$this->_recurringPaymentsApiUri) {
+			$this->setRecurringPaymentsApiUri($this->getBaseApiUri()."/recurringPayments/plans");
 		}
 
-		return $this->_createSinglePlanApiUri;
+		return $this->_recurringPaymentsApiUri;
 	}
 
 	/**
-	 * @param string $createSinglePlanApiUri
+	 * @param string $recurringPaymentsApiUri
 	 */
-	public function setCreateSinglePlanApiUri ( $createSinglePlanApiUri )
+	public function setRecurringPaymentsApiUri ( $recurringPaymentsApiUri )
 	{
-		$this->_createSinglePlanApiUri = $createSinglePlanApiUri;
+		$this->_recurringPaymentsApiUri = $recurringPaymentsApiUri;
 	}
 
-
-	/**
-	 * @return string
-	 */
-	public function getUpdatePlanApiUri ()
-	{
-
-		if(!$this->_updatePlanApiUri) {
-			$this->setUpdatePlanApiUri($this->getBaseApiUri()."/recurringPayments/plans/");
-		}
-
-		return $this->_updatePlanApiUri;
-	}
-
-	/**
-	 * @param string $createSinglePlanApiUri
-	 */
-	public function setUpdatePlanApiUri ( $updatePlanApiUri )
-	{
-		$this->_updatePlanApiUri = $updatePlanApiUri;
-	}
 }
