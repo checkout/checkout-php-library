@@ -73,5 +73,6 @@ class RecurringPaymentMapper
         }
 
         return $requestPayload;
+    }
 
 }

@@ -119,7 +119,7 @@ class BaseRecurringPayment
 	/**
 	 * @param mixed $recurringCount
 	 */
-	public function setTecurringCount ( $recurringCount )
+	public function setRecurringCount ( $recurringCount )
 	{
 		$this->_recurringCount = $recurringCount;
 	}
