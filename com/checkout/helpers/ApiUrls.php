@@ -24,8 +24,7 @@ class ApiUrls
     private $_voidChargesApiUri 		= null;
 	private $_queryTransactionApiUri 	= null;
 	private $_createSinglePlanApiUri	= null;
-	private $_createMultiplePlansApiUri	= null;
-
+	private $_updatePlanApiUri			= null;
 
 
 	public function __construct()
@@ -422,25 +421,25 @@ class ApiUrls
 		$this->_createSinglePlanApiUri = $createSinglePlanApiUri;
 	}
 
+
 	/**
 	 * @return string
 	 */
-	public function getCreateMultiplePlansApiUri ()
+	public function getUpdatePlanApiUri ()
 	{
 
-		if(!$this->_createMultiplePlansApiUri) {
-			$this->setCreateMultiplePlansApiUri($this->getBaseApiUri()."/recurringPayments/plans");
+		if(!$this->_updatePlanApiUri) {
+			$this->setUpdatePlanApiUri($this->getBaseApiUri()."/recurringPayments/plans/");
 		}
 
-		return $this->_createMultiplePlansApiUri;
+		return $this->_updatePlanApiUri;
 	}
 
 	/**
-	 * @param string $createMultiplePlansApiUri
+	 * @param string $createSinglePlanApiUri
 	 */
-	public function setCreateMultiplePlansApiUri ( $createMultiplePlansApiUri )
+	public function setUpdatePlanApiUri ( $updatePlanApiUri )
 	{
-		$this->_createMultiplePlansApiUri = $createMultiplePlansApiUri;
+		$this->_updatePlanApiUri = $updatePlanApiUri;
 	}
-
 }

@@ -57,4 +57,25 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
+    public function updatePlan(RequestModels\PlanUpdate $requestModel)
+    {
+
+        $recurringPaymentMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0],
+
+        );
+        
+        $updatePlanUri = $this->_apiUrl->getUpdatePlanApiUri().'/'.$requestModel->getPlanId();
+        $processCharge = \com\checkout\helpers\ApiHttpClient::putRequest($updatePlanUri,
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+
+        $responseModel = new  \com\checkout\ApiServices\SharedModels\OkResponse($processCharge);
+
+        return $responseModel;
+    }
+
 }
