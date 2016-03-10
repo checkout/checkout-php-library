@@ -73,10 +73,80 @@ class RecurringPaymentMapper
                 $requestSinglePaymentPlan['recurringCount'] = $recurringCount;
             }
 
+            $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
+
+            if(method_exists($requestModel,'getBaseCardCreate') ) {
+                $cardBase = $requestModel->getBaseCardCreate ();
+                if ( $billingAddress = $cardBase->getBillingDetails () ) {
+                    $billingAddressConfig = array (
+                        'addressLine1' => $billingAddress->getAddressLine1 () ,
+                        'addressLine2' => $billingAddress->getAddressLine2 () ,
+                        'postcode'     => $billingAddress->getPostcode () ,
+                        'country'      => $billingAddress->getCountry () ,
+                        'city'         => $billingAddress->getCity () ,
+                        'state'        => $billingAddress->getState () ,
+                    );
+                    if($billingAddress->getPhone () != null){
+                      $billingAddressConfig = array_merge_recursive ( $billingAddressConfig , 
+                          array (
+                            'phone' => $billingAddress->getPhone()->getPhoneDetails() 
+                          )
+                      );
+                    }
+                    $requestPayload[ 'card' ][ 'billingDetails' ] = $billingAddressConfig;
+                }
+
+                if ( $name = $cardBase->getName () ) {
+                    $requestPayload[ 'card' ][ 'name' ] = $name;
+                }
+
+                if ( $number = $cardBase->getNumber () ) {
+                    $requestPayload[ 'card' ][ 'number' ] = $number;
+                }
+
+                if ( $expiryMonth = $cardBase->getExpiryMonth () ) {
+                    $requestPayload[ 'card' ][ 'expiryMonth' ] = $expiryMonth;
+                }
+
+                if ( $expiryYear = $cardBase->getExpiryYear () ) {
+                    $requestPayload[ 'card' ][ 'expiryYear' ] = $expiryYear;
+                }
+
+                if ( $cvv = $cardBase->getCvv () ) {
+                    $requestPayload[ 'card' ][ 'cvv' ] = $cvv;
+                }
+            }
+
+            if(method_exists($requestModel,'getBaseChargeCreate') ) {
+                $chargeBase = $requestModel->getBaseChargeCreate ();
+
+                if ( $email = $chargeBase->getEmail () ) {
+                    $requestPayload[ 'email' ] = $email;
+                }
+
+                if ( $description = $chargeBase->getDescription () ) {
+                    $requestPayload[ 'description' ] = $description;
+                }
+
+                if ( $value = $chargeBase->getValue () ) {
+                    $requestPayload[ 'value' ] = $value;
+                }
+
+                if ( $currency = $chargeBase->getCurrency () ) {
+                    $requestPayload[ 'currency' ] = $currency;
+                }
+
+                if ( $trackId = $chargeBase->getTrackId () ) {
+                    $requestPayload[ 'trackId' ] = $trackId;
+                }
+            }
+
+            if(method_exists($requestModel,'getTransactionIndicator') && ($transactionIndicator = $requestModel->getTransactionIndicator())) {
+                $requestPayload['transactionIndicator'] = $transactionIndicator;
+            }
+
         }
 
-
-        $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
 
         return $requestPayload;
     }

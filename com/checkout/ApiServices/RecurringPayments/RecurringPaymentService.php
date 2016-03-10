@@ -112,4 +112,24 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
+
+    public function createPlanWithCharge(RequestModels\PlanWithChargeCreate $requestModel)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
 }
