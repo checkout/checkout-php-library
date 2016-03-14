@@ -604,20 +604,6 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected function _setCard ( $card )
 	{
 		$cardObg = new \com\checkout\ApiServices\Cards\ResponseModels\Card($card);
-		$billingDetails  = new \com\checkout\ApiServices\SharedModels\Address();
-		$billingAddress = $card->getBillingDetails();
-		$phone  = new \com\checkout\ApiServices\SharedModels\Phone();
-		$billingDetails->setAddressLine1($billingAddress->getAddressLine1());
-		$billingDetails->setAddressLine2($billingAddress->getAddressLine2());
-		$billingDetails->setPostcode($billingAddress->getPostcode());
-		$billingDetails->setCountry($billingAddress->getCountry());
-		$billingDetails->setCity($billingAddress->getCity());
-		$billingDetails->setState($billingAddress->getState());
-
-		$phone->setNumber($billingAddress->getPhone()->getNumber());
-		$billingDetails->setPhone($phone);
-
-
 		$this->_card = $cardObg;
 	}
 

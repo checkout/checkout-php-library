@@ -33,7 +33,12 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
         parent::__construct($response);
 		$this->_setAuthCode ( $response->getAuthCode() );
 		$this->_setAvsCheck ( $response->getAvsCheck() );
-		$this->_setBillingDetails ( $response->getBillingDetails() );
+
+		if (!empty($response->getBillingDetails()))
+		{
+			$this->_setBillingDetails ( $response->getBillingDetails() );
+		}
+
 		$this->_setCustomerId ( $response->getCustomerId() );
 		$this->_setCvcCheck ( $response->getCvcCheck() );
 		$this->_setDefaultCard ( $response->getDefaultCard() );
