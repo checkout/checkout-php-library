@@ -78,7 +78,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
-    public function deletePlan($planId)
+    public function cancelPlan($planId)
     {
 
         $requestPayload = array (
@@ -86,8 +86,8 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
             'mode'          => $this->_apiSetting->getMode(),
 
         );
-        $deletePlanUri = $this->_apiUrl->getRecurringPaymentsApiUri().'/'.$planId;
-        $processCharge = \com\checkout\helpers\ApiHttpClient::deleteRequest($deletePlanUri,
+        $cancelPlanUri = $this->_apiUrl->getRecurringPaymentsApiUri().'/'.$planId;
+        $processCharge = \com\checkout\helpers\ApiHttpClient::deleteRequest($cancelPlanUri,
             $this->_apiSetting->getSecretKey(),$requestPayload);
 
         $responseModel = new \com\checkout\ApiServices\SharedModels\OkResponse($processCharge);
@@ -114,6 +114,26 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
 
 
     public function createPlanWithCharge(RequestModels\PlanWithChargeCreate $requestModel)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createFromExistingPlanWithCharge(RequestModels\PlanWithChargeCreate $requestModel)
     {
 
         $chargeMapper = new RecurringPaymentMapper($requestModel);
