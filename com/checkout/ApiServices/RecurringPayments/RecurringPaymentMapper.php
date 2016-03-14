@@ -73,6 +73,14 @@ class RecurringPaymentMapper
                 $requestSinglePaymentPlan['recurringCount'] = $recurringCount;
             }
 
+            if(method_exists($requestModel,'getPlanId') && ($planId = $requestModel->getPlanId())) {
+                $requestSinglePaymentPlan['planId'] = $planId;
+            }
+
+            if(method_exists($requestModel,'getStartDate') && ($startDate = $requestModel->getStartDate())) {
+                $requestSinglePaymentPlan['startDate'] = $startDate;
+            }
+
             $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
 
             if(method_exists($requestModel,'getBaseCardCreate') ) {
@@ -144,6 +152,7 @@ class RecurringPaymentMapper
             if(method_exists($requestModel,'getTransactionIndicator') && ($transactionIndicator = $requestModel->getTransactionIndicator())) {
                 $requestPayload['transactionIndicator'] = $transactionIndicator;
             }
+
 
         }
 

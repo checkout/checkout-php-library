@@ -178,4 +178,31 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
+
+    public function createFromMultipleExistingPlansWithCharge($plansArray)
+    {
+        $temporaryArray;
+
+        foreach($plansArray as $singlePlan)
+        {
+            $recurringPaymentMapper = new RecurringPaymentMapper($singlePlan);
+            $temporaryArray[] = $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0];
+        }
+
+        $arrayToSubmit['paymentPlans'] = $temporaryArray;
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $arrayToSubmit,
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
 }
