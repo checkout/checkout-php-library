@@ -17,7 +17,7 @@ class PlanUpdate extends BaseRecurringPayment
 	}
 
 	/**
-	 * @param mixed $customerId
+	 * @param mixed $planId
 	 */
 	public function setPlanId ( $planId )
 	{

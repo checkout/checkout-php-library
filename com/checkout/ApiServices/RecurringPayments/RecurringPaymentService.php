@@ -159,7 +159,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     }
 
 
-    public function createFromExistingPlanWithCharge(RequestModels\PlanWithChargeCreate $requestModel)
+    public function createFromExistingPlanWithCharge(RequestModels\CustomerPlanFromExistingCreate $requestModel)
     {
 
         $chargeMapper = new RecurringPaymentMapper($requestModel);
