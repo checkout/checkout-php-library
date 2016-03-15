@@ -79,6 +79,34 @@ class RecurringPaymentQueryMapper
             if(method_exists($requestModel,'getStatus') && ($status = $requestModel->getStatus())) {
                 $requestQuery['status'] = $status;
             }
+
+            if(method_exists($requestModel,'getPlanId') && ($planId = $requestModel->getPlanId())) {
+                $requestQuery['planId'] = $planId;
+            }
+
+            if(method_exists($requestModel,'getCardId') && ($cardId = $requestModel->getCardId())) {
+                $requestQuery['cardId'] = $cardId;
+            }
+
+            if(method_exists($requestModel,'getCustomerId') && ($customerId = $requestModel->getCustomerId())) {
+                $requestQuery['customerId'] = $customerId;
+            }
+
+            if(method_exists($requestModel,'getCurrency') && ($currency = $requestModel->getCurrency())) {
+                $requestQuery['currency'] = $currency;
+            }
+
+            if(method_exists($requestModel,'getCycle') && ($cycle = $requestModel->getCycle())) {
+                $requestQuery['cycle'] = $cycle;
+            }
+
+            if(method_exists($requestModel,'getStartDate') && ($startDate = $requestModel->getStartDate())) {
+                $requestQuery['startDate'] = $startDate;
+            }
+
+            if(method_exists($requestModel,'getNextRecurringDate') && ($nextRecurringDate = $requestModel->getNextRecurringDate())) {
+                $requestQuery['nextRecurringDate'] = $nextRecurringDate;
+            }
         }
 
         return $requestQuery;

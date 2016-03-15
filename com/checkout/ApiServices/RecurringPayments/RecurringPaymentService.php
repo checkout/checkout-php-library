@@ -304,4 +304,23 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
+
+    public function queryCustomerPlan(RequestModels\QueryCustomerPlan $requestModel) {
+        $queryMapper    = new RecurringPaymentQueryMapper($requestModel);
+        $queryUri       = $this->_apiUrl->getRecurringPaymentsCustomersQueryApiUri();
+        $secretKey          = $this->_apiSetting->getSecretKey();
+
+        $requestQuery   = array (
+            'authorization' => $secretKey,
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $queryMapper->requestQueryConverter(),
+
+        );
+
+        $processQuery   = \com\checkout\helpers\ApiHttpClient::postRequest($queryUri, $secretKey, $requestQuery);
+        $responseModel      = new ResponseModels\PaymentPlanList($processQuery);
+
+        return $responseModel;
+    }
+
 }
