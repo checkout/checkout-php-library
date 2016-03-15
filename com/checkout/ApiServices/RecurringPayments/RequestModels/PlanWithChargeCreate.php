@@ -83,6 +83,22 @@ class PlanWithChargeCreate extends BaseRecurringPayment
 	/**
 	 * @return mixed
 	 */
+	public function getDescription ()
+	{
+		return $this->_description;
+	}
+
+	/**
+	 * @param mixed $description
+	 */
+	public function setDescription ( $description )
+	{
+		$this->_description = $description;
+	}
+
+	/**
+	 * @return mixed
+	 */
 	public function getBaseCardCreate ()
 	{
 		return $this->_baseCardCreate;

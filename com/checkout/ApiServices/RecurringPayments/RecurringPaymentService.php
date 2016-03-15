@@ -134,8 +134,17 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
 
     public function createMultiplePlansWithCharge($plansArray)
     {
-        $temporaryArray;
+        $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
+        
+        $arrayToSubmit['email'] = $chargeMapper->requestPayloadConverter()['email'];
+        $arrayToSubmit['description'] = $chargeMapper->requestPayloadConverter()['description'];
+        $arrayToSubmit['value'] = $chargeMapper->requestPayloadConverter()['value'];
+        $arrayToSubmit['currency'] = $chargeMapper->requestPayloadConverter()['currency'];
+        $arrayToSubmit['trackId'] = $chargeMapper->requestPayloadConverter()['trackId'];
+        $arrayToSubmit['transactionIndicator'] = $chargeMapper->requestPayloadConverter()['transactionIndicator'];
+        $arrayToSubmit['card'] = $chargeMapper->requestPayloadConverter()['card'];
 
+        $temporaryArray;
         foreach($plansArray as $singlePlan)
         {
             $recurringPaymentMapper = new RecurringPaymentMapper($singlePlan);
@@ -181,8 +190,17 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
 
     public function createFromMultipleExistingPlansWithCharge($plansArray)
     {
-        $temporaryArray;
+        $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
 
+        $arrayToSubmit['email'] = $chargeMapper->requestPayloadConverter()['email'];
+        $arrayToSubmit['description'] = $chargeMapper->requestPayloadConverter()['description'];
+        $arrayToSubmit['value'] = $chargeMapper->requestPayloadConverter()['value'];
+        $arrayToSubmit['currency'] = $chargeMapper->requestPayloadConverter()['currency'];
+        $arrayToSubmit['trackId'] = $chargeMapper->requestPayloadConverter()['trackId'];
+        $arrayToSubmit['transactionIndicator'] = $chargeMapper->requestPayloadConverter()['transactionIndicator'];
+        $arrayToSubmit['card'] = $chargeMapper->requestPayloadConverter()['card'];
+
+        $temporaryArray;
         foreach($plansArray as $singlePlan)
         {
             $recurringPaymentMapper = new RecurringPaymentMapper($singlePlan);
