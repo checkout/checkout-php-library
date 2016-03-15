@@ -10,6 +10,7 @@ class BaseRecurringPayment
 	protected $_value;
 	protected $_cycle;
 	protected $_recurringCount;
+	protected $_status;
     
 
 	/**
@@ -124,6 +125,20 @@ class BaseRecurringPayment
 		$this->_recurringCount = $recurringCount;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getStatus ()
+	{
+		return $this->_status;
+	}
 
+	/**
+	 * @param mixed $recurringCount
+	 */
+	public function setStatus ( $status )
+	{
+		$this->_status = $status;
+	}
 
 }

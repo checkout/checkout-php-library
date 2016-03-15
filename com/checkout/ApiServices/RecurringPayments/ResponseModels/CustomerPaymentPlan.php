@@ -1,6 +1,6 @@
 <?php
 
-namespace com\checkout\ApiServices\SharedModels;
+namespace com\checkout\ApiServices\RecurringPayments\ResponseModels;
 
 class CustomerPaymentPlan extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
@@ -23,6 +23,30 @@ class CustomerPaymentPlan extends \com\checkout\ApiServices\SharedModels\BaseHtt
 	protected $_previousRecurringDate;
 	protected $_nextRecurringDate;
 
+
+	public function __construct($response)
+	{
+        parent::__construct($response);
+
+        $this->setObject ( $response->getObject() );
+        $this->setPlanId ( $response->getPlanId() );
+        $this->setName ( $response->getName() );
+        $this->setPlanTrackId ( $response->getPlanTrackId() );
+        $this->setAutoCapTime ( $response->getAutoCapTime() );
+        $this->setCurrency ( $response->getCurrency() );
+        $this->setValue ( $response->getValue() );
+        $this->setCycle ( $response->getCycle() );
+        $this->setRecurringCount ( $response->getRecurringCount() );
+        $this->setStatus ( $response->getStatus() );
+        $this->setCustomerPlanId ( $response->getCustomerPlanId() );
+        $this->setRecurringCountLeft ( $response->getRecurringCountLeft() );
+        $this->setTotalCollectedValue ( $response->getTotalCollectedValue() );
+        $this->setTotalCollectedCount ( $response->getTotalCollectedCount() );
+        $this->setStartDate ( $response->getStartDate() );
+        $this->setPreviousRecurringDate ( $response->getPreviousRecurringDate() );
+        $this->setNextRecurringDate ( $response->getNextRecurringDate() );
+
+	}
 
 	/**
 	 * @return mixed

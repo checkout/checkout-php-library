@@ -24,6 +24,7 @@ class ApiUrls
     private $_voidChargesApiUri 		= null;
 	private $_queryTransactionApiUri 	= null;
 	private $_recurringPaymentsApiUri	= null;
+	private $_recurringPaymentsCustomersApiUri	= null;
 
 
 	public function __construct()
@@ -418,6 +419,27 @@ class ApiUrls
 	public function setRecurringPaymentsApiUri ( $recurringPaymentsApiUri )
 	{
 		$this->_recurringPaymentsApiUri = $recurringPaymentsApiUri;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRecurringPaymentsCustomersApiUri ()
+	{
+
+		if(!$this->_recurringPaymentsCustomersApiUri) {
+			$this->setRecurringPaymentsCustomersApiUri($this->getBaseApiUri()."/recurringPayments/customers");
+		}
+
+		return $this->_recurringPaymentsCustomersApiUri;
+	}
+
+	/**
+	 * @param string $recurringPaymentsApiUri
+	 */
+	public function setRecurringPaymentsCustomersApiUri ( $recurringPaymentsCustomersApiUri )
+	{
+		$this->_recurringPaymentsCustomersApiUri = $recurringPaymentsCustomersApiUri;
 	}
 
 }

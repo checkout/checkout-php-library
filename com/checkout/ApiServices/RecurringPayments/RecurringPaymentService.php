@@ -32,6 +32,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
 
     public function createMultiplePlans($plansArray)
     {
+
         $temporaryArray;
 
         foreach($plansArray as $singlePlan)
@@ -107,7 +108,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         $processCharge = \com\checkout\helpers\ApiHttpClient::getRequest($getPlanUri,
             $this->_apiSetting->getSecretKey(),$requestPayload);
 
-        $responseModel = new \com\checkout\ApiServices\SharedModels\PaymentPlan($processCharge);
+        $responseModel = new \com\checkout\ApiServices\RecurringPayments\ResponseModels\PaymentPlan($processCharge);
 
         return $responseModel;
     }
@@ -134,8 +135,9 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
 
     public function createMultiplePlansWithCharge($plansArray)
     {
+
         $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
-        
+
         $arrayToSubmit['email'] = $chargeMapper->requestPayloadConverter()['email'];
         $arrayToSubmit['description'] = $chargeMapper->requestPayloadConverter()['description'];
         $arrayToSubmit['value'] = $chargeMapper->requestPayloadConverter()['value'];
@@ -190,6 +192,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
 
     public function createFromMultipleExistingPlansWithCharge($plansArray)
     {
+
         $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
 
         $arrayToSubmit['email'] = $chargeMapper->requestPayloadConverter()['email'];
@@ -219,6 +222,65 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
             $this->_apiSetting->getSecretKey(),$requestPayload);
       
         $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function updateCustomerPlan(RequestModels\CustomerPlanUpdate $requestModel)
+    {
+
+        $recurringPaymentMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0],
+
+        );
+        
+        $updatePlanUri = $this->_apiUrl->getRecurringPaymentsCustomersApiUri().'/'.$requestModel->getCustomerPlanId();
+        $processCharge = \com\checkout\helpers\ApiHttpClient::putRequest($updatePlanUri,
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+
+        $responseModel = new  \com\checkout\ApiServices\SharedModels\OkResponse($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function cancelCustomerPlan($customerPlanId)
+    {
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+
+        );
+        $cancelPlanUri = $this->_apiUrl->getRecurringPaymentsCustomersApiUri().'/'.$customerPlanId;
+        $processCharge = \com\checkout\helpers\ApiHttpClient::deleteRequest($cancelPlanUri,
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+
+        $responseModel = new \com\checkout\ApiServices\SharedModels\OkResponse($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function getCustomerPlan($customerPlanId)
+    {
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+
+        );
+        $getPlanUri = $this->_apiUrl->getRecurringPaymentsCustomersApiUri().'/'.$customerPlanId;
+        $processCharge = \com\checkout\helpers\ApiHttpClient::getRequest($getPlanUri,
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+        echo $getPlanUri;
+        
+        $responseModel = new \com\checkout\ApiServices\RecurringPayments\ResponseModels\CustomerPaymentPlan($processCharge);
 
         return $responseModel;
     }

@@ -16,6 +16,23 @@ class PaymentPlan extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	protected $_recurringCount;
 	protected $_status;
 
+	public function __construct($response)
+	{
+        parent::__construct($response);
+
+        $this->setObject ( $response->getObject() );
+        $this->setPlanId ( $response->getPlanId() );
+        $this->setName ( $response->getName() );
+        $this->setPlanTrackId ( $response->getPlanTrackId() );
+        $this->setAutoCapTime ( $response->getAutoCapTime() );
+        $this->setCurrency ( $response->getCurrency() );
+        $this->setValue ( $response->getValue() );
+        $this->setCycle ( $response->getCycle() );
+        $this->setRecurringCount ( $response->getRecurringCount() );
+        $this->setStatus ( $response->getStatus() );
+
+	}
+
 
 	/**
 	 * @return mixed

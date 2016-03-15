@@ -81,6 +81,14 @@ class RecurringPaymentMapper
                 $requestSinglePaymentPlan['startDate'] = $startDate;
             }
 
+            if(method_exists($requestModel,'getStatus') && ($status = $requestModel->getStatus())) {
+                $requestSinglePaymentPlan['status'] = $status;
+            }
+
+            if(method_exists($requestModel,'getCardId') && ($cardId = $requestModel->getCardId())) {
+                $requestSinglePaymentPlan['cardId'] = $cardId;
+            }
+
             $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
 
             if(method_exists($requestModel,'getBaseCardCreate') ) {
