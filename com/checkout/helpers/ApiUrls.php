@@ -23,7 +23,10 @@ class ApiUrls
 	private $_chargeWithPaymentTokenUri = null;
     private $_voidChargesApiUri 		= null;
 	private $_queryTransactionApiUri 	= null;
-
+	private $_recurringPaymentsApiUri	= null;
+	private $_recurringPaymentsQueryApiUri	= null;
+	private $_recurringPaymentsCustomersApiUri	= null;
+	private $_recurringPaymentsCustomersQueryApiUri	= null;
 
 
 	public function __construct()
@@ -398,5 +401,90 @@ class ApiUrls
 	{
 		$this->_updateChargesApiUri = $updateChargesApiUri;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getRecurringPaymentsApiUri ()
+	{
+
+		if(!$this->_recurringPaymentsApiUri) {
+			$this->setRecurringPaymentsApiUri($this->getBaseApiUri()."/recurringPayments/plans");
+		}
+
+		return $this->_recurringPaymentsApiUri;
+	}
+
+	/**
+	 * @param string $recurringPaymentsApiUri
+	 */
+	public function setRecurringPaymentsApiUri ( $recurringPaymentsApiUri )
+	{
+		$this->_recurringPaymentsApiUri = $recurringPaymentsApiUri;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRecurringPaymentsQueryApiUri ()
+	{
+
+		if(!$this->_recurringPaymentsQueryApiUri) {
+			$this->setRecurringPaymentsQueryApiUri($this->getBaseApiUri()."/recurringPayments/plans/search");
+		}
+
+		return $this->_recurringPaymentsQueryApiUri;
+	}
+
+	/**
+	 * @param string $recurringPaymentsApiUri
+	 */
+	public function setRecurringPaymentsQueryApiUri ( $recurringPaymentsQueryApiUri )
+	{
+		$this->_recurringPaymentsQueryApiUri = $recurringPaymentsQueryApiUri;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRecurringPaymentsCustomersApiUri ()
+	{
+
+		if(!$this->_recurringPaymentsCustomersApiUri) {
+			$this->setRecurringPaymentsCustomersApiUri($this->getBaseApiUri()."/recurringPayments/customers");
+		}
+
+		return $this->_recurringPaymentsCustomersApiUri;
+	}
+
+	/**
+	 * @param string $recurringPaymentsCustomersApiUri
+	 */
+	public function setRecurringPaymentsCustomersApiUri ( $recurringPaymentsCustomersApiUri )
+	{
+		$this->_recurringPaymentsCustomersApiUri = $recurringPaymentsCustomersApiUri;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRecurringPaymentsCustomersQueryApiUri ()
+	{
+
+		if(!$this->_recurringPaymentsCustomersQueryApiUri) {
+			$this->setRecurringPaymentsCustomersQueryApiUri($this->getBaseApiUri()."/recurringPayments/customers/search");
+		}
+
+		return $this->_recurringPaymentsCustomersQueryApiUri;
+	}
+
+	/**
+	 * @param string $recurringPaymentsApiUri
+	 */
+	public function setRecurringPaymentsCustomersQueryApiUri ( $recurringPaymentsCustomersQueryApiUri )
+	{
+		$this->_recurringPaymentsCustomersQueryApiUri = $recurringPaymentsCustomersQueryApiUri;
+	}
+
 
 }

@@ -45,6 +45,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
     protected $_transactionIndicator;
     protected $_originalId;
 	protected $_response = null;
+	protected $_customerPaymentPlans;
 
 
 	public function __construct($response)
@@ -114,6 +115,10 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
         if($response->getOriginalId()) {
             $this->_originalId = $response->getOriginalId ();
         }
+
+        if($response->getCustomerPaymentPlans()) {
+			$this->_setCustomerPaymentPlans ( $response->getCustomerPaymentPlans () );
+		}
 
 		$this->_setResponse ( $response->getResponse());
 	}
@@ -398,6 +403,15 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_metadata;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCustomerPaymentPlans ()
+	{
+		return $this->_customerPaymentPlans;
+	}
+
 	/**
 	 * @param mixed $object
 	 */
@@ -604,20 +618,6 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected function _setCard ( $card )
 	{
 		$cardObg = new \com\checkout\ApiServices\Cards\ResponseModels\Card($card);
-		$billingDetails  = new \com\checkout\ApiServices\SharedModels\Address();
-		$billingAddress = $card->getBillingDetails();
-		$phone  = new \com\checkout\ApiServices\SharedModels\Phone();
-		$billingDetails->setAddressLine1($billingAddress->getAddressLine1());
-		$billingDetails->setAddressLine2($billingAddress->getAddressLine2());
-		$billingDetails->setPostcode($billingAddress->getPostcode());
-		$billingDetails->setCountry($billingAddress->getCountry());
-		$billingDetails->setCity($billingAddress->getCity());
-		$billingDetails->setState($billingAddress->getState());
-
-		$phone->setNumber($billingAddress->getPhone()->getNumber());
-		$billingDetails->setPhone($phone);
-
-
 		$this->_card = $cardObg;
 	}
 
@@ -710,4 +710,36 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
     {
         $this->_transactionIndicator = $transactionIndicator;
     }
+
+    /**
+	 * @param mixed $customerPaymentPlans
+	 */
+	protected function _setCustomerPaymentPlans ( $customerPaymentPlans )
+	{
+        $paymentPlansArray = $customerPaymentPlans->toArray();
+		$paymentPlansToReturn = array();
+		if($paymentPlansArray) {
+			foreach($paymentPlansArray as $item){
+				$paymentPlan  = new \com\checkout\ApiServices\SharedModels\CustomerPaymentPlan();
+				$paymentPlan->setPlanId($item['planId']);
+				$paymentPlan->setName($item['name']);
+				$paymentPlan->setPlanTrackId($item['planTrackId']);
+				$paymentPlan->setAutoCapTime($item['autoCapTime']);
+				$paymentPlan->setCurrency($item['currency']);
+				$paymentPlan->setValue($item['value']);
+				$paymentPlan->setRecurringCount($item['recurringCount']);
+				$paymentPlan->setStatus($item['status']);
+				$paymentPlan->setCustomerPlanId($item['customerPlanId']);
+				$paymentPlan->setRecurringCountLeft($item['recurringCountLeft']);
+				$paymentPlan->setTotalCollectedValue($item['totalCollectedValue']);
+				$paymentPlan->setTotalCollectedCount($item['totalCollectedCount']);
+				$paymentPlan->setStartDate($item['startDate']);
+				$paymentPlan->setPreviousRecurringDate($item['previousRecurringDate']);
+				$paymentPlan->setNextRecurringDate($item['nextRecurringDate']);
+				$paymentPlansToReturn[] = $paymentPlan;
+			}
+		}
+
+		$this->_customerPaymentPlans = $paymentPlansToReturn;
+	}
 }

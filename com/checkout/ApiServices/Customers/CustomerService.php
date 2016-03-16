@@ -15,12 +15,12 @@ class CustomerService extends \com\checkout\ApiServices\BaseServices
 	public function createCustomer(RequestModels\CustomerCreate $requestModel)
 	{
 
-		$customrMapper = new CustomerMapper($requestModel);
+		$customerMapper = new CustomerMapper($requestModel);
 
 		$requestPayload = array (
 			'authorization' => $this->_apiSetting->getSecretKey(),
 			'mode'          => $this->_apiSetting->getMode(),
-			'postedParam'   => $customrMapper->requestPayloadConverter(),
+			'postedParam'   => $customerMapper->requestPayloadConverter(),
 
 		);
 
@@ -35,12 +35,12 @@ class CustomerService extends \com\checkout\ApiServices\BaseServices
 	public function updateCustomer(RequestModels\CustomerUpdate $requestModel)
 	{
 
-		$customrMapper = new CustomerMapper($requestModel);
+		$customerMapper = new CustomerMapper($requestModel);
 
 		$requestPayload = array (
 			'authorization' => $this->_apiSetting->getSecretKey(),
 			'mode'          => $this->_apiSetting->getMode(),
-			'postedParam'   => $customrMapper->requestPayloadConverter(),
+			'postedParam'   => $customerMapper->requestPayloadConverter(),
 
 		);
 		$updateCustomerUri = $this->_apiUrl->getCustomersApiUri().'/'.$requestModel->getCustomerId();
