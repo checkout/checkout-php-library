@@ -19,6 +19,9 @@
     "autoload": {
         "psr-4": {
             "com\\checkout\\": "com/checkout"
+        },
+        "psr-0": {
+            "CheckoutApi_": "com/checkout/packages"
         }
     }
 }
