@@ -2,7 +2,7 @@
     "name": "checkout/checkout-php-api",
     "description": "Checkout PHP API Library",
     "homepage": "https://github.com/CKOTech/checkout-php-library",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "type": "library",
     "license": "MIT",
     "keywords": ["checkout.com","payment","gateway","online payment","checkoutcom","GW3","CKO"],
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">5.3.0"
     },
     "autoload": {
         "psr-4": {
