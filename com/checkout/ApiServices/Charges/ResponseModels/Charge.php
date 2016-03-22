@@ -120,6 +120,8 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 			$this->_setCustomerPaymentPlans ( $response->getCustomerPaymentPlans () );
 		}
 
+		$this->json = $response->getRawOutput();
+
 		$this->_setResponse ( $response->getResponse());
 	}
 
