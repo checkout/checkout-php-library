@@ -5,16 +5,12 @@
  * Date: 3/18/2015
  * Time: 11:52 AM
  */
-
 namespace com\checkout\ApiServices\Cards\ResponseModels;
-
-
 class CardList extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
 	private $_object;
 	private $_count;
 	private $_data;
-
 	public function __construct($response)
 	{
         parent::__construct($response);
@@ -29,7 +25,10 @@ class CardList extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	{
 		$this->_count = $count;
 	}
-
+	public function getCount ()
+	{
+        return $this->_count;
+ 	}
 	/**
 	 * @param mixed $data
 	 */
@@ -37,11 +36,13 @@ class CardList extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	{
 		$arrayData = $data->toArray();
 		foreach($arrayData as $card){
-
 			$this->_data[] = $this->getCard($card);
 		}
 	}
-
+	public function getData ()
+	{
+        return $this->_data;
+ 	}
 	/**
 	 * @param mixed $object
 	 */
@@ -49,7 +50,6 @@ class CardList extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	{
 		$this->_object = $object;
 	}
-
 	private function getCard ( $card )
 	{
 		$dummyObjCart = new \CheckoutApi_Lib_RespondObj();
