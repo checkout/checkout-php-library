@@ -34,7 +34,7 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 		$this->_setAuthCode ( $response->getAuthCode() );
 		$this->_setAvsCheck ( $response->getAvsCheck() );
 
-		if (!empty($response->getBillingDetails()))
+		if ($response->getBillingDetails())
 		{
 			$this->_setBillingDetails ( $response->getBillingDetails() );
 		}
