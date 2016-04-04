@@ -18,7 +18,7 @@ final class ApiHttpClient
 			return $temp;
 		}else {
 
-			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
+			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $temp->getErrorMessageCodes ()[0],$temp->getEventId ());
 
 		}
 	}
@@ -36,7 +36,7 @@ final class ApiHttpClient
 		if($temp  && $temp->isValid()) {
 			return $temp;
 		}else {
-			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
+			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $temp->getErrorMessageCodes ()[0],$temp->getEventId ());
  		}
 	}
 
@@ -53,7 +53,7 @@ final class ApiHttpClient
 		if($temp && $temp->isValid()) {
 			return $temp;
 		}else {
-			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
+			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $temp->getErrorMessageCodes ()[0],$temp->getEventId ());
 		}
 	}
 
@@ -71,7 +71,7 @@ final class ApiHttpClient
 		if($temp && $temp->isValid()) {
 			return $temp;
 		}else {
-			throw new \Exception($temp->getExceptionState ()->getErrorMessage ());
+			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $temp->getErrorMessageCodes ()[0],$temp->getEventId ());
 		}
 	}
 }
