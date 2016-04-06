@@ -19,6 +19,7 @@ class ApiUrls
 	private $_captureChargesApiUri      = null;
 	private $_updateChargesApiUri       = null;
 	private $_retrieveChargesApiUri     = null;
+	private $_retrieveChargeHistoryApiUri     = null;
 	private $_verifyChargesApiUri       = null;
 	private $_chargeWithPaymentTokenUri = null;
     private $_voidChargesApiUri 		= null;
@@ -392,6 +393,27 @@ class ApiUrls
 	public function setRetrieveChargesApiUri ( $retrieveChargesApiUri )
 	{
 		$this->_retrieveChargesApiUri = $retrieveChargesApiUri;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRetrieveChargeHistoryApiUri ()
+	{
+
+		if(!$this->_retrieveChargeHistoryApiUri) {
+			$this->setRetrieveChargeHistoryApiUri($this->getBaseApiUri()."/charges/%s/history");
+		}
+
+		return $this->_retrieveChargeHistoryApiUri;
+	}
+
+	/**
+	 * @param string $retrieveChargeHistoryApiUri
+	 */
+	public function setRetrieveChargeHistoryApiUri ( $retrieveChargeHistoryApiUri )
+	{
+		$this->_retrieveChargeHistoryApiUri = $retrieveChargeHistoryApiUri;
 	}
 
 	/**

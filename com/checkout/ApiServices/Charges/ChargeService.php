@@ -282,4 +282,30 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 	}
 
 
+	/**
+	 * retrieve a Charge History With a ChargeId
+	 * @param RequestModels\ChargeRetrieve $requestModel
+	 * @return ResponseModels\Charge
+	 */
+
+	public function getChargeHistory($chargeId)
+	{
+
+
+		$requestPayload = array (
+			'authorization' => $this->_apiSetting->getSecretKey(),
+			'mode'          => $this->_apiSetting->getMode(),
+			'method'         => 'GET',
+		);
+
+		$retrieveChargeHistoryWithChargeUri = sprintf ($this->_apiUrl->getRetrieveChargeHistoryApiUri(),$chargeId);
+
+		$processCharge = \com\checkout\helpers\ApiHttpClient::getRequest($retrieveChargeHistoryWithChargeUri,
+			$this->_apiSetting->getSecretKey(),$requestPayload);
+
+		$responseModel = new ResponseModels\ChargeHistory($processCharge);
+		return $responseModel;
+	}
+
+
 }
