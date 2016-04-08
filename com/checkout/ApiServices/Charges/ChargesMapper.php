@@ -86,29 +86,25 @@ class ChargesMapper
 				$requestPayload['trackId'] = $trackId;
 			}
 
-			if(method_exists($requestModel,'getUdf1') &&$udf1 = $requestModel->getUdf1()) {
+			if(method_exists($requestModel,'getUdf1') && $udf1 = $requestModel->getUdf1()) {
 				$requestPayload['udf1'] = $udf1;
 			}
 
-			if(method_exists($requestModel,'getUdf2') &&$udf2 = $requestModel->getUdf2()) {
+			if(method_exists($requestModel,'getUdf2') && $udf2 = $requestModel->getUdf2()) {
 				$requestPayload['udf2'] = $udf2;
 			}
 
-			if(method_exists($requestModel,'getUdf3') &&$udf3 = $requestModel->getUdf3()) {
+			if(method_exists($requestModel,'getUdf3') && $udf3 = $requestModel->getUdf3()) {
 				$requestPayload['udf3'] = $udf3;
 			}
 
-			if(method_exists($requestModel,'getUdf4') &&$udf4 = $requestModel->getUdf4()) {
+			if(method_exists($requestModel,'getUdf4') && $udf4 = $requestModel->getUdf4()) {
 				$requestPayload['udf4'] = $udf4;
 			}
 
-			if(method_exists($requestModel,'getUdf5') &&$udf5 = $requestModel->getUdf5()) {
+			if(method_exists($requestModel,'getUdf5') && $udf5 = $requestModel->getUdf5()) {
 				$requestPayload['udf5'] = $udf5;
 			}
-
-            if(method_exists($requestModel,'getUdf5') &&$udf5 = $requestModel->getUdf5()) {
-                $requestPayload['udf5'] = $udf5;
-            }
 
             if(method_exists($requestModel,'getAutoCapTime') && $autoCapTime = $requestModel->getAutoCapTime()) {
                 $requestPayload['autoCapTime'] = $autoCapTime;
