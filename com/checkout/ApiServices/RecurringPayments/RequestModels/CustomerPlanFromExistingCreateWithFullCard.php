@@ -3,7 +3,7 @@
 namespace com\checkout\ApiServices\RecurringPayments\RequestModels;
 
 
-class CustomerPlanFromExistingCreate extends PlanWithChargeCreate
+class CustomerPlanFromExistingCreateWithFullCard extends PlanWithFullCardCreate
 {
 
 	private $_planId;

@@ -11,8 +11,8 @@ namespace com\checkout\ApiServices\Charges\RequestModels;
 
 class CardIdChargeCreate extends BaseCharge
 {
-	private $_cardId;
-    private $_cvv;
+	protected $_cardId;
+    protected $_cvv;
     protected $_transactionIndicator;
 
 	/**

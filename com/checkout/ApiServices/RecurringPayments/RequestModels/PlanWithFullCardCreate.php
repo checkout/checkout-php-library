@@ -3,7 +3,7 @@
 namespace com\checkout\ApiServices\RecurringPayments\RequestModels;
 
 
-class PlanWithChargeCreate extends BaseRecurringPayment
+class PlanWithFullCardCreate extends BaseRecurringPayment
 {
 
 	protected $_email;

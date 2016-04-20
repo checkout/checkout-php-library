@@ -89,6 +89,14 @@ class RecurringPaymentMapper
                 $requestSinglePaymentPlan['cardId'] = $cardId;
             }
 
+            if(method_exists($requestModel,'getCvv') && ($cvv = $requestModel->getCvv())) {
+                $requestSinglePaymentPlan['cvv'] = $cvv;
+            }
+
+            if(method_exists($requestModel,'getCardToken') && ($cardToken = $requestModel->getCardToken())) {
+                $requestSinglePaymentPlan['cardToken'] = $cardToken;
+            }
+
             $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
 
             if(method_exists($requestModel,'getBaseCardCreate') ) {
@@ -159,6 +167,14 @@ class RecurringPaymentMapper
 
                     if ( $trackId = $chargeBase->getTrackId () ) {
                         $requestPayload[ 'trackId' ] = $trackId;
+                    }
+
+                    if ( method_exists($chargeBase,'getCardId') && $cardId = $chargeBase->getCardId () ) {
+                        $requestPayload[ 'cardId' ] = $cardId;
+                    }
+
+                    if ( method_exists($chargeBase,'getCardToken') && $cardToken = $chargeBase->getCardToken () ) {
+                        $requestPayload[ 'cardToken' ] = $cardToken;
                     }
                 }
             }
