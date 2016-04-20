@@ -26,12 +26,12 @@ class TokenService extends BaseServices
     {
         $chargeMapper = new ChargesMapper($requestModel);
 
-        $requestPayload = [
+        $requestPayload = array(
             'authorization' => $this->_apiSetting->getSecretKey(),
             'mode' => $this->_apiSetting->getMode(),
             'postedParam' => $chargeMapper->requestPayloadConverter(),
+        );
 
-        ];
         $processCharge = ApiHttpClient::postRequest($this->_apiUrl->getPaymentTokensApiUri(),
             $this->_apiSetting->getSecretKey(), $requestPayload);
 
@@ -48,12 +48,11 @@ class TokenService extends BaseServices
 
         $chargeMapper = new ChargesMapper($requestModel);
 
-        $requestPayload = [
+        $requestPayload = array(
             'authorization' => $this->_apiSetting->getSecretKey(),
             'mode' => $this->_apiSetting->getMode(),
             'postedParam' => $chargeMapper->requestPayloadConverter(),
-
-        ];
+        );
 
         $updateUri = sprintf($this->_apiUrl->getPaymentTokenUpdateApiUri(), $requestModel->getId());
 
