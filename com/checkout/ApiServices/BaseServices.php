@@ -8,53 +8,56 @@
 
 namespace com\checkout\ApiServices;
 
+use com\checkout\helpers\ApiUrls;
+use com\checkout\helpers\AppSetting;
 
 class BaseServices
 {
-	protected $_apiSetting = null;
-	protected $_apiUrl     = null;
+    /** @var AppSetting */
+    protected $_apiSetting = null;
+    /** @var ApiUrls */
+    protected $_apiUrl = null;
 
-	public function __construct(\com\checkout\helpers\AppSetting $apiSetting, \com\checkout\ApiUrls
-	$apiUrl = null)
-	{
+    public function __construct(AppSetting $apiSetting, ApiUrls $apiUrl = null)
+    {
 
-		$this->setApiSetting($apiSetting);
-		if(!$this->getApiUrl() && !$apiUrl) {
-			$apiUrl =  new \com\checkout\helpers\ApiUrls();
-			$apiUrl->setBaseApiUri($apiSetting->getBaseApiUri());
-		}
-		$this->setApiUrl($apiUrl);
-	}
+        $this->setApiSetting($apiSetting);
+        if (!$this->getApiUrl() && !$apiUrl) {
+            $apiUrl = new ApiUrls();
+            $apiUrl->setBaseApiUri($apiSetting->getBaseApiUri());
+        }
+        $this->setApiUrl($apiUrl);
+    }
 
-	/**
-	 * @return \com\checkout\ApiServices\AppApiSetting
-	 */
-	public function getApiSetting ()
-	{
-		return $this->_apiSetting;
-	}
+    /**
+     * @return \com\checkout\helpers\AppSetting
+     */
+    public function getApiSetting()
+    {
+        return $this->_apiSetting;
+    }
 
-	/**
-	 * @param \com\checkout\ApiServices\AppApiSetting  $apiSetting
-	 */
-	public function setApiSetting ( $apiSetting )
-	{
-		$this->_apiSetting = $apiSetting;
-	}
+    /**
+     * @param \com\checkout\helpers\AppSetting $apiSetting
+     */
+    public function setApiSetting($apiSetting)
+    {
+        $this->_apiSetting = $apiSetting;
+    }
 
-	/**
-	 * @return null
-	 */
-	public function getApiUrl ()
-	{
-		return $this->_apiUrl;
-	}
+    /**
+     * @return string
+     */
+    public function getApiUrl()
+    {
+        return $this->_apiUrl;
+    }
 
-	/**
-	 * @param null $apiUrl
-	 */
-	public function setApiUrl ( $apiUrl )
-	{
-		$this->_apiUrl = $apiUrl;
-	}
+    /**
+     * @param string $apiUrl
+     */
+    public function setApiUrl($apiUrl)
+    {
+        $this->_apiUrl = $apiUrl;
+    }
 }

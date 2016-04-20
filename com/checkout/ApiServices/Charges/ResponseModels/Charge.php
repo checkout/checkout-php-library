@@ -130,7 +130,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->_response = $response;
 	}
 
-	public function getResponse($response)
+	public function getResponse()
 	{
 		return $this->_response;
 	}
@@ -205,7 +205,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_email;
 	}
-  
+
     /**
 	 * @return mixed
 	 */
@@ -213,7 +213,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_customerIp;
 	}
-    
+
     /**
 	 * @return mixed
 	 */
@@ -470,7 +470,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		$this->_email = $email;
 	}
-    
+
     /**
 	 * @param mixed $customerIp
 	 */
@@ -478,7 +478,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		$this->_customerIp = $customerIp;
 	}
-    
+
     /**
 	 * @param mixed $chargeMode
 	 */
