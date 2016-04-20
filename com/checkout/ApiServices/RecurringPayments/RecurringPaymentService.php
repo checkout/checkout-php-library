@@ -114,7 +114,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     }
 
 
-    public function createPlanWithCharge(RequestModels\PlanWithChargeCreate $requestModel)
+    public function createPlanWithFullCard(RequestModels\PlanWithFullCardCreate $requestModel)
     {
 
         $chargeMapper = new RecurringPaymentMapper($requestModel);
@@ -133,7 +133,8 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
-    public function createMultiplePlansWithCharge($plansArray)
+
+    public function createMultiplePlansWithFullCard($plansArray)
     {
 
         $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
@@ -170,7 +171,121 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     }
 
 
-    public function createFromExistingPlanWithCharge(RequestModels\CustomerPlanFromExistingCreate $requestModel)
+    public function createPlanWithCardId(RequestModels\PlanWithCardIdCreate $requestModel)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createMultiplePlansWithCardId($plansArray)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
+
+        $arrayToSubmit['email'] = $chargeMapper->requestPayloadConverter()['email'];
+        $arrayToSubmit['description'] = $chargeMapper->requestPayloadConverter()['description'];
+        $arrayToSubmit['value'] = $chargeMapper->requestPayloadConverter()['value'];
+        $arrayToSubmit['currency'] = $chargeMapper->requestPayloadConverter()['currency'];
+        $arrayToSubmit['trackId'] = $chargeMapper->requestPayloadConverter()['trackId'];
+        $arrayToSubmit['transactionIndicator'] = $chargeMapper->requestPayloadConverter()['transactionIndicator'];
+        $arrayToSubmit['cardId'] = $chargeMapper->requestPayloadConverter()['cardId'];
+
+        $temporaryArray;
+        foreach($plansArray as $singlePlan)
+        {
+            $recurringPaymentMapper = new RecurringPaymentMapper($singlePlan);
+            $temporaryArray[] = $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0];
+        }
+
+        $arrayToSubmit['paymentPlans'] = $temporaryArray;
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $arrayToSubmit,
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createPlanWithCardToken(RequestModels\PlanWithCardTokenCreate $requestModel)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardTokensApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createMultiplePlansWithCardToken($plansArray)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
+
+        $arrayToSubmit['email'] = $chargeMapper->requestPayloadConverter()['email'];
+        $arrayToSubmit['description'] = $chargeMapper->requestPayloadConverter()['description'];
+        $arrayToSubmit['value'] = $chargeMapper->requestPayloadConverter()['value'];
+        $arrayToSubmit['currency'] = $chargeMapper->requestPayloadConverter()['currency'];
+        $arrayToSubmit['trackId'] = $chargeMapper->requestPayloadConverter()['trackId'];
+        $arrayToSubmit['transactionIndicator'] = $chargeMapper->requestPayloadConverter()['transactionIndicator'];
+        $arrayToSubmit['cardToken'] = $chargeMapper->requestPayloadConverter()['cardToken'];
+
+        $temporaryArray;
+        foreach($plansArray as $singlePlan)
+        {
+            $recurringPaymentMapper = new RecurringPaymentMapper($singlePlan);
+            $temporaryArray[] = $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0];
+        }
+
+        $arrayToSubmit['paymentPlans'] = $temporaryArray;
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $arrayToSubmit,
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardTokensApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createFromExistingPlanWithCharge(RequestModels\CustomerPlanFromExistingCreateWithCharge $requestModel)
     {
 
         $chargeMapper = new RecurringPaymentMapper($requestModel);
@@ -219,6 +334,121 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
 
         );
         $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createFromExistingPlanWithCardId(RequestModels\CustomerPlanFromExistingCreateWithCardId $requestModel)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createFromMultipleExistingPlansWithCardId($plansArray)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
+
+        $arrayToSubmit['email'] = $chargeMapper->requestPayloadConverter()['email'];
+        $arrayToSubmit['description'] = $chargeMapper->requestPayloadConverter()['description'];
+        $arrayToSubmit['value'] = $chargeMapper->requestPayloadConverter()['value'];
+        $arrayToSubmit['currency'] = $chargeMapper->requestPayloadConverter()['currency'];
+        $arrayToSubmit['trackId'] = $chargeMapper->requestPayloadConverter()['trackId'];
+        $arrayToSubmit['transactionIndicator'] = $chargeMapper->requestPayloadConverter()['transactionIndicator'];
+        $arrayToSubmit['cvv'] = $chargeMapper->requestPayloadConverter()['cvv'];
+        $arrayToSubmit['cardId'] = $chargeMapper->requestPayloadConverter()['cardId'];
+
+        $temporaryArray;
+        foreach($plansArray as $singlePlan)
+        {
+            $recurringPaymentMapper = new RecurringPaymentMapper($singlePlan);
+            $temporaryArray[] = $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0];
+        }
+
+        $arrayToSubmit['paymentPlans'] = $temporaryArray;
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $arrayToSubmit,
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardChargesApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createFromExistingPlanWithCardToken(RequestModels\CustomerPlanFromExistingCreateWithCardToken $requestModel)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardTokensApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createFromMultipleExistingPlansWithCardToken($plansArray)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
+
+        $arrayToSubmit['email'] = $chargeMapper->requestPayloadConverter()['email'];
+        $arrayToSubmit['description'] = $chargeMapper->requestPayloadConverter()['description'];
+        $arrayToSubmit['value'] = $chargeMapper->requestPayloadConverter()['value'];
+        $arrayToSubmit['currency'] = $chargeMapper->requestPayloadConverter()['currency'];
+        $arrayToSubmit['trackId'] = $chargeMapper->requestPayloadConverter()['trackId'];
+        $arrayToSubmit['transactionIndicator'] = $chargeMapper->requestPayloadConverter()['transactionIndicator'];
+        $arrayToSubmit['cardToken'] = $chargeMapper->requestPayloadConverter()['cardToken'];
+
+        $temporaryArray;
+        foreach($plansArray as $singlePlan)
+        {
+            $recurringPaymentMapper = new RecurringPaymentMapper($singlePlan);
+            $temporaryArray[] = $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0];
+        }
+
+        $arrayToSubmit['paymentPlans'] = $temporaryArray;
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $arrayToSubmit,
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getCardTokensApiUri(),
             $this->_apiSetting->getSecretKey(),$requestPayload);
       
         $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
