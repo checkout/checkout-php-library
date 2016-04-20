@@ -114,7 +114,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     }
 
 
-    public function createPlanWithCharge(RequestModels\PlanWithFullCardCreate $requestModel)
+    public function createPlanWithFullCard(RequestModels\PlanWithFullCardCreate $requestModel)
     {
 
         $chargeMapper = new RecurringPaymentMapper($requestModel);
@@ -134,7 +134,7 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     }
 
 
-    public function createMultiplePlansWithCharge($plansArray)
+    public function createMultiplePlansWithFullCard($plansArray)
     {
 
         $chargeMapper = new RecurringPaymentMapper($plansArray[0]);
