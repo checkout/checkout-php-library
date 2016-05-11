@@ -24,11 +24,10 @@ class CheckoutApi_Lib_RespondObj implements ArrayAccess
      * @example http://php.net/manual/en/language.oop5.overloading.php#object.call
      */
 
-	public function __call($method, $args)
+    public function __call($method, $args)
     {
         switch (substr($method, 0, 3)) {
             case 'get' :
-                
                     $key = substr($method,3);
                     $key = lcfirst($key);
                     $data = $this->getConfig($key, isset($args[0]) ? $args[0] : null);
@@ -60,10 +59,9 @@ class CheckoutApi_Lib_RespondObj implements ArrayAccess
      * @return array|CheckoutApi_Lib_RespondObj|null
      * @throws Exception
      */
-   private function getConfig($key = null) 
+   private function getConfig($key = null, $args = null)
     {
-  
-    	if($key!=null) {
+        if($key!=null) {
 
             $value = null;
             if(isset($this->_config[$key])) {
@@ -73,14 +71,23 @@ class CheckoutApi_Lib_RespondObj implements ArrayAccess
                     $value = $this->_updateConfig[$key];
 
             }
-    		if(is_array($value)) {
+
+            if (isset($args["returnAsArray"]) && $args["returnAsArray"]){
+
+                /** Return the response as an array */
+                if(is_array($value)){
+                    return $value;
+                }
+                
+            }elseif(is_array($value)) {
                 /** @var CheckoutApi_Lib_RespondObj $to_return */
-    			$to_return = CheckoutApi_Lib_Factory::getInstance('CheckoutApi_Lib_RespondObj');
-    			$to_return->setConfig( $value);
-    			return $to_return;
-    		}
-    		return $value;
-    	}
+                $to_return = CheckoutApi_Lib_Factory::getInstance('CheckoutApi_Lib_RespondObj');
+                $to_return->setConfig( $value);
+                return $to_return;
+            }
+
+            return $value;
+        }
 
         if($key == null) {
             return $this->_config;
@@ -97,21 +104,21 @@ class CheckoutApi_Lib_RespondObj implements ArrayAccess
     public function setConfig($config = array()) 
     { 
 
-    	if(is_array($config) ) {
+        if(is_array($config) ) {
 
-    		if(!empty($config)) {
-    			foreach($config as $key=>$value) {
-    				
-    				if(!isset($this->_config[$key])){
-    					$this->_config[$key] = $value;
-    				}
-    			}
-    		}
-    		
-     	} else {
-    		
-    		throw new Exception( "Invalid parameter"."(".print_r($config,1).")");
-    	}
+            if(!empty($config)) {
+                foreach($config as $key=>$value) {
+                    
+                    if(!isset($this->_config[$key])){
+                        $this->_config[$key] = $value;
+                    }
+                }
+            }
+            
+        } else {
+            
+            throw new Exception( "Invalid parameter"."(".print_r($config,1).")");
+        }
 
     }
 
