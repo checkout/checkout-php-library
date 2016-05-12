@@ -8,26 +8,57 @@
 
 namespace com\checkout\ApiServices\Tokens;
 
+use com\checkout\ApiServices\BaseServices;
+use com\checkout\ApiServices\Charges\ChargesMapper;
+use com\checkout\ApiServices\SharedModels\OkResponse;
+use com\checkout\ApiServices\Tokens\RequestModels\PaymentTokenUpdate;
+use com\checkout\helpers\ApiHttpClient;
+use com\checkout\helpers\ApiHttpClientCustomException;
 
-class TokenService extends \com\checkout\ApiServices\BaseServices
+class TokenService extends BaseServices
 {
-	public function createPaymentToken(RequestModels\PaymentTokenCreate $requestModel)
-	{
-		$chargeMapper = new \com\checkout\ApiServices\Charges\ChargesMapper($requestModel);
+    /**
+     * @param RequestModels\PaymentTokenCreate $requestModel
+     * @return ResponseModels\PaymentToken
+     * @throws ApiHttpClientCustomException
+     */
+    public function createPaymentToken(RequestModels\PaymentTokenCreate $requestModel)
+    {
+        $chargeMapper = new ChargesMapper($requestModel);
 
-		$requestPayload = array (
-			'authorization' => $this->_apiSetting->getSecretKey(),
-			'mode'          => $this->_apiSetting->getMode(),
-			'postedParam'   => $chargeMapper->requestPayloadConverter(),
+        $requestPayload = array(
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode' => $this->_apiSetting->getMode(),
+            'postedParam' => $chargeMapper->requestPayloadConverter(),
+        );
 
-		);
-		$processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getPaymentTokensApiUri(),
-			$this->_apiSetting->getSecretKey(),$requestPayload);
+        $processCharge = ApiHttpClient::postRequest($this->_apiUrl->getPaymentTokensApiUri(),
+            $this->_apiSetting->getSecretKey(), $requestPayload);
 
-		$responseModel = new ResponseModels\PaymentToken($processCharge);
+        return new ResponseModels\PaymentToken($processCharge);
+    }
 
-		return $responseModel;
-	}
+    /**
+     * @param PaymentTokenUpdate $requestModel
+     * @return PaymentTokenUpdate
+     * @throws ApiHttpClientCustomException
+     */
+    public function updatePaymentToken(RequestModels\PaymentTokenUpdate $requestModel)
+    {
 
+        $chargeMapper = new ChargesMapper($requestModel);
 
+        $requestPayload = array(
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode' => $this->_apiSetting->getMode(),
+            'postedParam' => $chargeMapper->requestPayloadConverter(),
+        );
+
+        $updateUri = sprintf($this->_apiUrl->getPaymentTokenUpdateApiUri(), $requestModel->getId());
+
+        $processCharge = ApiHttpClient::putRequest($updateUri,
+            $this->_apiSetting->getSecretKey(), $requestPayload);
+
+        return new  OkResponse($processCharge);
+    }
 }
