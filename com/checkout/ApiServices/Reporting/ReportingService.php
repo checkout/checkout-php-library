@@ -31,4 +31,23 @@ class ReportingService extends \com\checkout\ApiServices\BaseServices
         return $responseModel;
     }
 
+
+    ublic function queryChargeback(RequestModels\TransactionFilter $requestModel) {
+        $reportingMapper    = new ReportingMapper($requestModel);
+        $reportingUri       = $this->_apiUrl->getQueryChargebackApiUri();
+        $secretKey          = $this->_apiSetting->getSecretKey();
+
+        $requestReporting   = array (
+            'authorization' => $secretKey,
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $reportingMapper->requestReportingConverter(),
+
+        );
+
+        $processReporting   = \com\checkout\helpers\ApiHttpClient::postRequest($reportingUri, $secretKey, $requestReporting);
+        $responseModel      = new ResponseModels\ChargebackList($processReporting);
+
+        return $responseModel;
+    }
+
 }

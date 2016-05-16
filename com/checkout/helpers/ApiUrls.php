@@ -24,6 +24,7 @@ class ApiUrls
     private $_chargeWithPaymentTokenUri = null;
     private $_voidChargesApiUri = null;
     private $_queryTransactionApiUri = null;
+    private $_queryChargebackApiUri = null;
     private $_recurringPaymentsApiUri = null;
     private $_recurringPaymentsQueryApiUri = null;
     private $_recurringPaymentsCustomersApiUri = null;
@@ -384,6 +385,26 @@ class ApiUrls
     public function setQueryTransactionApiUri($queryTransactionApiUri)
     {
         $this->_queryTransactionApiUri = $queryTransactionApiUri;
+    }
+
+    /**
+     * @return null
+     */
+    public function getQueryChargebackApiUri()
+    {
+        if (!$this->_queryChargebackApiUri) {
+            $this->setQueryChargebackApiUri($this->getBaseApiUri() . "/reporting/chargebacks");
+        }
+
+        return $this->_queryChargebackApiUri;
+    }
+
+    /**
+     * @param $queryChargebackApiUri
+     */
+    public function setQueryChargebackApiUri($queryChargebackApiUri)
+    {
+        $this->_queryChargebackApiUri = $queryChargebackApiUri;
     }
 
     /**

@@ -22,7 +22,7 @@ final class CheckoutApi_Client_Constant
 	const TOKEN_SESSION_TYPE = 'sessionToken';
 	const AUTOCAPUTURE_CAPTURE = 'y';
 	const AUTOCAPUTURE_AUTH = 'n';
-	const VERSION = 'v2';
+	const VERSION = 'v1.2.4';
     const STATUS_CAPTURE = 'Captured';
 
 
