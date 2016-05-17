@@ -29,6 +29,7 @@ class ApiUrls
     private $_recurringPaymentsQueryApiUri = null;
     private $_recurringPaymentsCustomersApiUri = null;
     private $_recurringPaymentsCustomersQueryApiUri = null;
+    private $_visaCheckoutCardTokenApiUri = nul;
 
     public function __construct()
     {
@@ -547,5 +548,26 @@ class ApiUrls
     public function setRecurringPaymentsCustomersQueryApiUri($recurringPaymentsCustomersQueryApiUri)
     {
         $this->_recurringPaymentsCustomersQueryApiUri = $recurringPaymentsCustomersQueryApiUri;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVisaCheckoutCardTokenApiUri()
+    {
+
+        if (!$this->_visaCheckoutCardTokenApiUri) {
+            $this->setVisaCheckoutCardTokenApiUri($this->getBaseApiUri() . "/tokens/card/visa-checkout");
+        }
+
+        return $this->_visaCheckoutCardTokenApiUri;
+    }
+
+    /**
+     * @param string $visaCheckoutCardTokenApiUri
+     */
+    public function setVisaCheckoutCardTokenApiUri($visaCheckoutCardTokenApiUri)
+    {
+        $this->_visaCheckoutCardTokenApiUri = $visaCheckoutCardTokenApiUri;
     }
 }
