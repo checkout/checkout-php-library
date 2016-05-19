@@ -14,6 +14,7 @@ class VisaCheckoutService extends \com\checkout\ApiServices\BaseServices
         $visaCheckoutUri       = $this->_apiUrl->getVisaCheckoutCardTokenApiUri();
         $secretKey          = $this->_apiSetting->getSecretKey();
 
+        // echo var_dump($visaCheckoutUri);
         $requestVisaCheckout   = array (
             'authorization' => $secretKey,
             'mode'          => $this->_apiSetting->getMode(),

@@ -23,7 +23,10 @@ class VisaCheckoutCardToken
 		$this->_setLiveMode ( $response->getLiveMode() );
 		$this->_setObject ( $response->getObject() );
 		$this->_setUsed ( $response->getUsed() );
-		$this->_setBinData ( $response->getBinData() );
+
+		if ($response->getBinData () != null) {
+			$this->_setBinData ( $response->getBinData() );
+		}
 
 	}
 
@@ -34,25 +37,8 @@ class VisaCheckoutCardToken
 	 */
 	private function _setCard ( $card )
 	{
-		$cardObg = new \com\checkout\ApiServices\Cards\ResponseModels\Card();
-		$billingDetails  = new \com\checkout\ApiServices\SharedModels\Address();
-		$billingAddress = $card->getBillingDetails();
-		$billingDetails->setAddressLine1($billingAddress->getAddressLine1());
-		$billingDetails->setAddressLine2($billingAddress->getAddressLine2());
-		$billingDetails->setPostcode($billingAddress->getPostcode());
-		$billingDetails->setCountry($billingAddress->getCountry());
-		$billingDetails->setCity($billingAddress->getCity());
-		$billingDetails->setState($billingAddress->getState());
-		$billingDetails->setPhone($billingAddress->getPhone());
-
-		$cardObg->setId($card->getId());
-		$cardObg->setObject($card->getObject());
-		$cardObg->setName($card->getName());
-		$cardObg->setLast4($card->getLast4());
-		$cardObg->setPaymentMethod($card->getPaymentMethod());
-		$cardObg->setExpiryMonth($card->getExpiryMonth());
-		$cardObg->setExpiryYear($card->getExpiryYear());
-		$cardObg->setBillingDetails($billingDetails);
+		
+		$cardObg = new \com\checkout\ApiServices\Cards\ResponseModels\Card($card);
 		$this->_card = $cardObg;
 
 	}
@@ -160,5 +146,12 @@ class VisaCheckoutCardToken
 		return $this->_used;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getBinData ()
+	{
+		return $this->_binData;
+	}
 
 }

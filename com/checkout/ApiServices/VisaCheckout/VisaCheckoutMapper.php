@@ -52,7 +52,7 @@ class VisaCheckoutMapper
                 $requestVisaCheckout['callId'] = $callId;
             }
 
-            if(method_exists($requestModel,'getIncludeBinData') && ($includeBinData = $includeBinData->getIncludeBinData())) {
+            if(method_exists($requestModel,'getIncludeBinData') && ($includeBinData = $requestModel->getIncludeBinData())) {
                 $requestVisaCheckout['includeBinData'] = $includeBinData;
             }
         }
