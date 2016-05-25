@@ -19,6 +19,7 @@ class BaseChargeInfo extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	protected $_udf4;
 	protected $_udf5;
 	protected $_metadata = array();
+	protected $_descriptor;
 
 	/**
 	 * @return mixed
@@ -151,4 +152,19 @@ class BaseChargeInfo extends \com\checkout\ApiServices\SharedModels\BaseHttp
 		}
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getDescriptor ()
+	{
+		return $this->_descriptor;
+	}
+
+	/**
+	 * @param mixed $descriptor
+	 */
+	public function setDescriptor ( \com\checkout\ApiServices\SharedModels\Descriptor $descriptor )
+	{
+		$this->_descriptor = $descriptor;
+	}
 }
