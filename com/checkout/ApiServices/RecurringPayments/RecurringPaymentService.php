@@ -285,6 +285,26 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     }
 
 
+    public function createPlanWithPaymentToken(RequestModels\PlanWithPaymentTokenCreate $requestModel)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getPaymentTokensApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Tokens\ResponseModels\PaymentToken($processCharge);
+
+        return $responseModel;
+    }
+
+
     public function createFromExistingPlanWithCharge(RequestModels\CustomerPlanFromExistingCreateWithCharge $requestModel)
     {
 
@@ -452,6 +472,26 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
             $this->_apiSetting->getSecretKey(),$requestPayload);
       
         $responseModel = new \com\checkout\ApiServices\Charges\ResponseModels\Charge($processCharge);
+
+        return $responseModel;
+    }
+
+
+    public function createFromExistingPlanWithPaymentToken(RequestModels\CustomerPlanFromExistingCreateWithPaymentToken $requestModel)
+    {
+
+        $chargeMapper = new RecurringPaymentMapper($requestModel);
+
+        $requestPayload = array (
+            'authorization' => $this->_apiSetting->getSecretKey(),
+            'mode'          => $this->_apiSetting->getMode(),
+            'postedParam'   => $chargeMapper->requestPayloadConverter(),
+
+        );
+        $processCharge = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getPaymentTokensApiUri(),
+            $this->_apiSetting->getSecretKey(),$requestPayload);
+      
+        $responseModel = new \com\checkout\ApiServices\Tokens\ResponseModels\PaymentToken($processCharge);
 
         return $responseModel;
     }

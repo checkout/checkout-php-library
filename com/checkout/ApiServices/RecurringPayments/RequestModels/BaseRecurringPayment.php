@@ -134,7 +134,7 @@ class BaseRecurringPayment
 	}
 
 	/**
-	 * @param mixed $recurringCount
+	 * @param mixed $status
 	 */
 	public function setStatus ( $status )
 	{

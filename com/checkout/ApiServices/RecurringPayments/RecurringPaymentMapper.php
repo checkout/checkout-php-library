@@ -97,6 +97,10 @@ class RecurringPaymentMapper
                 $requestSinglePaymentPlan['cardToken'] = $cardToken;
             }
 
+            if(method_exists($requestModel,'getPaymentToken') && ($paymentToken = $requestModel->getPaymentToken())) {
+                $requestSinglePaymentPlan['paymentToken'] = $paymentToken;
+            }
+
             $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
 
             if(method_exists($requestModel,'getBaseCardCreate') ) {
@@ -175,6 +179,10 @@ class RecurringPaymentMapper
 
                     if ( method_exists($chargeBase,'getCardToken') && $cardToken = $chargeBase->getCardToken () ) {
                         $requestPayload[ 'cardToken' ] = $cardToken;
+                    }
+
+                    if( method_exists($chargeBase,'getPaymentToken') && ($paymentToken = $chargeBase->getPaymentToken())) {
+                        $requestPayload['paymentToken'] = $paymentToken;
                     }
                 }
             }
