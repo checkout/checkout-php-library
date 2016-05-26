@@ -240,8 +240,8 @@ class ChargesMapper
 				$requestPayload[ 'cardToken' ] = $cardToken;
 			}
 
-			if(method_exists($requestModel,'getPaymentToken') && $cardToken = $requestModel->getPaymentToken()) {
-				$requestPayload[ 'paymentToken' ] = $cardToken;
+			if(method_exists($requestModel,'getPaymentToken') && $paymentToken = $requestModel->getPaymentToken()) {
+				$requestPayload[ 'paymentToken' ] = $paymentToken;
 			}
 		}
 
