@@ -285,7 +285,7 @@ class ChargeService extends \com\checkout\ApiServices\BaseServices
 	/**
 	 * retrieve a Charge History With a ChargeId
 	 * @param RequestModels\ChargeRetrieve $requestModel
-	 * @return ResponseModels\Charge
+	 * @return ResponseModels\ChargeHistory
 	 */
 
 	public function getChargeHistory($chargeId)

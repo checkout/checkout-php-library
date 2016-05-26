@@ -24,10 +24,12 @@ class ApiUrls
     private $_chargeWithPaymentTokenUri = null;
     private $_voidChargesApiUri = null;
     private $_queryTransactionApiUri = null;
+    private $_queryChargebackApiUri = null;
     private $_recurringPaymentsApiUri = null;
     private $_recurringPaymentsQueryApiUri = null;
     private $_recurringPaymentsCustomersApiUri = null;
     private $_recurringPaymentsCustomersQueryApiUri = null;
+    private $_visaCheckoutCardTokenApiUri = null;
 
     public function __construct()
     {
@@ -387,6 +389,26 @@ class ApiUrls
     }
 
     /**
+     * @return null
+     */
+    public function getQueryChargebackApiUri()
+    {
+        if (!$this->_queryChargebackApiUri) {
+            $this->setQueryChargebackApiUri($this->getBaseApiUri() . "/reporting/chargebacks");
+        }
+
+        return $this->_queryChargebackApiUri;
+    }
+
+    /**
+     * @param $queryChargebackApiUri
+     */
+    public function setQueryChargebackApiUri($queryChargebackApiUri)
+    {
+        $this->_queryChargebackApiUri = $queryChargebackApiUri;
+    }
+
+    /**
      * @param null $voidChargesApiUri
      */
     public function setVoidChargesApiUri($voidChargesApiUri)
@@ -526,5 +548,25 @@ class ApiUrls
     public function setRecurringPaymentsCustomersQueryApiUri($recurringPaymentsCustomersQueryApiUri)
     {
         $this->_recurringPaymentsCustomersQueryApiUri = $recurringPaymentsCustomersQueryApiUri;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVisaCheckoutCardTokenApiUri()
+    {
+        if (!$this->_visaCheckoutCardTokenApiUri) {
+            $this->setVisaCheckoutCardTokenApiUri($this->getBaseApiUri() . "/tokens/card/visa-checkout");
+        }
+
+        return $this->_visaCheckoutCardTokenApiUri;
+    }
+
+    /**
+     * @param string $visaCheckoutCardTokenApiUri
+     */
+    public function setVisaCheckoutCardTokenApiUri($visaCheckoutCardTokenApiUri)
+    {
+        $this->_visaCheckoutCardTokenApiUri = $visaCheckoutCardTokenApiUri;
     }
 }
