@@ -106,6 +106,15 @@ class ChargesMapper
 				$requestPayload['udf5'] = $udf5;
 			}
 
+			if(method_exists($requestModel,'getDescriptor') && $descriptor = $requestModel->getDescriptor()) {
+				$descriptorConfig = array (
+					'name' => $descriptor->getName () ,
+					'city' => $descriptor->getCity () ,
+				);
+
+				$requestPayload['descriptor'] = $descriptorConfig;
+			}
+
             if(method_exists($requestModel,'getAutoCapTime') && $autoCapTime = $requestModel->getAutoCapTime()) {
                 $requestPayload['autoCapTime'] = $autoCapTime;
             }
@@ -129,14 +138,14 @@ class ChargesMapper
 
 				);
                 
-            if ($shippingAddress->getPhone() != null) {
-                $shippingAddressConfig = array_merge_recursive($shippingAddressConfig, array(
-                   'phone' => $shippingAddress->getPhone()->getPhoneDetails()
-                )
-              );
-            }
+	            if ($shippingAddress->getPhone() != null) {
+	                $shippingAddressConfig = array_merge_recursive($shippingAddressConfig, array(
+	                   'phone' => $shippingAddress->getPhone()->getPhoneDetails()
+	                	)
+	              	);
+	           	}
 
-        $requestPayload['shippingDetails'] = $shippingAddressConfig;
+        		$requestPayload['shippingDetails'] = $shippingAddressConfig;
 			}
 
 			if(method_exists($requestModel,'getEmail') && $productsItem =  $requestModel->getProducts()) {
@@ -231,8 +240,8 @@ class ChargesMapper
 				$requestPayload[ 'cardToken' ] = $cardToken;
 			}
 
-			if(method_exists($requestModel,'getPaymentToken') && $cardToken = $requestModel->getPaymentToken()) {
-				$requestPayload[ 'paymentToken' ] = $cardToken;
+			if(method_exists($requestModel,'getPaymentToken') && $paymentToken = $requestModel->getPaymentToken()) {
+				$requestPayload[ 'paymentToken' ] = $paymentToken;
 			}
 		}
 

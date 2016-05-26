@@ -41,6 +41,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_products;
 	protected $_refunds;
 	protected $_localPayment;
+	protected $_descriptor;
 	protected $_metadata;
     protected $_transactionIndicator;
     protected $_originalId;
@@ -84,6 +85,11 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->setUdf3 ( $response->getUdf3());
 		$this->setUdf4 ( $response->getUdf4());
 		$this->setUdf5 ( $response->getUdf5());
+
+		if($response->getDescriptor()) {
+			$this->_setDescriptor ( $response->getDescriptor () );
+		}
+
 		if($response->getMetadata()) {
 			$this->setMetadata ( $response->getMetadata ()->toArray () );
 		}
@@ -130,7 +136,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 		$this->_response = $response;
 	}
 
-	public function getResponse($response)
+	public function getResponse()
 	{
 		return $this->_response;
 	}
@@ -205,7 +211,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_email;
 	}
-  
+
     /**
 	 * @return mixed
 	 */
@@ -213,7 +219,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_customerIp;
 	}
-    
+
     /**
 	 * @return mixed
 	 */
@@ -398,6 +404,16 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
         return $this->_transactionIndicator;
     }
 
+
+    /**
+	 * @return mixed
+	 */
+	public function getDescriptor ()
+	{
+		return $this->_descriptor;
+	}
+
+
 	/**
 	 * @return mixed
 	 */
@@ -470,7 +486,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		$this->_email = $email;
 	}
-    
+
     /**
 	 * @param mixed $customerIp
 	 */
@@ -478,7 +494,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		$this->_customerIp = $customerIp;
 	}
-    
+
     /**
 	 * @param mixed $chargeMode
 	 */
@@ -687,6 +703,17 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected function _setLocalPayment ( $localPayment )
 	{
 		$this->_localPayment = $localPayment;
+	}
+
+	/**
+	 * @param mixed $descriptor
+	 */
+	protected function _setDescriptor ( $descriptor )
+	{
+		$descriptorObj  = new \com\checkout\ApiServices\SharedModels\Descriptor();
+		$descriptorObj->setName($descriptor->getName());
+		$descriptorObj->setCity($descriptor->getCity());
+		$this->_descriptor = $descriptorObj;
 	}
 
 	/**
