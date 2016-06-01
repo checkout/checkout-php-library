@@ -1,5 +1,4 @@
 <?php
-
 /**
  * CheckoutApi_Client_Constant
  * A final class that manage constant value for all CheckoutApi_Client_Client instance
@@ -22,8 +21,7 @@ final class CheckoutApi_Client_Constant
 	const TOKEN_SESSION_TYPE = 'sessionToken';
 	const AUTOCAPUTURE_CAPTURE = 'y';
 	const AUTOCAPUTURE_AUTH = 'n';
-	const VERSION = '1.2.4';
+	const VERSION = 'v2';
     const STATUS_CAPTURE = 'Captured';
-
-
+    const LIB_VERSION = 'v1.2.4';
 }
