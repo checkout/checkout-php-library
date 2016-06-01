@@ -12,7 +12,7 @@ Require the Checkout.com package inside the composer.json of your project:
 ```
 "require": {
                 "php": ">=5.2.4",
-                "checkout/checkout-php-api": "1.2.4"
+                "checkout/checkout-php-api": "1.2.5"
         },
 ```
 __Manually__
