@@ -20,6 +20,7 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	protected $_expiryMonth;
 	protected $_liveMode;
 	protected $_expiryYear;
+	protected $_fingerprint;
 	protected $_billingDetails;
 	protected $_cvcCheck;
 	protected $_avsCheck;
@@ -44,6 +45,7 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 		$this->_setDefaultCard ( $response->getDefaultCard() );
 		$this->_setExpiryMonth ( $response->getExpiryMonth() );
 		$this->_setExpiryYear ( $response->getExpiryYear() );
+		$this->_setFingerprint ( $response->getFingerprint() );
 		$this->_setId ( $response->getId() );
 		$this->_setLast4 ( $response->getLast4() );
 		$this->_setLiveMode ( $response->getLiveMode() );
@@ -120,9 +122,9 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getFingerPrint ()
+	public function getFingerprint ()
 	{
-		return $this->_fingerPrint;
+		return $this->_fingerprint;
 	}
 
 	/**
@@ -261,11 +263,11 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	}
 
 	/**
-	 * @param mixed $fingerPrint
+	 * @param mixed $fingerprint
 	 */
-	private function _setFingerPrint ( $fingerPrint )
+	private function _setFingerprint ( $fingerprint )
 	{
-		$this->_fingerPrint = $fingerPrint;
+		$this->_fingerprint = $fingerprint;
 	}
 
 	/**
