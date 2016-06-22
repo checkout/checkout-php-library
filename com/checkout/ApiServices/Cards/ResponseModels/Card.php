@@ -20,8 +20,9 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	protected $_expiryMonth;
 	protected $_liveMode;
 	protected $_expiryYear;
+	protected $_fingerprint;
 	protected $_billingDetails;
-	protected $_cvcCheck;
+	protected $_cvvCheck;
 	protected $_avsCheck;
 	protected $_responseCode;
 	protected $_authCode;
@@ -40,10 +41,11 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 		}
 
 		$this->_setCustomerId ( $response->getCustomerId() );
-		$this->_setCvcCheck ( $response->getCvcCheck() );
+		$this->_setCvvCheck ( $response->getCvvCheck() );
 		$this->_setDefaultCard ( $response->getDefaultCard() );
 		$this->_setExpiryMonth ( $response->getExpiryMonth() );
 		$this->_setExpiryYear ( $response->getExpiryYear() );
+		$this->_setFingerprint ( $response->getFingerprint() );
 		$this->_setId ( $response->getId() );
 		$this->_setLast4 ( $response->getLast4() );
 		$this->_setLiveMode ( $response->getLiveMode() );
@@ -88,9 +90,9 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getCvcCheck ()
+	public function getCvvCheck ()
 	{
-		return $this->_cvcCheck;
+		return $this->_cvvCheck;
 	}
 
 	/**
@@ -120,9 +122,9 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getFingerPrint ()
+	public function getFingerprint ()
 	{
-		return $this->_fingerPrint;
+		return $this->_fingerprint;
 	}
 
 	/**
@@ -229,11 +231,11 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	}
 
 	/**
-	 * @param mixed $cvcCheck
+	 * @param mixed $cvvCheck
 	 */
-	private function _setCvcCheck ( $cvcCheck )
+	private function _setCvvCheck ( $cvvCheck )
 	{
-		$this->_cvcCheck = $cvcCheck;
+		$this->_cvvCheck = $cvvCheck;
 	}
 
 	/**
@@ -261,11 +263,11 @@ class Card extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	}
 
 	/**
-	 * @param mixed $fingerPrint
+	 * @param mixed $fingerprint
 	 */
-	private function _setFingerPrint ( $fingerPrint )
+	private function _setFingerprint ( $fingerprint )
 	{
-		$this->_fingerPrint = $fingerPrint;
+		$this->_fingerprint = $fingerprint;
 	}
 
 	/**
