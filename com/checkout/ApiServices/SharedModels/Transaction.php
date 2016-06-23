@@ -43,7 +43,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getOriginid ()
+	public function getOriginId ()
 	{
 		return $this->_originId;
 	}
@@ -97,7 +97,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getResponsecode ()
+	public function getResponseCode ()
 	{
 		return $this->_responseCode;
 	}
@@ -115,7 +115,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getLivemode ()
+	public function getLiveMode ()
 	{
 		return $this->_liveMode;
 	}
@@ -124,7 +124,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getBusinessname ()
+	public function getBusinessName ()
 	{
 		return $this->_businessName;
 	}
@@ -133,7 +133,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getChannelname ()
+	public function getChannelName ()
 	{
 		return $this->_channelName;
 	}
@@ -142,7 +142,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getTrackid ()
+	public function getTrackId ()
 	{
 		return $this->_trackId;
 	}
@@ -151,7 +151,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getCustomerid ()
+	public function getCustomerId ()
 	{
 		return $this->_customerId;
 	}
@@ -160,7 +160,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getCustomername ()
+	public function getCustomerName ()
 	{
 		return $this->_customerName;
 	}
@@ -169,7 +169,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @return mixed
 	 */
-	public function getCustomeremail ()
+	public function getCustomerEmail ()
 	{
 		return $this->_customerEmail;
 	}
@@ -195,7 +195,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @param mixed $originId
 	 */
-	public function setOriginid ( $originId )
+	public function setOriginId ( $originId )
 	{
 		$this->_originId = $originId;
 	}
@@ -267,7 +267,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @param mixed $liveMode
 	 */
-	public function setLivemode ( $liveMode )
+	public function setLiveMode ( $liveMode )
 	{
 		$this->_liveMode = $liveMode;
 	}
@@ -276,7 +276,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @param mixed $businessName
 	 */
-	public function setBusinessname ( $businessName )
+	public function setBusinessName ( $businessName )
 	{
 		$this->_businessName = $businessName;
 	}
@@ -285,7 +285,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @param mixed $channelName
 	 */
-	public function setChannelname ( $channelName )
+	public function setChannelName ( $channelName )
 	{
 		$this->_channelName = $channelName;
 	}
@@ -294,7 +294,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @param mixed $trackId
 	 */
-	public function setTrackid ( $trackId )
+	public function setTrackId ( $trackId )
 	{
 		$this->_trackId = $trackId;
 	}
@@ -303,7 +303,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @param mixed $customerId
 	 */
-	public function setCustomerid ( $customerId )
+	public function setCustomerId ( $customerId )
 	{
 		$this->_customerId = $customerId;
 	}
@@ -312,7 +312,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @param mixed $customerName
 	 */
-	public function setCustomername ( $customerName )
+	public function setCustomerName ( $customerName )
 	{
 		$this->_customerName = $customerName;
 	}
@@ -321,7 +321,7 @@ class Transaction extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	/**
 	 * @param mixed $customerEmail
 	 */
-	public function setCustomeremail ( $customerEmail )
+	public function setCustomerEmail ( $customerEmail )
 	{
 		$this->_customerEmail = $customerEmail;
 	}
