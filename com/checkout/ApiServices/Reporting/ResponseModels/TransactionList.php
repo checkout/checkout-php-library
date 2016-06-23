@@ -69,10 +69,10 @@ class TransactionList  extends \com\checkout\ApiServices\SharedModels\BaseHttp
 				$transaction->setScheme($item['scheme']);
 				$transaction->setResponsecode($item['responseCode']);
 				$transaction->setCurrency($item['currency']);
-				$transaction->setLivemode($item['liveMode']);
-				$transaction->setBusinessname($item['businessName']);
-				$transaction->setChannelname($item['channelName']);
-				$transaction->setTrackid($item['trackId']);
+				$transaction->setLiveMode($item['liveMode']);
+				$transaction->setBusinessName($item['businessName']);
+				$transaction->setChannelName($item['channelName']);
+				$transaction->setTrackId($item['trackId']);
 				$transaction->setCustomerId($item['customer']['id']);
 				$transaction->setCustomerName($item['customer']['name']);
 				$transaction->setCustomerEmail($item['customer']['email']);
