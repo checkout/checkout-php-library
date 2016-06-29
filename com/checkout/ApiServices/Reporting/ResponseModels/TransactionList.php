@@ -55,10 +55,32 @@ class TransactionList  extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	 */
 	private function _setData ( $data )
 	{
-		$dataArray = $data->toArray();
-		foreach($dataArray as $transaction){
-			$this->_data[] = $this->_getTransaction($transaction);
+		$transactionsArray = $data->toArray();
+		$transactionsToReturn = array();
+		if($transactionsArray) {
+			foreach($transactionsArray as $item){
+				$transaction  = new \com\checkout\ApiServices\SharedModels\Transaction();
+				$transaction->setId($item['id']);
+				$transaction->setOriginId($item['originId']);
+				$transaction->setDate($item['date']);
+				$transaction->setStatus($item['status']);
+				$transaction->setType($item['type']);
+				$transaction->setAmount($item['amount']);
+				$transaction->setScheme($item['scheme']);
+				$transaction->setResponsecode($item['responseCode']);
+				$transaction->setCurrency($item['currency']);
+				$transaction->setLiveMode($item['liveMode']);
+				$transaction->setBusinessName($item['businessName']);
+				$transaction->setChannelName($item['channelName']);
+				$transaction->setTrackId($item['trackId']);
+				$transaction->setCustomerId($item['customer']['id']);
+				$transaction->setCustomerName($item['customer']['name']);
+				$transaction->setCustomerEmail($item['customer']['email']);
+				$transactionsToReturn[] = $transaction;
+			}
 		}
+
+		$this->_data = $transactionsToReturn;
 	}
 
 	/**

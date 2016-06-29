@@ -15,6 +15,7 @@ class BaseCharge extends BaseChargeInfo
 	protected $_currency;
 	protected $_customerIp;
     protected $_chargeMode;
+	protected $_riskCheck;
 
 	/**
 	 * @return mixed
@@ -201,11 +202,23 @@ class BaseCharge extends BaseChargeInfo
     }
 
     /**
-     * @param mixed $autoCapTime
+     * @param mixed $chargeMode
      */
     public function setChargeMode ( $chargeMode )
     {
         $this->_chargeMode = $chargeMode;
     }
 
+	public function getRiskCheck()
+	{
+		return $this->_riskCheck;
+	}
+
+	/**
+	 * @param mixed $riskCheck
+	 */
+	public function setRiskCheck( $riskCheck)
+	{
+		$this->_riskCheck= $riskCheck;
+	}
 }
