@@ -7,7 +7,6 @@ class CustomerPlanFromExistingCreateWithCardId extends PlanWithCardIdCreate
 {
 
 	private $_planId;
-	private $_startDate;
 
 	/**
 	 * @return mixed
@@ -23,22 +22,6 @@ class CustomerPlanFromExistingCreateWithCardId extends PlanWithCardIdCreate
 	public function setPlanId ( $planId )
 	{
 		$this->_planId = $planId;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getStartDate ()
-	{
-		return $this->_startDate;
-	}
-
-	/**
-	 * @param mixed $startDate
-	 */
-	public function setStartDate ( $startDate )
-	{
-		$this->_startDate = $startDate;
 	}
 
 }
