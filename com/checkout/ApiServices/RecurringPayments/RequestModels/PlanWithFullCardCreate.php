@@ -14,6 +14,7 @@ class PlanWithFullCardCreate extends BaseRecurringPayment
 	protected $_baseCardCreate;
 	protected $_baseChargeCreate;
 	protected $_transactionIndicator;
+    protected $_startDate;
 
 	
 	/**
@@ -144,4 +145,20 @@ class PlanWithFullCardCreate extends BaseRecurringPayment
     {
         $this->_transactionIndicator = $transactionIndicator;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getStartDate ()
+	{
+		return $this->_startDate;
+	}
+
+	/**
+	 * @param mixed $startDate
+	 */
+	public function setStartDate ( $startDate )
+	{
+		$this->_startDate = $startDate;
+	}
 }
