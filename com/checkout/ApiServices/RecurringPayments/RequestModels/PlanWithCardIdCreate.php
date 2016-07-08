@@ -14,6 +14,7 @@ class PlanWithCardIdCreate extends BaseRecurringPayment
 	protected $_cardId;
     protected $_cvv;
 	protected $_transactionIndicator;
+    protected $_startDate;
 
 	
 	/**
@@ -158,5 +159,21 @@ class PlanWithCardIdCreate extends BaseRecurringPayment
     public function setTransactionIndicator($transactionIndicator)
     {
         $this->_transactionIndicator = $transactionIndicator;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStartDate ()
+    {
+        return $this->_startDate;
+    }
+
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate ( $startDate )
+    {
+        $this->_startDate = $startDate;
     }
 }

@@ -13,6 +13,7 @@ class PlanWithPaymentTokenCreate extends BaseRecurringPayment
 	protected $_trackId;
 	protected $_paymentToken;
 	protected $_transactionIndicator;
+	protected $_startDate;
 
 	
 	/**
@@ -142,4 +143,20 @@ class PlanWithPaymentTokenCreate extends BaseRecurringPayment
     {
         $this->_transactionIndicator = $transactionIndicator;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getStartDate ()
+	{
+		return $this->_startDate;
+	}
+
+	/**
+	 * @param mixed $startDate
+	 */
+	public function setStartDate ( $startDate )
+	{
+		$this->_startDate = $startDate;
+	}
 }
