@@ -101,6 +101,98 @@ class RecurringPaymentMapper
                 $requestSinglePaymentPlan['paymentToken'] = $paymentToken;
             }
 
+            if(method_exists($requestModel,'getUdf1') && $udf1 = $requestModel->getUdf1()) {
+                $requestPayload['udf1'] = $udf1;
+            }
+
+            if(method_exists($requestModel,'getUdf2') && $udf2 = $requestModel->getUdf2()) {
+                $requestPayload['udf2'] = $udf2;
+            }
+
+            if(method_exists($requestModel,'getUdf3') && $udf3 = $requestModel->getUdf3()) {
+                $requestPayload['udf3'] = $udf3;
+            }
+
+            if(method_exists($requestModel,'getUdf4') && $udf4 = $requestModel->getUdf4()) {
+                $requestPayload['udf4'] = $udf4;
+            }
+
+            if(method_exists($requestModel,'getUdf5') && $udf5 = $requestModel->getUdf5()) {
+                $requestPayload['udf5'] = $udf5;
+            }
+
+            if(method_exists($requestModel,'getDescriptor') && $descriptor = $requestModel->getDescriptor()) {
+                $descriptorConfig = array (
+                    'name' => $descriptor->getName () ,
+                    'city' => $descriptor->getCity () ,
+                );
+
+                $requestPayload['descriptor'] = $descriptorConfig;
+            }
+
+            if(method_exists($requestModel,'getTransactionIndicator') && $transactionIndicator = $requestModel->getTransactionIndicator()) {
+                $requestPayload['transactionIndicator'] = $transactionIndicator;
+            }
+
+            if( method_exists($requestModel,'getShippingDetails') && $shippingAddress = $requestModel->getShippingDetails()) {
+                $shippingAddressConfig = array (
+                    'addressLine1' => $shippingAddress->getAddressLine1 () ,
+                    'addressLine2' => $shippingAddress->getAddressLine2 () ,
+                    'postcode' => $shippingAddress->getPostcode () ,
+                    'country' => $shippingAddress->getCountry () ,
+                    'city' => $shippingAddress->getCity () ,
+                    'state' => $shippingAddress->getState () ,
+
+                );
+
+                if ($shippingAddress->getPhone() != null) {
+                    $shippingAddressConfig = array_merge_recursive($shippingAddressConfig, array(
+                            'phone' => $shippingAddress->getPhone()->getPhoneDetails()
+                        )
+                    );
+                }
+
+                $requestPayload['shippingDetails'] = $shippingAddressConfig;
+            }
+
+            if(method_exists($requestModel,'getProducts') && $productsItem =  $requestModel->getProducts()) {
+
+                foreach ( $productsItem as $i => $item ) {
+
+                    if( $item->getName ()) {
+                        $products[ $i ][ 'name' ] = $item->getName ();
+                    }
+                    if( $item->getProductId ()) {
+                        $products[ $i ][ 'productId' ] = $item->getProductId ();
+                    }
+                    if( $item->getSku ()) {
+                        $products[ $i ][ 'sku' ] = $item->getSku ();
+                    }
+                    if( $item->getPrice ()) {
+                        $products[ $i ][ 'price' ] = $item->getPrice ();
+                    }
+                    if( $item->getQuantity ()) {
+                        $products[ $i ][ 'quantity' ] = $item->getQuantity ();
+                    }
+                    if( $item->getDescription ()) {
+                        $products[ $i ][ 'description' ] = $item->getDescription ();
+                    }
+                    if( $item->getImage ()) {
+                        $products[ $i ][ 'image' ] = $item->getImage ();
+                    }
+                    if( $item->getShippingCost ()) {
+                        $products[ $i ][ 'shippingCost' ] = $item->getShippingCost ();
+                    }
+                    if( $item->getTrackingUrl ()) {
+                        $products[ $i ][ 'trackingUrl' ] = $item->getTrackingUrl ();
+                    }
+
+
+                }
+
+                $requestPayload['products'] = $products;
+            }
+
             $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
 
             if(method_exists($requestModel,'getBaseCardCreate') ) {

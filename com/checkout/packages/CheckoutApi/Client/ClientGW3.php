@@ -82,6 +82,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         $this->setUriToken();
         $this->setUriCustomer();
         $this->setUriProvider();
+        $this->setUriRecurringPayments();
 	}
 
     /**
@@ -290,10 +291,10 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         $param['method'] = CheckoutApi_Client_Adapter_Constant::API_GET;
         $this->flushState();
 
-        $isToenValid = CheckoutApi_Client_Validation_GW3::isPaymentToken($param);
+        $isTokenValid = CheckoutApi_Client_Validation_GW3::isPaymentToken($param);
         $uri = $this->getUriCharge();
 
-        if(!$isToenValid) {
+        if(!$isTokenValid) {
             $hasError = true;
             $this->throwException('Please provide a valid payment token ',array('param'=>$param));
 
@@ -1237,6 +1238,200 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
         return $this->request( $uri ,$param,!$hasError);
     }
+
+    /**
+     * Update   Recurring Payment Plan.
+     * Updates the specified Recurring Payment Plan by setting the values of the parameters passed.
+     * @param array $param payload param
+     * @return CheckoutApi_Lib_RespondObj
+     * @throws Exception
+     *  Simple usage:
+     *      $param['planId'] = {$planId} ;
+     *      $param['postedParam'] = array (
+     *                          'name'          =>  'New subscription name',
+     *                          'planTrackId'   =>  'newPlanTrackId',
+     *                          'autoCapTime'   =>  24,
+     *                          'value'   =>  200,
+     *                          'status'   =>  4
+     *                          );
+     *      $updateCharge = $Api->updateCharge($param);
+     */
+
+    public function  updatePaymentPlan($param)
+    {
+        $hasError = false;
+
+        $param['method'] = CheckoutApi_Client_Adapter_Constant::API_PUT;
+        $this->flushState();
+
+        $uri = $this->getUriRecurringPayments().'/plans';;
+        $isPlanIdValid = CheckoutApi_Client_Validation_GW3::isPlanIdValid($param);
+
+        if(!$isPlanIdValid) {
+            $hasError = true;
+            $this->throwException('Please provide a valid plan id',array('param'=>$param));
+
+        } else {
+
+            $uri = "$uri/{$param['planId']}";
+        }
+
+        return $this->_responseUpdateStatus($this->request( $uri ,$param,!$hasError));
+    }
+
+    /**
+     * Cancel a payment plan
+     * @param array $param payload param for deleting a payment plan
+     * @return CheckoutApi_Lib_RespondObj
+     * @throws Exception
+     * This method can be call this way:
+     *      $param['planId'] = {$planId} ;
+     *      cancelPaymentPlan = $Api->cancelPaymentPlan($param);
+     */
+
+    public function cancelPaymentPlan($param)
+    {
+        $param['method'] = CheckoutApi_Client_Adapter_Constant::API_DELETE;
+        $this->flushState();
+        $uri = $this->getUriRecurringPayments().'/plans';
+        $hasError = false;
+        $isPlanIdValid = CheckoutApi_Client_Validation_GW3::isPlanIdValid($param);
+        if(!$isPlanIdValid ) {
+            $hasError = true;
+            $this->throwException('Please provide a valid plan id',array('param'=>$param));
+        }else {
+
+            $uri = "$uri/{$param['planId']}";
+        }
+
+        return $this->request( $uri ,$param,!$hasError);
+    }
+
+    /**
+     * Get payment plan
+     * @param array $param payload param for returning a payment plan
+     * @return CheckoutApi_Lib_RespondObj
+     * @throws Exception
+     * Simple usage :
+     *      $param['planId'] = {planId} ;
+     *      $getPaymentPlan = $Api->getPaymentPlan($param);
+     */
+
+    public  function getPaymentPlan($param)
+    {
+        $hasError = false;
+
+        $param['method'] = CheckoutApi_Client_Adapter_Constant::API_GET;
+        $this->flushState();
+        $uri = $this->getUriRecurringPayments().'/plans';;
+        $isPlanIdValid = CheckoutApi_Client_Validation_GW3::isPlanIdValid($param);
+
+        if(!$isPlanIdValid) {
+            $hasError = true;
+            $this->throwException('Please provide a valid plan id',array('param'=>$param));
+        }else {
+
+            $uri = "$uri/{$param['customerId']}";
+        }
+
+        return $this->request( $uri ,$param,!$hasError);
+    }
+
+    /**
+     * Update   Recurring Customer Payment Plan.
+     * Updates the specified Recurring Customer Payment Plan by setting the values of the parameters passed.
+     * @param array $param payload param
+     * @return CheckoutApi_Lib_RespondObj
+     * @throws Exception
+     *  Simple usage:
+     *      $param['customerPlanId'] = {$customerPlanId} ;
+     *      $param['postedParam'] = array (
+     *                          'cardId'   =>  'card_XXXXXXXX',
+     *                          'status'   =>  1
+     *                          );
+     *      $updateCharge = $Api->updateCharge($param);
+     */
+
+    public function  updateCustomerPaymentPlan($param)
+    {
+        $hasError = false;
+
+        $param['method'] = CheckoutApi_Client_Adapter_Constant::API_PUT;
+        $this->flushState();
+
+        $uri = $this->getUriRecurringPayments().'/customers';;
+        $isCustomerPlanIdValid = CheckoutApi_Client_Validation_GW3::isCustomerPlanIdValid($param);
+
+        if(!$isCustomerPlanIdValid) {
+            $hasError = true;
+            $this->throwException('Please provide a valid customer plan id',array('param'=>$param));
+
+        } else {
+
+            $uri = "$uri/{$param['customerPlanId']}";
+        }
+
+        return $this->_responseUpdateStatus($this->request( $uri ,$param,!$hasError));
+    }
+
+    /**
+     * Cancel a customer payment plan
+     * @param array $param payload param for deleting a payment plan
+     * @return CheckoutApi_Lib_RespondObj
+     * @throws Exception
+     * This method can be call this way:
+     *      $param['customerPlanId'] = {$customerPlanId} ;
+     *      cancelCustomerPaymentPlan = $Api->cancelCustomerPaymentPlan($param);
+     */
+
+    public function cancelCustomerPaymentPlan($param)
+    {
+        $param['method'] = CheckoutApi_Client_Adapter_Constant::API_DELETE;
+        $this->flushState();
+        $uri = $this->getUriRecurringPayments().'/customers';
+        $hasError = false;
+        $isCustomerPlanIdValid = CheckoutApi_Client_Validation_GW3::isCustomerPlanIdValid($param);
+        if(!$isCustomerPlanIdValid ) {
+            $hasError = true;
+            $this->throwException('Please provide a valid customer plan id',array('param'=>$param));
+        }else {
+
+            $uri = "$uri/{$param['customerPlanId']}";
+        }
+
+        return $this->request( $uri ,$param,!$hasError);
+    }
+
+    /**
+     * Get customer payment plan
+     * @param array $param payload param for returning a payment plan
+     * @return CheckoutApi_Lib_RespondObj
+     * @throws Exception
+     * Simple usage :
+     *      $param['customerPlanId'] = {customerPlanId} ;
+     *      $getCustomerPaymentPlan = $Api->getCustomerPaymentPlan($param);
+     */
+
+    public  function getCustomerPaymentPlan($param)
+    {
+        $hasError = false;
+
+        $param['method'] = CheckoutApi_Client_Adapter_Constant::API_GET;
+        $this->flushState();
+        $uri = $this->getUriRecurringPayments().'/customers';;
+        $isCustomerPlanIdValid = CheckoutApi_Client_Validation_GW3::isCustomerPlanIdValid($param);
+
+        if(!$isCustomerPlanIdValid) {
+            $hasError = true;
+            $this->throwException('Please provide a valid plan id',array('param'=>$param));
+        }else {
+
+            $uri = "$uri/{$param['customerPlanId']}";
+        }
+
+        return $this->request( $uri ,$param,!$hasError);
+    }
+
     /**
      * Build up the request to the gateway
      * @param string $uri endpoint to be used
@@ -1446,6 +1641,31 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 	}
 
     /**
+     * set uri recurring payments
+     * @param null|string $uri the uri for the recurring payments
+     */
+
+    public function setUriRecurringPayments($uri = null)
+    {
+        $toSetUri = $uri;
+        if(!$uri) {
+            $toSetUri = $this->getUriPrefix().'recurringPayments';
+        }
+
+        $this->_uriRecurringPayments = $toSetUri;
+    }
+
+    /**
+     * return uri recurring payments
+     * @return string
+     */
+
+    public function getUriRecurringPayments()
+    {
+        return $this->_uriRecurringPayments ;
+    }
+
+    /**
      * return which uri prefix to be used base on mode type
      * @return string
      */
@@ -1492,6 +1712,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
         $this->setUriToken();
         $this->setUriCustomer();
         $this->setUriProvider();
+        $this->setUriRecurringPayments();
 
     }
 
