@@ -148,7 +148,7 @@ class ChargesMapper
         		$requestPayload['shippingDetails'] = $shippingAddressConfig;
 			}
 
-			if(method_exists($requestModel,'getEmail') && $productsItem =  $requestModel->getProducts()) {
+			if(method_exists($requestModel,'getProducts') && $productsItem =  $requestModel->getProducts()) {
 				
 				foreach ( $productsItem as $i => $item ) {
 
