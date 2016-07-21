@@ -1,6 +1,6 @@
 <?php
 
-namespace com\checkout\ApiServices\SharedModels;
+namespace com\checkout\ApiServices\RecurringPayments\ResponseModels;
 
 class PaymentPlan extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
