@@ -1827,7 +1827,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
          $value = floor ($amount);   
          
       } else {
-        $value = (int) ($amount * 100);
+        $value = round($amount * 100);
         
       }
       
