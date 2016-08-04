@@ -756,6 +756,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 				$paymentPlan->setAutoCapTime($item['autoCapTime']);
 				$paymentPlan->setCurrency($item['currency']);
 				$paymentPlan->setValue($item['value']);
+				$paymentPlan->setCycle($item['cycle']);
 				$paymentPlan->setRecurringCount($item['recurringCount']);
 				$paymentPlan->setStatus($item['status']);
 				$paymentPlan->setCustomerPlanId($item['customerPlanId']);

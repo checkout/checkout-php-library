@@ -1,7 +1,7 @@
 <?php
 namespace  com\checkout\ApiServices\RecurringPayments\RequestModels;
 
-class BaseRecurringPayment extends \com\checkout\ApiServices\Charges\RequestModels\BaseChargeInfo
+class BaseRecurringPayment
 {
 	protected $_name;
 	protected $_planTrackId;
@@ -10,9 +10,8 @@ class BaseRecurringPayment extends \com\checkout\ApiServices\Charges\RequestMode
 	protected $_value;
 	protected $_cycle;
 	protected $_recurringCount;
+    protected $_startDate;
 	protected $_status;
-	protected $_shippingDetails;
-	protected $_products = array();
     
 
 	/**
@@ -127,6 +126,22 @@ class BaseRecurringPayment extends \com\checkout\ApiServices\Charges\RequestMode
 		$this->_recurringCount = $recurringCount;
 	}
 
+    /**
+     * @return mixed
+     */
+    public function getStartDate()
+    {
+        return $this->_startDate;
+    }
+
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate( $startDate )
+    {
+        $this->_startDate = $startDate;
+    }
+
 	/**
 	 * @return mixed
 	 */
@@ -143,36 +158,4 @@ class BaseRecurringPayment extends \com\checkout\ApiServices\Charges\RequestMode
 		$this->_status = $status;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function getShippingDetails ()
-	{
-		return $this->_shippingDetails;
-	}
-
-	/**
-	 * @param mixed $shippingDetails
-	 */
-	public function setShippingDetails ( \com\checkout\ApiServices\SharedModels\Address $shippingDetails )
-	{
-		$this->_shippingDetails = $shippingDetails;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getProducts ()
-	{
-		return $this->_products;
-	}
-
-	/**
-	 * @param mixed $products
-	 */
-	public function setProducts ( \com\checkout\ApiServices\SharedModels\Product $products )
-	{
-
-		$this->_products[] = $products;
-	}
 }

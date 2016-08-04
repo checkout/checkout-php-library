@@ -3,99 +3,12 @@
 namespace com\checkout\ApiServices\RecurringPayments\RequestModels;
 
 
-class PlanWithCardTokenCreate extends BaseRecurringPayment
+class PlanWithCardTokenCreate extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 {
-
-	protected $_email;
-    protected $_description;
-	protected $_value;
-	protected $_currency;
-	protected $_trackId;
 	protected $_cardToken;
 	protected $_transactionIndicator;
-    protected $_startDate;
+    protected $_paymentPlans;
 
-	
-	/**
-	 * @return mixed
-	 */
-	public function getCurrency ()
-	{
-		return $this->_currency;
-	}
-
-	/**
-	 * @param mixed $currency
-	 */
-	public function setCurrency ( $currency )
-	{
-		$this->_currency = $currency;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getTrackId ()
-	{
-		return $this->_trackId;
-	}
-
-	/**
-	 * @param mixed $trackId
-	 */
-	public function setTrackId ( $trackId )
-	{
-		$this->_trackId = $trackId;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getValue ()
-	{
-		return $this->_value;
-	}
-
-	/**
-	 * @param mixed $value
-	 */
-	public function setValue ( $value )
-	{
-		$this->_value = $value;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getEmail ()
-	{
-		return $this->_email;
-	}
-
-	/**
-	 * @param mixed $email
-	 */
-	public function setEmail ( $email )
-	{
-		$this->_email = $email;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getDescription ()
-	{
-		return $this->_description;
-	}
-
-	/**
-	 * @param mixed $description
-	 */
-	public function setDescription ( $description )
-	{
-		$this->_description = $description;
-	}
-	
 	/**
 	 * @return mixed
 	 */
@@ -110,22 +23,6 @@ class PlanWithCardTokenCreate extends BaseRecurringPayment
 	public function setCardToken ( $cardToken )
 	{
 		$this->_cardToken = $cardToken;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getBaseChargeCreate ()
-	{
-		return $this->_baseChargeCreate;
-	}
-
-	/**
-	 * @param mixed $paymentChargeCreate
-	 */
-	public function setBaseChargeCreate ( \com\checkout\ApiServices\Charges\RequestModels\BaseCharge $baseChargeCreate )
-	{
-		$this->_baseChargeCreate = $baseChargeCreate;
 	}
 
 	/**
@@ -147,16 +44,16 @@ class PlanWithCardTokenCreate extends BaseRecurringPayment
 	/**
 	 * @return mixed
 	 */
-	public function getStartDate ()
+	public function getPaymentPlans ()
 	{
-		return $this->_startDate;
+		return $this->_paymentPlans;
 	}
 
 	/**
-	 * @param mixed $startDate
+	 * @param mixed $paymentPlans
 	 */
-	public function setStartDate ( $startDate )
+	public function setPaymentPlans ( BaseRecurringPayment $paymentPlans )
 	{
-		$this->_startDate = $startDate;
+		$this->_paymentPlans[] = $paymentPlans;
 	}
 }
