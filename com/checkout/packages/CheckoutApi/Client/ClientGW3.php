@@ -335,7 +335,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
           $toVoidData = false;
           
           foreach ($chargesArray as $key=> $charge) {
-            if (in_array(CheckoutApi_Client_Constant::STATUS_CAPTURE, $charge)){
+            if (in_array(CheckoutApi_Client_Constant::STATUS_CAPTURE, $charge) || in_array(CheckoutApi_Client_Constant::STATUS_REFUND,$charge)){    
                 if(strtolower($charge['status']) == strtolower(CheckoutApi_Client_Constant::STATUS_CAPTURE)) {
                   $toRefund = true;
                   $toRefundData = $charge;
