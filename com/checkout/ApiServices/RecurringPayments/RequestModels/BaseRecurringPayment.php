@@ -1,7 +1,7 @@
 <?php
 namespace  com\checkout\ApiServices\RecurringPayments\RequestModels;
 
-class BaseRecurringPayment
+class BaseRecurringPayment extends \com\checkout\ApiServices\Charges\RequestModels\BaseChargeInfo
 {
 	protected $_name;
 	protected $_planTrackId;
@@ -11,6 +11,8 @@ class BaseRecurringPayment
 	protected $_cycle;
 	protected $_recurringCount;
 	protected $_status;
+	protected $_shippingDetails;
+	protected $_products = array();
     
 
 	/**
@@ -141,4 +143,36 @@ class BaseRecurringPayment
 		$this->_status = $status;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getShippingDetails ()
+	{
+		return $this->_shippingDetails;
+	}
+
+	/**
+	 * @param mixed $shippingDetails
+	 */
+	public function setShippingDetails ( \com\checkout\ApiServices\SharedModels\Address $shippingDetails )
+	{
+		$this->_shippingDetails = $shippingDetails;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getProducts ()
+	{
+		return $this->_products;
+	}
+
+	/**
+	 * @param mixed $products
+	 */
+	public function setProducts ( \com\checkout\ApiServices\SharedModels\Product $products )
+	{
+
+		$this->_products[] = $products;
+	}
 }
