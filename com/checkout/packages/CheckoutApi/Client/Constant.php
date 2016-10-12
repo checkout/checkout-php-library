@@ -23,5 +23,6 @@ final class CheckoutApi_Client_Constant
 	const AUTOCAPUTURE_AUTH = 'n';
 	const VERSION = 'v2';
     const STATUS_CAPTURE = 'Captured';
+    const STATUS_REFUND = 'Refunded';
     const LIB_VERSION = 'v1.2.5';
 }
