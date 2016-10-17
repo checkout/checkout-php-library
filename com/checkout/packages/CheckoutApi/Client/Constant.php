@@ -25,4 +25,5 @@ final class CheckoutApi_Client_Constant
     const STATUS_CAPTURE = 'Captured';
     const STATUS_REFUND = 'Refunded';
     const LIB_VERSION = 'v1.2.5';
+    
 }

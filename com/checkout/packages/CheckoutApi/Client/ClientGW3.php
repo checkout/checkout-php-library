@@ -335,7 +335,8 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
           $toVoidData = false;
           
           foreach ($chargesArray as $key=> $charge) {
-            if (in_array(CheckoutApi_Client_Constant::STATUS_CAPTURE, $charge) || in_array(CheckoutApi_Client_Constant::STATUS_REFUND,$charge)){    
+            if (in_array(CheckoutApi_Client_Constant::STATUS_CAPTURE, $charge) 
+				|| in_array(CheckoutApi_Client_Constant::STATUS_REFUND,$charge)){    
                 if(strtolower($charge['status']) == strtolower(CheckoutApi_Client_Constant::STATUS_CAPTURE)) {
                   $toRefund = true;
                   $toRefundData = $charge;
@@ -1855,5 +1856,91 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
       
       return $value;
       
+    }
+	
+	/**
+     * Check charge response
+	 * If response is approve or has error, return boolean
+    */
+	public function isAuthorise($response){
+        $result = false;
+        $hasError = $this->isError($response);
+        $isApprove = $this->isApprove($response);
+
+        if(!$hasError && $isApprove){
+            $result = true;
+        }
+
+        return $result;
+    }
+
+	/**
+	 * Check if response contain error code
+	 * return boolean
+    */
+    protected function isError($response){
+        $hasError = false;
+
+        if($response->getErrorCode()){
+            $hasError =  true;
+        }
+
+        return $hasError;
+    }
+
+	/**
+	 * Check if response is approve
+	 * return boolean
+    */
+    protected function isApprove($response){
+        $result = false;
+
+        if($response->getResponseCode() == CheckoutApi_Client_Constant::RESPONSE_CODE_APPROVED
+            || $response->getResponseCode()== CheckoutApi_Client_Constant::RESPONSE_CODE_APPROVED_RISK ){
+            $result = true;
+        }
+
+        return $result;
+    }
+
+	/**
+	 * return eventId if charge has error.
+	 * return chargeID if charge is decline
+    */
+    public function getResponseId($response){
+        $isError = $this->isError($response);
+
+        if($isError){
+            $result = array (
+                'message' => $response->getMessage(),
+                'eventId' => $response->getEventId()
+            );
+
+            return $result;
+
+        } else {
+            $result = array (
+                'responseMessage' => $response->getResponseMessage(),
+                'id' => $response->getId()
+            );
+
+            return $result;
+        }
+    }
+
+	/**
+	 * Check if response is flag
+	 * return response message
+    */
+    public function isFlagResponse($response){
+        $result = false;
+
+        if($response->getResponseCode() == CheckoutApi_Client_Constant::RESPONSE_CODE_APPROVED_RISK){
+            $result = array(
+                'responseMessage' => $response->getResponseMessage(),
+            );
+        }
+
+        return $result;
     }
 }
