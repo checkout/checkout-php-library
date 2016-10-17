@@ -154,7 +154,7 @@ namespace com\checkout\helpers
 
 			if($this->_mode == 'sandbox') {
 
-				$this->_baseApiUri = "http://sandbox.checkout.com/api2/v2";
+				$this->_baseApiUri = "https://sandbox.checkout.com/api2/v2";
 			}else {
 
 				$this->_baseApiUri =  'https://api2.checkout.com/v2';

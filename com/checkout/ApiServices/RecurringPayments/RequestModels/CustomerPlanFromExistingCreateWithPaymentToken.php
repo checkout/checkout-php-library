@@ -7,7 +7,6 @@ class CustomerPlanFromExistingCreateWithPaymentToken extends PlanWithPaymentToke
 {
 
 	private $_planId;
-	private $_startDate;
 
 	/**
 	 * @return mixed
@@ -24,21 +23,5 @@ class CustomerPlanFromExistingCreateWithPaymentToken extends PlanWithPaymentToke
 	{
 		$this->_planId = $planId;
 	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getStartDate ()
-	{
-		return $this->_startDate;
-	}
-
-	/**
-	 * @param mixed $startDate
-	 */
-	public function setStartDate ( $startDate )
-	{
-		$this->_startDate = $startDate;
-	}
-
+	
 }

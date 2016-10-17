@@ -500,4 +500,52 @@ final class CheckoutApi_Client_Validation_GW3 extends CheckoutApi_Lib_Object
         }
         return $isValid;
     }
+
+	/**
+	 * A helper method that check plan id is set in payload.
+	 * @param $param
+	 * @return bool
+	 * Simple usage:
+	 *      CheckoutApi_Client_Validation_GW3::isPlanIdValid($param)
+	 */
+	public static function isPlanIdValid($postedParam)
+	{
+		$isPlanIdEmpty = true;
+		$isValidPlanId = false;
+
+		if(isset($postedParam['planId'])) {
+			$isPlanIdEmpty = CheckoutApi_Lib_Validator::isEmpty($postedParam['planId']);
+		}
+
+		if(!$isPlanIdEmpty) {
+
+			$isValidPlanId = CheckoutApi_Lib_Validator::isString($postedParam['planId']);
+		}
+
+		return !$isPlanIdEmpty && $isValidPlanId;
+	}
+
+	/**
+	 * A helper method that check customer plan id is set in payload.
+	 * @param $param
+	 * @return bool
+	 * Simple usage:
+	 *      CheckoutApi_Client_Validation_GW3::isCustomerPlanIdValid($param)
+	 */
+	public static function isCustomerPlanIdValid($postedParam)
+	{
+		$isCustomerPlanIdEmpty = true;
+		$isValidCustomerPlanId = false;
+
+		if(isset($postedParam['customerPlanIdValid'])) {
+			$isCustomerPlanIdEmpty = CheckoutApi_Lib_Validator::isEmpty($postedParam['customerPlanIdValid']);
+		}
+
+		if(!$isCustomerPlanIdEmpty) {
+
+			$isValidCustomerPlanId = CheckoutApi_Lib_Validator::isString($postedParam['customerPlanIdValid']);
+		}
+
+		return !$isCustomerPlanIdEmpty && $isValidCustomerPlanId;
+	}
 }

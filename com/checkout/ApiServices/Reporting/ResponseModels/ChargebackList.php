@@ -51,10 +51,30 @@ class ChargebackList  extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	 */
 	private function _setData ( $data )
 	{
-		$dataArray = $data->toArray();
-		foreach($dataArray as $chargeback){
-			$this->_data[] = $this->_getChargeback($chargeback);
+		$chargeBacksArray = $data->toArray();
+		$chargeBacksToReturn = array();
+		if($chargeBacksArray) {
+			foreach($chargeBacksArray as $item){
+				$chargeBack  = new \com\checkout\ApiServices\SharedModels\ChargeBack();
+				$chargeBack->setId($item['id']);
+				$chargeBack->setChargeId($item['chargeId']);
+				$chargeBack->setScheme($item['scheme']);
+				$chargeBack->setValue($item['value']);
+				$chargeBack->setCurrency($item['currency']);
+				$chargeBack->setTrackId($item['trackId']);
+				$chargeBack->setIssueDate($item['issueDate']);
+				$chargeBack->setCardNumber($item['cardNumber']);
+				$chargeBack->setIndicator($item['indicator']);
+				$chargeBack->setReasonCode($item['reasonCode']);
+				$chargeBack->setArn($item['arn']);
+				$chargeBack->setCustomerName($item['customer']['name']);
+				$chargeBack->setCustomerEmail($item['customer']['email']);
+				$chargeBack->setResponseCode($item['responseCode']);
+				$chargeBacksToReturn[] = $chargeBack;
+			}
 		}
+
+		$this->_data = $chargeBacksToReturn;
 	}
 
 	/**

@@ -10,6 +10,7 @@ class BaseRecurringPayment
 	protected $_value;
 	protected $_cycle;
 	protected $_recurringCount;
+    protected $_startDate;
 	protected $_status;
     
 
@@ -124,6 +125,22 @@ class BaseRecurringPayment
 	{
 		$this->_recurringCount = $recurringCount;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getStartDate()
+    {
+        return $this->_startDate;
+    }
+
+    /**
+     * @param mixed $startDate
+     */
+    public function setStartDate( $startDate )
+    {
+        $this->_startDate = $startDate;
+    }
 
 	/**
 	 * @return mixed
