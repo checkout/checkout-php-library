@@ -161,8 +161,6 @@ class BaseCharge extends BaseChargeInfo
 		$this->_autoCapTime = $autoCapTime;
 	}
 
-
-
 	/**
 	 * @return mixed
 	 */

@@ -11,7 +11,7 @@ final class CheckoutApi_Client_Constant
 {
 	const APIGW3_URI_PREFIX_PREPOD = 'http://preprod.checkout.com/api2/';
 	const APIGW3_URI_PREFIX_DEV= 'http://dev.checkout.com/api2/';
-	const APIGW3_URI_PREFIX_SANDBOX= 'http://sandbox.checkout.com/api2/';
+	const APIGW3_URI_PREFIX_SANDBOX= 'https://sandbox.checkout.com/api2/';
 	const APIGW3_URI_PREFIX_LIVE = 'https://api2.checkout.com/';
 	const ADAPTER_CLASS_GROUP = 'CheckoutApi_Client_Adapter_';
 	const PARSER_CLASS_GROUP = 'CheckoutApi_Parser_';
