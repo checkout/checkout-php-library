@@ -70,6 +70,10 @@ class ChargesMapper
                 $requestPayload['chargeMode'] = $requestModel->getChargeMode();
             }
 
+            if(method_exists($requestModel,'getRiskCheck') && $requestModel->getRiskCheck()) {
+                $requestPayload['riskCheck'] = $requestModel->getRiskCheck();
+            }
+
 			if(method_exists($requestModel,'getChargeId') && $requestModel->getChargeId()) {
 				$requestPayload['chargeId'] = $requestModel->getChargeId();
 			}
@@ -243,6 +247,53 @@ class ChargesMapper
 			if(method_exists($requestModel,'getPaymentToken') && $paymentToken = $requestModel->getPaymentToken()) {
 				$requestPayload[ 'paymentToken' ] = $paymentToken;
 			}
+
+			if(method_exists($requestModel,'getPaymentPlans') ) {
+                $paymentPlans = $requestModel->getPaymentPlans();
+
+                foreach($paymentPlans as $singlePlan) {
+
+                    $requestSinglePaymentPlan = array();
+
+                    if (method_exists($singlePlan, 'getName') && ($name = $singlePlan->getName())) {
+                        $requestSinglePaymentPlan['name'] = $name;
+                    }
+
+                    if (method_exists($singlePlan, 'getPlanTrackId') && ($planTrackId = $singlePlan->getPlanTrackId())) {
+                        $requestSinglePaymentPlan['planTrackId'] = $planTrackId;
+                    }
+
+                    if (method_exists($singlePlan, 'getAutoCapTime') && ($autoCapTime = $singlePlan->getAutoCapTime())) {
+                        $requestSinglePaymentPlan['autoCapTime'] = $autoCapTime;
+                    }
+
+                    if (method_exists($singlePlan, 'getCurrency') && ($currency = $singlePlan->getCurrency())) {
+                        $requestSinglePaymentPlan['currency'] = $currency;
+                    }
+
+                    if (method_exists($singlePlan, 'getValue') && ($value = $singlePlan->getValue())) {
+                        $requestSinglePaymentPlan['value'] = $value;
+                    }
+                    if (method_exists($singlePlan, 'getCycle') && ($cycle = $singlePlan->getCycle())) {
+                        $requestSinglePaymentPlan['cycle'] = $cycle;
+                    }
+
+                    if (method_exists($singlePlan, 'getRecurringCount') && ($recurringCount = $singlePlan->getRecurringCount())) {
+                        $requestSinglePaymentPlan['recurringCount'] = $recurringCount;
+                    }
+
+                    if (method_exists($singlePlan, 'getPlanId') && ($planId = $singlePlan->getPlanId())) {
+                        $requestSinglePaymentPlan['planId'] = $planId;
+                    }
+
+                    if (method_exists($singlePlan, 'getStartDate') && ($startDate = $singlePlan->getStartDate())) {
+                        $requestSinglePaymentPlan['startDate'] = $startDate;
+                    }
+
+                    $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
+                }
+            }
+
 		}
 
 		return $requestPayload;
