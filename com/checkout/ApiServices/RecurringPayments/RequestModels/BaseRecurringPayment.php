@@ -12,7 +12,7 @@ class BaseRecurringPayment
 	protected $_recurringCount;
     protected $_startDate;
 	protected $_status;
-    
+    protected $_planId;
 
 	/**
 	 * @return mixed
@@ -158,4 +158,19 @@ class BaseRecurringPayment
 		$this->_status = $status;
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getPlanId ()
+	{
+		return $this->_planId;
+	}
+
+	/**
+	 * @param mixed $planId
+	 */
+	public function setPlanId ( $planId )
+	{
+		$this->_planId = $planId;
+	}
 }
