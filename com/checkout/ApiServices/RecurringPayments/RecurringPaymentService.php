@@ -36,7 +36,8 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
         foreach($plansArray as $singlePlan)
         {
             $recurringPaymentMapper = new \com\checkout\ApiServices\RecurringPayments\RecurringPaymentMapper($singlePlan);
-            $temporaryArray[] = $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0];
+            $_requestPayloadConverter = $recurringPaymentMapper->requestPayloadConverter();
+            $temporaryArray[] = $_requestPayloadConverter['paymentPlans'][0];
         }
 
         $arrayToSubmit['paymentPlans'] = $temporaryArray;
@@ -60,10 +61,12 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     {
         $recurringPaymentMapper = new \com\checkout\ApiServices\RecurringPayments\RecurringPaymentMapper($requestModel);
 
+        $_requestPayloadConverter = $recurringPaymentMapper->requestPayloadConverter();
+
         $requestPayload = array (
             'authorization' => $this->_apiSetting->getSecretKey(),
             'mode'          => $this->_apiSetting->getMode(),
-            'postedParam'   => $recurringPaymentMapper->requestPayloadConverter()['paymentPlans'][0],
+            'postedParam'   => $_requestPayloadConverter['paymentPlans'][0],
 
         );
 
@@ -191,10 +194,12 @@ class RecurringPaymentService extends \com\checkout\ApiServices\BaseServices
     {
         $chargesMapper = new \com\checkout\ApiServices\Charges\ChargesMapper($requestModel);
 
+        $_requestPayloadConverter = $chargesMapper->requestPayloadConverter();
+
         $requestPayload = array (
             'authorization' => $this->_apiSetting->getSecretKey(),
             'mode'          => $this->_apiSetting->getMode(),
-            'postedParam'   => $chargesMapper->requestPayloadConverter()['paymentPlans'][0],
+            'postedParam'   => $_requestPayloadConverter['paymentPlans'][0],
 
         );
 
