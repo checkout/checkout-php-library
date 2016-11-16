@@ -17,8 +17,8 @@ final class ApiHttpClient
 		if( $temp && $temp->isValid()) {
 			return $temp;
 		}else {
-
-			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $temp->getErrorMessageCodes ()[0],$temp->getEventId ());
+			$_errorMessageCodes = $temp->getErrorMessageCodes ();
+			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $_errorMessageCodes[0],$temp->getEventId ());
 
 		}
 	}
@@ -36,7 +36,8 @@ final class ApiHttpClient
 		if($temp  && $temp->isValid()) {
 			return $temp;
 		}else {
-			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $temp->getErrorMessageCodes ()[0],$temp->getEventId ());
+            $_errorMessageCodes = $temp->getErrorMessageCodes ();
+            throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $_errorMessageCodes[0],$temp->getEventId ());
  		}
 	}
 
@@ -53,7 +54,8 @@ final class ApiHttpClient
 		if($temp && $temp->isValid()) {
 			return $temp;
 		}else {
-			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $temp->getErrorMessageCodes ()[0],$temp->getEventId ());
+            $_errorMessageCodes = $temp->getErrorMessageCodes ();
+            throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $_errorMessageCodes[0],$temp->getEventId ());
 		}
 	}
 
@@ -71,7 +73,8 @@ final class ApiHttpClient
 		if($temp && $temp->isValid()) {
 			return $temp;
 		}else {
-			throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $temp->getErrorMessageCodes ()[0],$temp->getEventId ());
+            $_errorMessageCodes = $temp->getErrorMessageCodes ();
+            throw new ApiHttpClientCustomException($temp->getExceptionState ()->getErrorMessage (), $_errorMessageCodes[0],$temp->getEventId ());
 		}
 	}
 }
