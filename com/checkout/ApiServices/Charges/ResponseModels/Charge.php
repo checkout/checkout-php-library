@@ -45,8 +45,11 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_metadata;
     protected $_transactionIndicator;
     protected $_originalId;
+	protected $_redirectUrl;
+	protected $_paymentToken;
 	protected $_response = null;
 	protected $_customerPaymentPlans;
+    protected $_chargeType;
 
 
 	public function __construct($response)
@@ -125,6 +128,13 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
         if($response->getCustomerPaymentPlans()) {
 			$this->_setCustomerPaymentPlans ( $response->getCustomerPaymentPlans () );
 		}
+
+        if($response->getRedirectUrl()) {
+            $this->_setRedirectUrl( $response->getRedirectUrl () );
+            $this->_setPaymentToken ( $response->getId () );
+        }
+
+        $this->_setChargeType( $response->getChargeMode (), $response->getRedirectUrl () );
 
 		$this->json = $response->getRawOutput();
 
@@ -429,6 +439,30 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	{
 		return $this->_customerPaymentPlans;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getRedirectUrl()
+    {
+        return $this->_redirectUrl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaymentToken()
+    {
+        return $this->_paymentToken;
+    }
+
+    /**
+     * @param mixed $object
+     */
+    public function getChargeType()
+    {
+        return $this->_chargeType;
+    }
 
 	/**
 	 * @param mixed $object
@@ -772,4 +806,34 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 
 		$this->_customerPaymentPlans = $paymentPlansToReturn;
 	}
+
+	/**
+	 * @param mixed $redirectUrl
+	 */
+	protected function _setRedirectUrl($redirectUrl)
+	{
+		$this->_redirectUrl = $redirectUrl;
+	}
+
+    /**
+     * @param mixed $paymentToken
+     */
+    protected function _setPaymentToken($paymentToken)
+    {
+        $this->_paymentToken = $paymentToken;
+    }
+
+    /**
+     * @param mixed $chargeType
+     */
+    private function _setChargeType($chargeMode, $redirectUrl)
+    {
+        if ($redirectUrl && $chargeMode == 2){
+            $this->_chargeType = "3dCharge";
+        } elseif ($redirectUrl && $chargeMode == 1){
+            $this->_chargeType = "attemptN3dCharge";
+        } else{
+            $this->_chargeType = "normal";
+        }
+    }
 }
