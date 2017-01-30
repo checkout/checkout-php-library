@@ -49,7 +49,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_paymentToken;
 	protected $_response = null;
 	protected $_customerPaymentPlans;
-    protected $_chargeType;
+    protected $_responseType;
 
 
 	public function __construct($response)
@@ -134,7 +134,7 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
             $this->_setPaymentToken ( $response->getId () );
         }
 
-        $this->_setChargeType( $response->getChargeMode (), $response->getRedirectUrl () );
+        $this->_setResponseType( $response->getChargeMode (), $response->getRedirectUrl () );
 
 		$this->json = $response->getRawOutput();
 
@@ -459,9 +459,9 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
     /**
      * @param mixed $object
      */
-    public function getChargeType()
+    public function getResponseType()
     {
-        return $this->_chargeType;
+        return $this->_responseType;
     }
 
 	/**
@@ -824,16 +824,16 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
     }
 
     /**
-     * @param mixed $chargeType
+     * @param mixed $responseType
      */
-    private function _setChargeType($chargeMode, $redirectUrl)
+    private function _setResponseType($chargeMode, $redirectUrl)
     {
         if ($redirectUrl && $chargeMode == 2){
-            $this->_chargeType = "3dCharge";
+            $this->_responseType = "3dCharge";
         } elseif ($redirectUrl && $chargeMode == 1){
-            $this->_chargeType = "attemptN3dCharge";
+            $this->_responseType = "attemptN3dCharge";
         } else{
-            $this->_chargeType = "normal";
+            $this->_responseType = "normal";
         }
     }
 }
