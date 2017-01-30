@@ -16,6 +16,7 @@ class BaseCharge extends BaseChargeInfo
 	protected $_customerIp;
     protected $_chargeMode;
 	protected $_riskCheck;
+	protected $_attemptN3D;
 
 	/**
 	 * @return mixed
@@ -218,5 +219,18 @@ class BaseCharge extends BaseChargeInfo
 	public function setRiskCheck( $riskCheck)
 	{
 		$this->_riskCheck= $riskCheck;
+	}
+
+	/**
+	 * @param mixed $attemptN3D
+	 */
+	public function setAttemptN3D( $attemptN3D)
+	{
+		$this->_attemptN3D= $attemptN3D;
+	}
+
+	public function getAttemptN3D()
+	{
+		return $this->_attemptN3D;
 	}
 }

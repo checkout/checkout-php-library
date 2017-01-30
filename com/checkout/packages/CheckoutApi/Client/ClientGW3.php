@@ -305,6 +305,41 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
 
         return $this->request( $uri ,$param,!$hasError);
     }
+
+    /**
+     * Refund  Info
+     * This method returns the Captured amount, total refunded amount and the amount remaing
+     * to refund
+     *
+     * $refundInfo = $Api->getRefundInfo($param);
+     *
+     */
+    public function getRefundAmountInfo($param){
+
+        $chargeHistory = $this->getChargeHistory($param);
+        $charges = $chargeHistory->getCharges();
+        $chargesArray = $charges->toArray();
+        $totalRefunded = 0;
+
+        foreach($chargesArray as $num => $values) {
+            if (in_array(CheckoutApi_Client_Constant::STATUS_CAPTURE,$values)){  
+                $capturedAmount = $values[ 'value' ];
+            }
+
+            if (in_array(CheckoutApi_Client_Constant::STATUS_REFUND,$values)){  
+                    $totalRefunded += $values[ 'value' ];
+            }
+        }
+
+        $refundInfo = array(
+            'capturedAmount' => $capturedAmount,
+            'totalRefunded' => $totalRefunded,
+            'remainingAmount' => $capturedAmount - $totalRefunded
+        );
+
+        return $refundInfo;         
+    }
+    
     /**
      * Refund  Charge
      *  This method refunds a Card Charge that has previously been created but not yet refunded
