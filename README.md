@@ -19,7 +19,7 @@ __Manually__
 
 Download or clone the github repository, {master} or {release/v{version number}, and manually add it to your project.
 
-###Example
+### Example
 
 After adding the library to your project, include the file autoload.php found in root of the library.
 ```html
@@ -37,7 +37,8 @@ $apiClient = new checkout\ApiClient('sk_test_XXXXXXXXXXXX');
 By default both **$connectTimeout** and **$readTimeouset** to 60 seconds. You got option to change them as needed.
 **$env** accept either **sandbox **or **live ** as value.  This parameter allow you to shift between the sandbox environment or live environment. By Default the sandbox environment will be used. 
 
-###Sample code for:
+### Sample code for:
+
   [Tokens](https://github.com/CKOTech/checkout-php-library/wiki/Tokens)
   
   [Charges](https://github.com/CKOTech/checkout-php-library/wiki/Charges)
