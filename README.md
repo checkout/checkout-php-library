@@ -17,7 +17,7 @@ Or require the Checkout.com package inside the composer.json of your project:
 ```
 "require": {
     "php": ">=5.2.4",
-    "checkout/checkout-php-api": "1.2.7"
+    "checkout/checkout-php-api": "1.2.8"
 },
 ```
 __Manually__
@@ -46,18 +46,18 @@ By default both **$connectTimeout** and **$readTimeout** are to 60 seconds. You 
 
 ### Sample code for:
 
-  - [Tokens](https://github.com/CKOTech/checkout-php-library/wiki/Tokens)
+  - [Tokens](https://github.com/checkout/checkout-php-library/wiki/Tokens)
   
-  - [Charges](https://github.com/CKOTech/checkout-php-library/wiki/Charges)
+  - [Charges](https://github.com/checkout/checkout-php-library/wiki/Charges)
   
-  - [Cards](https://github.com/CKOTech/checkout-php-library/wiki/Cards)
+  - [Cards](https://github.com/checkout/checkout-php-library/wiki/Cards)
   
-  - [Customers](https://github.com/CKOTech/checkout-php-library/wiki/Customers)
+  - [Customers](https://github.com/checkout/checkout-php-library/wiki/Customers)
 
-  - [Recurring Payments](https://github.com/CKOTech/checkout-php-library/wiki/RecurringPayments)
+  - [Recurring Payments](https://github.com/checkout/checkout-php-library/wiki/RecurringPayments)
   
-  - [Local Payment Providers](https://github.com/CKOTech/checkout-php-library/wiki/lpp)
+  - [Local Payment Providers](https://github.com/checkout/checkout-php-library/wiki/lpp)
 
-  - [Reporting](https://github.com/CKOTech/checkout-php-library/wiki/Reporting)
+  - [Reporting](https://github.com/checkout/checkout-php-library/wiki/Reporting)
 
-  - [Visa Checkout](https://github.com/CKOTech/checkout-php-library/wiki/VisaCheckout)
+  - [Visa Checkout](https://github.com/checkout/checkout-php-library/wiki/VisaCheckout)
