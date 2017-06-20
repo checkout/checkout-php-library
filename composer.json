@@ -1,7 +1,7 @@
 {
     "name": "checkout/checkout-php-api",
     "description": "Checkout PHP API Library",
-    "homepage": "https://github.com/CKOTech/checkout-php-library",
+    "homepage": "https://github.com/checkout/checkout-php-library",
     "version": "1.2.8",
     "type": "library",
     "license": "MIT",
