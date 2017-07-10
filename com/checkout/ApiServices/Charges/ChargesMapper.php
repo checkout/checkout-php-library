@@ -74,6 +74,10 @@ class ChargesMapper
                 $requestPayload['riskCheck'] = $requestModel->getRiskCheck();
             }
 
+			if(method_exists($requestModel,'getAttemptN3D') && $requestModel->getAttemptN3D()) {
+				$requestPayload['attemptN3D'] = $requestModel->getAttemptN3D();
+			}
+
 			if(method_exists($requestModel,'getChargeId') && $requestModel->getChargeId()) {
 				$requestPayload['chargeId'] = $requestModel->getChargeId();
 			}
