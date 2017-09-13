@@ -17,6 +17,7 @@ class BaseCharge extends BaseChargeInfo
     protected $_chargeMode;
 	protected $_riskCheck;
 	protected $_attemptN3D;
+	protected $_billingDetails;
 
 	/**
 	 * @return mixed
@@ -233,4 +234,17 @@ class BaseCharge extends BaseChargeInfo
 	{
 		return $this->_attemptN3D;
 	}
+
+	 /**
+	 * @param mixed billingDetails
+	 */
+	 public function setBillingDetails( $billingDetails)
+	 {
+		 $this->_billingDetails= $billingDetails;
+	 }
+ 
+	 public function getBillingDetails()
+	 {
+		 return $this->_billingDetails;
+	 }
 }
