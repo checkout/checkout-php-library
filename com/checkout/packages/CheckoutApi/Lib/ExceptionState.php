@@ -40,9 +40,7 @@
       */
 	public function setErrorState($state)
 	{
-		//if(!$this->_errorState){
-			$this->_errorState = $state;
-		//}
+		$this->_errorState = $state;
 		
 	}
 
