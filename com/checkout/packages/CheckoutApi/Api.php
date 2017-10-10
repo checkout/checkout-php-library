@@ -48,6 +48,11 @@ final class CheckoutApi_Api
     	if($_apiClass) {
     		self::setApiClass($_apiClass);
     	}
+                
+        //Initialise the exception library
+        $exceptionState = CheckoutApi_Lib_Factory::getSingletonInstance('CheckoutApi_Lib_ExceptionState');
+        $exceptionState->setErrorState(false);
+        
         return CheckoutApi_Lib_Factory::getSingletonInstance(self::getApiClass(),$arguments);
     }
 
