@@ -38,11 +38,9 @@
       * @param boolean $state state of the current error
       *
       */
-	private function setErrorState($state)
+	public function setErrorState($state)
 	{
-		if(!$this->_errorState){
-			$this->_errorState = $state;
-		}
+		$this->_errorState = $state;
 		
 	}
 
