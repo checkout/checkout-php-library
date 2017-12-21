@@ -45,12 +45,12 @@ class ChargesMapper
 			if(method_exists($requestModel,'getEmail') && $requestModel->getEmail()) {
 				$requestPayload['email'] = $requestModel->getEmail();
 			}
-            
-            if(method_exists($requestModel,'getCustomerName') && $requestModel->getCustomerName()) {
+			
+			if(method_exists($requestModel,'getCustomerName') && $requestModel->getCustomerName()) {
 				$requestPayload['customerName'] = $requestModel->getCustomerName();
 			}
-            
-            if(method_exists($requestModel,'getCustomerId') && $requestModel->getCustomerId()) {
+			
+			if(method_exists($requestModel,'getCustomerId') && $requestModel->getCustomerId()) {
 				$requestPayload['customerId'] = $requestModel->getCustomerId();
 			}
 
@@ -65,26 +65,26 @@ class ChargesMapper
 			if(method_exists($requestModel,'getDescription') && $requestModel->getDescription()) {
 				$requestPayload['description'] = $requestModel->getDescription();
 			}
-            
-            if(method_exists($requestModel,'getChargeMode') && $requestModel->getChargeMode()) {
-                $requestPayload['chargeMode'] = $requestModel->getChargeMode();
-            }
+			
+			if(method_exists($requestModel,'getChargeMode') && $requestModel->getChargeMode()) {
+			    $requestPayload['chargeMode'] = $requestModel->getChargeMode();
+			}
 
-            if(method_exists($requestModel,'getRiskCheck') && $requestModel->getRiskCheck()) {
-                $requestPayload['riskCheck'] = $requestModel->getRiskCheck();
-            }
+			if(method_exists($requestModel,'getRiskCheck') && $requestModel->getRiskCheck()) {
+			    $requestPayload['riskCheck'] = $requestModel->getRiskCheck();
+			}
 
 			if(method_exists($requestModel,'getAttemptN3D') && $requestModel->getAttemptN3D()) {
 				$requestPayload['attemptN3D'] = $requestModel->getAttemptN3D();
 			}
 
 			if(method_exists($requestModel,'getSuccessUrl') && $requestModel->getSuccessUrl()) {
-                $requestPayload['successUrl'] = $requestModel->getSuccessUrl();
-            }
+			    $requestPayload['successUrl'] = $requestModel->getSuccessUrl();
+			}
 
-            if(method_exists($requestModel,'getFailUrl') && $requestModel->getFailUrl()) {
-                $requestPayload['failUrl'] = $requestModel->getFailUrl();
-            }
+			if(method_exists($requestModel,'getFailUrl') && $requestModel->getFailUrl()) {
+			    $requestPayload['failUrl'] = $requestModel->getFailUrl();
+			}
 
 			if(method_exists($requestModel,'getChargeId') && $requestModel->getChargeId()) {
 				$requestPayload['chargeId'] = $requestModel->getChargeId();
@@ -131,17 +131,17 @@ class ChargesMapper
 				$requestPayload['descriptor'] = $descriptorConfig;
 			}
 
-            if(method_exists($requestModel,'getAutoCapTime') && $autoCapTime = $requestModel->getAutoCapTime()) {
-                $requestPayload['autoCapTime'] = $autoCapTime;
-            }
+			if(method_exists($requestModel,'getAutoCapTime') && $autoCapTime = $requestModel->getAutoCapTime()) {
+			    $requestPayload['autoCapTime'] = $autoCapTime;
+			}
 
-            if(method_exists($requestModel,'getAutoCapture') && $autoCapture = $requestModel->getAutoCapture()) {
-                $requestPayload['autoCapture'] = $autoCapture;
-            }
+			if(method_exists($requestModel,'getAutoCapture') && $autoCapture = $requestModel->getAutoCapture()) {
+			    $requestPayload['autoCapture'] = $autoCapture;
+			}
 
-            if(method_exists($requestModel,'getTransactionIndicator') && $transactionIndicator = $requestModel->getTransactionIndicator()) {
-                $requestPayload['transactionIndicator'] = $transactionIndicator;
-            }
+			if(method_exists($requestModel,'getTransactionIndicator') && $transactionIndicator = $requestModel->getTransactionIndicator()) {
+			    $requestPayload['transactionIndicator'] = $transactionIndicator;
+			}
 
 			if( method_exists($requestModel,'getShippingDetails') && $shippingAddress = $requestModel->getShippingDetails()) {
 				$shippingAddressConfig = array (
@@ -153,12 +153,12 @@ class ChargesMapper
 					'state' => $shippingAddress->getState () ,
 
 				);
-                
-	            if ($shippingAddress->getPhone() != null) {
-	                $shippingAddressConfig = array_merge_recursive($shippingAddressConfig, array(
-	                   'phone' => $shippingAddress->getPhone()->getPhoneDetails()
-	                	)
-	              	);
+			    
+				if ($shippingAddress->getPhone() != null) {
+				    $shippingAddressConfig = array_merge_recursive($shippingAddressConfig, array(
+				       'phone' => $shippingAddress->getPhone()->getPhoneDetails()
+				    	)
+				  	);
 	           	}
 
         		$requestPayload['shippingDetails'] = $shippingAddressConfig;
@@ -166,24 +166,24 @@ class ChargesMapper
 
 			
 			if (method_exists($requestModel, 'getBillingDetails') && $billingAddress = $requestModel->getBillingDetails()) {
-                $billingAddressConfig = array(
-                    'addressLine1' => $billingAddress->getAddressLine1(),
-                    'addressLine2' => $billingAddress->getAddressLine2(),
-                    'postcode' => $billingAddress->getPostcode(),
-                    'country' => $billingAddress->getCountry(),
-                    'city' => $billingAddress->getCity(),
-                    'state' => $billingAddress->getState(),
-                );
+			    $billingAddressConfig = array(
+			        'addressLine1' => $billingAddress->getAddressLine1(),
+			        'addressLine2' => $billingAddress->getAddressLine2(),
+			        'postcode' => $billingAddress->getPostcode(),
+			        'country' => $billingAddress->getCountry(),
+			        'city' => $billingAddress->getCity(),
+			        'state' => $billingAddress->getState(),
+			    );
 
-                if ($billingAddress->getPhone() != null) {
-                    $billingAddressConfig = array_merge_recursive($billingAddressConfig, array(
-                        'phone' => $billingAddress->getPhone()->getPhoneDetails()
-                            )
-                    );
-                }
+			    if ($billingAddress->getPhone() != null) {
+			        $billingAddressConfig = array_merge_recursive($billingAddressConfig, array(
+						'phone' => $billingAddress->getPhone()->getPhoneDetails()
+						    )
+			        );
+			    }
 
-                $requestPayload['billingDetails'] = $billingAddressConfig;
-            }
+			    $requestPayload['billingDetails'] = $billingAddressConfig;
+			}
 
 			if(method_exists($requestModel,'getProducts') && $productsItem =  $requestModel->getProducts()) {
 				
@@ -234,13 +234,13 @@ class ChargesMapper
 						'city'         => $billingAddress->getCity () ,
 						'state'        => $billingAddress->getState () ,
 					);
-                    if($billingAddress->getPhone () != null){
-                      $billingAddressConfig = array_merge_recursive ( $billingAddressConfig , 
-                          array (
-                            'phone' => $billingAddress->getPhone()->getPhoneDetails() 
-                          )
-                      );
-                    }
+			        if($billingAddress->getPhone () != null){
+			          $billingAddressConfig = array_merge_recursive ( $billingAddressConfig , 
+						  array (
+						    'phone' => $billingAddress->getPhone()->getPhoneDetails() 
+						  )
+			          );
+			        }
 					$requestPayload[ 'card' ][ 'billingDetails' ] = $billingAddressConfig;
 				}
 
@@ -268,8 +268,8 @@ class ChargesMapper
 			if(method_exists($requestModel,'getCardId') && $cardId = $requestModel->getCardId()) {
 				$requestPayload[ 'cardId' ] = $cardId;
 			}
-            
-            if(method_exists($requestModel,'getCvv') && $cvv = $requestModel->getCvv()) {
+			
+			if(method_exists($requestModel,'getCvv') && $cvv = $requestModel->getCvv()) {
 				$requestPayload[ 'cvv' ] = $cvv;
 			}
 
@@ -282,50 +282,50 @@ class ChargesMapper
 			}
 
 			if(method_exists($requestModel,'getPaymentPlans') ) {
-                $paymentPlans = $requestModel->getPaymentPlans();
+			    $paymentPlans = $requestModel->getPaymentPlans();
 
-                foreach($paymentPlans as $singlePlan) {
+			    foreach($paymentPlans as $singlePlan) {
 
-                    $requestSinglePaymentPlan = array();
+			        $requestSinglePaymentPlan = array();
 
-                    if (method_exists($singlePlan, 'getName') && ($name = $singlePlan->getName())) {
-                        $requestSinglePaymentPlan['name'] = $name;
-                    }
+			        if (method_exists($singlePlan, 'getName') && ($name = $singlePlan->getName())) {
+						$requestSinglePaymentPlan['name'] = $name;
+			        }
 
-                    if (method_exists($singlePlan, 'getPlanTrackId') && ($planTrackId = $singlePlan->getPlanTrackId())) {
-                        $requestSinglePaymentPlan['planTrackId'] = $planTrackId;
-                    }
+			        if (method_exists($singlePlan, 'getPlanTrackId') && ($planTrackId = $singlePlan->getPlanTrackId())) {
+						$requestSinglePaymentPlan['planTrackId'] = $planTrackId;
+			        }
 
-                    if (method_exists($singlePlan, 'getAutoCapTime') && ($autoCapTime = $singlePlan->getAutoCapTime())) {
-                        $requestSinglePaymentPlan['autoCapTime'] = $autoCapTime;
-                    }
+			        if (method_exists($singlePlan, 'getAutoCapTime') && ($autoCapTime = $singlePlan->getAutoCapTime())) {
+						$requestSinglePaymentPlan['autoCapTime'] = $autoCapTime;
+			        }
 
-                    if (method_exists($singlePlan, 'getCurrency') && ($currency = $singlePlan->getCurrency())) {
-                        $requestSinglePaymentPlan['currency'] = $currency;
-                    }
+			        if (method_exists($singlePlan, 'getCurrency') && ($currency = $singlePlan->getCurrency())) {
+						$requestSinglePaymentPlan['currency'] = $currency;
+			        }
 
-                    if (method_exists($singlePlan, 'getValue') && ($value = $singlePlan->getValue())) {
-                        $requestSinglePaymentPlan['value'] = $value;
-                    }
-                    if (method_exists($singlePlan, 'getCycle') && ($cycle = $singlePlan->getCycle())) {
-                        $requestSinglePaymentPlan['cycle'] = $cycle;
-                    }
+			        if (method_exists($singlePlan, 'getValue') && ($value = $singlePlan->getValue())) {
+						$requestSinglePaymentPlan['value'] = $value;
+			        }
+			        if (method_exists($singlePlan, 'getCycle') && ($cycle = $singlePlan->getCycle())) {
+						$requestSinglePaymentPlan['cycle'] = $cycle;
+			        }
 
-                    if (method_exists($singlePlan, 'getRecurringCount') && ($recurringCount = $singlePlan->getRecurringCount())) {
-                        $requestSinglePaymentPlan['recurringCount'] = $recurringCount;
-                    }
+			        if (method_exists($singlePlan, 'getRecurringCount') && ($recurringCount = $singlePlan->getRecurringCount())) {
+						$requestSinglePaymentPlan['recurringCount'] = $recurringCount;
+			        }
 
-                    if (method_exists($singlePlan, 'getPlanId') && ($planId = $singlePlan->getPlanId())) {
-                        $requestSinglePaymentPlan['planId'] = $planId;
-                    }
+			        if (method_exists($singlePlan, 'getPlanId') && ($planId = $singlePlan->getPlanId())) {
+						$requestSinglePaymentPlan['planId'] = $planId;
+			        }
 
-                    if (method_exists($singlePlan, 'getStartDate') && ($startDate = $singlePlan->getStartDate())) {
-                        $requestSinglePaymentPlan['startDate'] = $startDate;
-                    }
+			        if (method_exists($singlePlan, 'getStartDate') && ($startDate = $singlePlan->getStartDate())) {
+						$requestSinglePaymentPlan['startDate'] = $startDate;
+			        }
 
-                    $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
-                }
-            }
+			        $requestPayload['paymentPlans'][] = $requestSinglePaymentPlan;
+			    }
+			}
 
 		}
 
