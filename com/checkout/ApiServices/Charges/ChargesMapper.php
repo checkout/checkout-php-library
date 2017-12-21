@@ -78,6 +78,14 @@ class ChargesMapper
 				$requestPayload['attemptN3D'] = $requestModel->getAttemptN3D();
 			}
 
+			if(method_exists($requestModel,'getSuccessUrl') && $requestModel->getSuccessUrl()) {
+                $requestPayload['successUrl'] = $requestModel->getSuccessUrl();
+            }
+
+            if(method_exists($requestModel,'getFailUrl') && $requestModel->getFailUrl()) {
+                $requestPayload['failUrl'] = $requestModel->getFailUrl();
+            }
+
 			if(method_exists($requestModel,'getChargeId') && $requestModel->getChargeId()) {
 				$requestPayload['chargeId'] = $requestModel->getChargeId();
 			}
