@@ -156,6 +156,27 @@ class ChargesMapper
         		$requestPayload['shippingDetails'] = $shippingAddressConfig;
 			}
 
+			
+			if (method_exists($requestModel, 'getBillingDetails') && $billingAddress = $requestModel->getBillingDetails()) {
+                $billingAddressConfig = array(
+                    'addressLine1' => $billingAddress->getAddressLine1(),
+                    'addressLine2' => $billingAddress->getAddressLine2(),
+                    'postcode' => $billingAddress->getPostcode(),
+                    'country' => $billingAddress->getCountry(),
+                    'city' => $billingAddress->getCity(),
+                    'state' => $billingAddress->getState(),
+                );
+
+                if ($billingAddress->getPhone() != null) {
+                    $billingAddressConfig = array_merge_recursive($billingAddressConfig, array(
+                        'phone' => $billingAddress->getPhone()->getPhoneDetails()
+                            )
+                    );
+                }
+
+                $requestPayload['billingDetails'] = $billingAddressConfig;
+            }
+
 			if(method_exists($requestModel,'getProducts') && $productsItem =  $requestModel->getProducts()) {
 				
 				foreach ( $productsItem as $i => $item ) {
