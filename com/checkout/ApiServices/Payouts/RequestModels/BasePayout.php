@@ -7,7 +7,7 @@ namespace com\checkout\ApiServices\Payouts\RequestModels;
 
 class BasePayout
 {
-	protected $_value;
+    protected $_value;
     protected $_currency;
     protected $_destination;
     protected $_firstName;

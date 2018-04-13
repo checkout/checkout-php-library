@@ -9,17 +9,17 @@ namespace com\checkout\ApiServices\Payouts\ResponseModels;
 
 class Payout extends \com\checkout\ApiServices\SharedModels\BaseHttp
 {
-	protected $_id;
-	protected $_destination;
-	protected $_customerId;
-	protected $_currency;
-	protected $_value;
-	protected $_responseCode;
-	protected $_responseSummary;
-	protected $_responseDetails;
-	protected $_authCode;
-	protected $_status;
-	protected $_eventId;
+    protected $_id;
+    protected $_destination;
+    protected $_customerId;
+    protected $_currency;
+    protected $_value;
+    protected $_responseCode;
+    protected $_responseSummary;
+    protected $_responseDetails;
+    protected $_authCode;
+    protected $_status;
+    protected $_eventId;
     protected $_errorCode;
     protected $_message;
     protected $_errorMessageCodes;
@@ -28,8 +28,8 @@ class Payout extends \com\checkout\ApiServices\SharedModels\BaseHttp
     public function __construct($response)
 	{
         parent::__construct($response);
-		$this->_setId($response->getId());
-		$this->_setDestination($response->getDestination());
+        $this->_setId($response->getId());
+        $this->_setDestination($response->getDestination());
         $this->_setCustomerId($response->getCustomerId());
         $this->_setCustomerId($response->getCustomerId());
         $this->_setCurrency($response->getCurrency());
