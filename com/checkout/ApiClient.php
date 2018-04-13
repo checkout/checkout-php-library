@@ -7,6 +7,7 @@ class ApiClient
 	private  $_chargeService;
 	private  $_cardService;
 	private  $_customerService;
+	private  $_payoutService;
 	private  $_reportingService;
 	private  $_recurringPaymentService;
 	private  $_visaCheckoutService;
@@ -18,6 +19,14 @@ class ApiClient
     {
         return $this->_customerService;
     }
+    
+    	/**
+	 * @return ApiServices\Payouts\PayoutService
+	 */
+	public function payoutService()
+	{
+            return $this->_payoutService;
+	}
 
 	/**
 	 * @return ApiServices\Charges\ChargeService
@@ -81,6 +90,7 @@ class ApiClient
 		$this->_chargeService = new ApiServices\Charges\ChargeService($appSetting);
 		$this->_cardService = new ApiServices\Cards\CardService($appSetting);
 		$this->_customerService = new ApiServices\Customers\CustomerService($appSetting);
+                $this->_payoutService = new ApiServices\Payouts\PayoutService($appSetting);
 		$this->_reportingService = new ApiServices\Reporting\ReportingService($appSetting);
 		$this->_recurringPaymentService = new ApiServices\RecurringPayments\RecurringPaymentService($appSetting);
 		$this->_visaCheckoutService = new ApiServices\VisaCheckout\VisaCheckoutService($appSetting);
