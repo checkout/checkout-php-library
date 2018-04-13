@@ -23,7 +23,7 @@ class PayoutService extends \com\checkout\ApiServices\BaseServices
 		);
 
 		$processPayout = \com\checkout\helpers\ApiHttpClient::postRequest($this->_apiUrl->getPayoutsApiUri(),
-			$this->_apiSetting->getSecretKey(),$requestPayload);
+		$this->_apiSetting->getSecretKey(),$requestPayload);
 
 		$responseModel = new ResponseModels\Payout($processPayout);
 

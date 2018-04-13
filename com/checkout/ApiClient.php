@@ -20,7 +20,7 @@ class ApiClient
         return $this->_customerService;
     }
     
-    	/**
+	/**
 	 * @return ApiServices\Payouts\PayoutService
 	 */
 	public function payoutService()
@@ -90,7 +90,7 @@ class ApiClient
 		$this->_chargeService = new ApiServices\Charges\ChargeService($appSetting);
 		$this->_cardService = new ApiServices\Cards\CardService($appSetting);
 		$this->_customerService = new ApiServices\Customers\CustomerService($appSetting);
-                $this->_payoutService = new ApiServices\Payouts\PayoutService($appSetting);
+        $this->_payoutService = new ApiServices\Payouts\PayoutService($appSetting);
 		$this->_reportingService = new ApiServices\Reporting\ReportingService($appSetting);
 		$this->_recurringPaymentService = new ApiServices\RecurringPayments\RecurringPaymentService($appSetting);
 		$this->_visaCheckoutService = new ApiServices\VisaCheckout\VisaCheckoutService($appSetting);
