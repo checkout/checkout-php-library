@@ -1312,7 +1312,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
             $uri = "$uri/{$param['planId']}";
         }
 
-        return $this->_responseUpdateStatus($this->request( $uri ,$param,!$hasError));
+        return $this->request( $uri ,$param,!$hasError);
     }
 
     /**
@@ -1407,7 +1407,7 @@ class CheckoutApi_Client_ClientGW3 extends CheckoutApi_Client_Client
             $uri = "$uri/{$param['customerPlanId']}";
         }
 
-        return $this->_responseUpdateStatus($this->request( $uri ,$param,!$hasError));
+        return $this->request( $uri ,$param,!$hasError);
     }
 
     /**
