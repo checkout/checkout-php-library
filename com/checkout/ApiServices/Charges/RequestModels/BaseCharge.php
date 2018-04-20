@@ -20,6 +20,9 @@ class BaseCharge extends BaseChargeInfo
 	protected $_transactionIndicator;
 	protected $_cardOnFile;
 	protected $_previousChargeId;
+	protected $_billingDetails;
+	protected $_successUrl;
+	protected $_failUrl;
 
 	/**
 	 * @return mixed
@@ -261,6 +264,45 @@ class BaseCharge extends BaseChargeInfo
 
 	public function setPreviousChargeId($previousChargeId) {
 		$this->_previousChargeId = $previousChargeId;
+
+	/**
+	 * @param mixed billingDetails
+	 */
+	public function setBillingDetails( $billingDetails)
+	{
+		$this->_billingDetails= $billingDetails;
+	}
+ 
+	public function getBillingDetails()
+	{
+		return $this->_billingDetails;
+	}
+
+	/**
+	 * @param mixed $successUrl
+	 */
+	public function setSuccessUrl( $successUrl)
+	{
+		$this->_successUrl= $successUrl;
+	}
+
+	public function getSuccessUrl()
+	{
+		return $this->_successUrl;
+	}
+
+	/**
+	 * @param mixed $failUrl
+	 */
+	public function setFailUrl( $failUrl)
+	{
+		$this->_failUrl= $failUrl;
+	}
+
+	public function getFailUrl()
+	{
+		return $this->_failUrl;
+
 	}
 
 }
