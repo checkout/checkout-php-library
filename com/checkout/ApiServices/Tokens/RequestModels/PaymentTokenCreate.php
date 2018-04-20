@@ -11,21 +11,5 @@ namespace com\checkout\ApiServices\Tokens\RequestModels;
 
 class PaymentTokenCreate extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 {
-    protected $_transactionIndicator;
 
-    /**
-     * @return mixed
-     */
-    public function getTransactionIndicator()
-    {
-        return $this->_transactionIndicator;
-    }
-
-    /**
-     * @param mixed $transactionIndicator
-     */
-    public function setTransactionIndicator($transactionIndicator)
-    {
-        $this->_transactionIndicator = $transactionIndicator;
-    }
 }

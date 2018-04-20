@@ -6,7 +6,6 @@ namespace com\checkout\ApiServices\RecurringPayments\RequestModels;
 class PlanWithCardTokenCreate extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 {
 	protected $_cardToken;
-	protected $_transactionIndicator;
     protected $_paymentPlans;
 
 	/**
@@ -24,22 +23,6 @@ class PlanWithCardTokenCreate extends \com\checkout\ApiServices\Charges\RequestM
 	{
 		$this->_cardToken = $cardToken;
 	}
-
-	/**
-     * @return mixed
-     */
-    public function getTransactionIndicator()
-    {
-        return $this->_transactionIndicator;
-    }
-
-    /**
-     * @param mixed $transactionIndicator
-     */
-    public function setTransactionIndicator($transactionIndicator)
-    {
-        $this->_transactionIndicator = $transactionIndicator;
-    }
 
 	/**
 	 * @return mixed
