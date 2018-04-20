@@ -11,6 +11,7 @@ class ApiUrls
     private $_cardProvidersUri = null;
     private $_localPaymentProvidersUri = null;
     private $_customersApiUri = null;
+    private $_payoutsApiUri = null;
     private $_cardsApiUri = null;
     private $_cardChargesApiUri = null;
     private $_cardTokenChargesApiUri = null;
@@ -202,6 +203,28 @@ class ApiUrls
     public function setCustomersApiUri($customersApiUri)
     {
         $this->_customersApiUri = $customersApiUri;
+    }
+    
+    /**
+     * return payouts url
+     * @return string
+     */
+    public function getPayoutsApiUri()
+    {
+        if (!$this->_payoutsApiUri) {
+            $this->setPayoutsApiUri($this->getBaseApiUri() . "/payouts");
+        }
+
+        return $this->_payoutsApiUri;
+    }
+
+    /**
+     * set payout url
+     * @param string $payoutsApiUri
+     */
+    public function setPayoutsApiUri($payoutsApiUri)
+    {
+        $this->_payoutsApiUri = $payoutsApiUri;
     }
 
     /**
