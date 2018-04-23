@@ -264,7 +264,8 @@ class BaseCharge extends BaseChargeInfo
 
 	public function setPreviousChargeId($previousChargeId) {
 		$this->_previousChargeId = $previousChargeId;
-
+	}
+	
 	/**
 	 * @param mixed billingDetails
 	 */
