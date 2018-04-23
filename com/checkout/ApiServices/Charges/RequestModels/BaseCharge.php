@@ -17,6 +17,9 @@ class BaseCharge extends BaseChargeInfo
     protected $_chargeMode;
 	protected $_riskCheck;
 	protected $_attemptN3D;
+	protected $_transactionIndicator;
+	protected $_cardOnFile;
+	protected $_previousChargeId;
 	protected $_billingDetails;
 	protected $_successUrl;
 	protected $_failUrl;
@@ -236,6 +239,31 @@ class BaseCharge extends BaseChargeInfo
 	{
 		return $this->_attemptN3D;
 	}
+        
+	public function getTransactionIndicator()
+	{
+		return $this->_transactionIndicator;
+	}
+
+	public function setTransactionIndicator($transactionIndicator)
+	{
+		$this->_transactionIndicator = $transactionIndicator;
+	}
+
+	public function getCardOnFile() {
+		return $this->_cardOnFile;
+	}
+
+	public function getPreviousChargeId() {
+		return $this->_previousChargeId;
+	}
+
+	public function setCardOnFile($cardOnFile) {
+		$this->_cardOnFile = $cardOnFile;
+	}
+
+	public function setPreviousChargeId($previousChargeId) {
+		$this->_previousChargeId = $previousChargeId;
 
 	/**
 	 * @param mixed billingDetails
@@ -274,6 +302,7 @@ class BaseCharge extends BaseChargeInfo
 	public function getFailUrl()
 	{
 		return $this->_failUrl;
+
 	}
 
 }
