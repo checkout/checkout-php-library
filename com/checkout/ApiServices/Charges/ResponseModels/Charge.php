@@ -44,6 +44,8 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 	protected $_descriptor;
 	protected $_metadata;
     protected $_transactionIndicator;
+	protected $_cardOnFile;
+	protected $_previousChargeId;
     protected $_originalId;
 	protected $_redirectUrl;
 	protected $_paymentToken;
@@ -119,6 +121,14 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 
         if($response->getTransactionIndicator()) {
             $this->_setTransactionIndicator ( $response->getTransactionIndicator () );
+        }
+                
+        if($response->getCardOnFile()) {
+            $this->_setCardOnFile ( $response->getCardOnFile () );
+        }
+
+        if($response->getPrevioudChargeId()) {
+            $this->_setPrevioudChargeId ( $response->getPrevioudChargeId () );
         }
 
         if($response->getOriginalId()) {
@@ -413,7 +423,24 @@ class Charge extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
     {
         return $this->_transactionIndicator;
     }
+    
+    public function getCardOnFile() {
+        return $this->_cardOnFile;
+    }
 
+    public function getPreviousChargeId() {
+        return $this->_previousChargeId;
+    }
+
+    public function setCardOnFile($cardOnFile) {
+        $this->_cardOnFile = $cardOnFile;
+    }
+
+    public function setPreviousChargeId($previousChargeId) {
+        $this->_previousChargeId = $previousChargeId;
+    }
+
+    
 
     /**
 	 * @return mixed

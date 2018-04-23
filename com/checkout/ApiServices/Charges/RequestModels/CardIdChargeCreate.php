@@ -13,8 +13,6 @@ class CardIdChargeCreate extends BaseCharge
 {
 	protected $_cardId;
     protected $_cvv;
-    protected $_transactionIndicator;
-
 	/**
 	 * @return mixed
 	 */
@@ -47,19 +45,4 @@ class CardIdChargeCreate extends BaseCharge
 		$this->_cvv = $cvv;
 	}
 
-    /**
-     * @return mixed
-     */
-    public function getTransactionIndicator()
-    {
-        return $this->_transactionIndicator;
-    }
-
-    /**
-     * @param mixed $transactionIndicator
-     */
-    public function setTransactionIndicator($transactionIndicator)
-    {
-        $this->_transactionIndicator = $transactionIndicator;
-    }
 }

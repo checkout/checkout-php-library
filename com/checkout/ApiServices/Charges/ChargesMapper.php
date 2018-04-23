@@ -139,9 +139,18 @@ class ChargesMapper
 				$requestPayload['autoCapture'] = $autoCapture;
 			}
 
-			if(method_exists($requestModel,'getTransactionIndicator') && $transactionIndicator = $requestModel->getTransactionIndicator()) {
-				$requestPayload['transactionIndicator'] = $transactionIndicator;
-			}
+
+      if(method_exists($requestModel,'getTransactionIndicator') && $transactionIndicator = $requestModel->getTransactionIndicator()) {
+          $requestPayload['transactionIndicator'] = $transactionIndicator;
+      }
+
+      if(method_exists($requestModel,'getCardOnFile') && $cardOnFile = $requestModel->getCardOnFile()) {
+          $requestPayload['cardOnFile'] = $cardOnFile;
+      }
+
+      if(method_exists($requestModel,'getPreviousChargeId') && $previousChargeId = $requestModel->getPreviousChargeId()) {
+          $requestPayload['previousChargeId'] = $previousChargeId;
+      }
 
 			if( method_exists($requestModel,'getShippingDetails') && $shippingAddress = $requestModel->getShippingDetails()) {
 				$shippingAddressConfig = array (

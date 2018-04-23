@@ -6,7 +6,6 @@ namespace com\checkout\ApiServices\RecurringPayments\RequestModels;
 class PlanWithFullCardCreate extends \com\checkout\ApiServices\Charges\RequestModels\BaseCharge
 {
 	protected $_baseCardCreate;
-	protected $_transactionIndicator;
     protected $_paymentPlans;
 
 	/**
@@ -25,21 +24,6 @@ class PlanWithFullCardCreate extends \com\checkout\ApiServices\Charges\RequestMo
 		$this->_baseCardCreate = $baseCardCreate;
 	}
 
-	/**
-     * @return mixed
-     */
-    public function getTransactionIndicator()
-    {
-        return $this->_transactionIndicator;
-    }
-
-    /**
-     * @param mixed $transactionIndicator
-     */
-    public function setTransactionIndicator($transactionIndicator)
-    {
-        $this->_transactionIndicator = $transactionIndicator;
-    }
 
 	/**
 	 * @return mixed

@@ -7,7 +7,6 @@ class PlanWithCardIdCreate extends \com\checkout\ApiServices\Charges\RequestMode
 {
 	protected $_cardId;
     protected $_cvv;
-	protected $_transactionIndicator;
     protected $_paymentPlans;
 
 	/**
@@ -42,21 +41,6 @@ class PlanWithCardIdCreate extends \com\checkout\ApiServices\Charges\RequestMode
 		$this->_cvv = $cvv;
 	}
 
-	/**
-     * @return mixed
-     */
-    public function getTransactionIndicator()
-    {
-        return $this->_transactionIndicator;
-    }
-
-    /**
-     * @param mixed $transactionIndicator
-     */
-    public function setTransactionIndicator($transactionIndicator)
-    {
-        $this->_transactionIndicator = $transactionIndicator;
-    }
 
 	/**
 	 * @return mixed
