@@ -19,7 +19,6 @@ class ChargeBack extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	protected $_arn;
 	protected $_customerName;
 	protected $_customerEmail;
-        protected $_responseCode;
 
 		/**
 	 * @return mixed
@@ -143,14 +142,6 @@ class ChargeBack extends \com\checkout\ApiServices\SharedModels\BaseHttp
 	public function getCustomerEmail ()
 	{
 		return $this->_customerEmail;
-	}
-        
-        /**
-	 * @return mixed
-	 */
-	public function getResponseCode ()
-	{
-		return $this->_responseCode;
 	}
 
 	/**
@@ -277,13 +268,4 @@ class ChargeBack extends \com\checkout\ApiServices\SharedModels\BaseHttp
    	{
 		$this->_customerEmail = $customerEmail;
 	}
-
-	/**
-	 * @param mixed $responseCode
-	 */
-	public function setResponseCode ( $responseCode )
-	{
-		$this->_responseCode = $responseCode;
-	}
-
 }
