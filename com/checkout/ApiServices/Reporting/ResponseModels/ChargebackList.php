@@ -69,7 +69,6 @@ class ChargebackList  extends \com\checkout\ApiServices\SharedModels\BaseHttp
 				$chargeBack->setArn($item['arn']);
 				$chargeBack->setCustomerName($item['customer']['name']);
 				$chargeBack->setCustomerEmail($item['customer']['email']);
-				$chargeBack->setResponseCode($item['responseCode']);
 				$chargeBacksToReturn[] = $chargeBack;
 			}
 		}
