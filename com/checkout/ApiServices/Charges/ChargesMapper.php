@@ -70,7 +70,7 @@ class ChargesMapper
 				$requestPayload['chargeMode'] = $requestModel->getChargeMode();
 			}
 
-			if(method_exists($requestModel,'getRiskCheck') && $requestModel->getRiskCheck()) {
+			if(method_exists($requestModel,'getRiskCheck') && is_bool($requestModel->getRiskCheck())) {
 				$requestPayload['riskCheck'] = $requestModel->getRiskCheck();
 			}
 
