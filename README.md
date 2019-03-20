@@ -1,3 +1,5 @@
+>**:heavy_exclamation_mark: This library points to Checkout.com's classic API. Please refer to the [latest PHP SDK](https://github.com/checkout/checkout-sdk-php) instead to benefit from the updated API**
+
 ### Requirements
 
 PHP 5 > 5.3.0
