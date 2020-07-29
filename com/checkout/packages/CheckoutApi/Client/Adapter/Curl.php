@@ -141,8 +141,9 @@ class CheckoutApi_Client_Adapter_Curl extends CheckoutApi_Client_Adapter_Abstrac
 
 		$resource = curl_init();
 
-		curl_setopt($resource,CURLOPT_CONNECTTIMEOUT,$this->getTimeout());
-	
+		curl_setopt($resource,CURLOPT_CONNECTTIMEOUT, $this->getTimeout());
+		curl_setopt($resource,CURLOPT_TIMEOUT, $this->getTimeout());
+
 		$this->setResource($resource);
 		parent::connect();
 		return $this;
@@ -190,8 +191,4 @@ class CheckoutApi_Client_Adapter_Curl extends CheckoutApi_Client_Adapter_Abstrac
 
 		return $timeout;
 	}
-
-
-
-
 }
